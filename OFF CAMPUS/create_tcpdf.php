@@ -648,9 +648,21 @@ $html .= '<tr>
 </tr>
     <tr>
     <td colspan="4">';
+    if($vp == 0)
+    {
+
+    }
     if($vp == "Variable Pay * ")
     {
         $html.='* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.';
+    }
+    if($vp=="Sales Incentive *** ")
+    {
+        $html.='*** As per policy';
+    }
+    if($vp=="Business Incentive *** ")
+    {
+        $html.='* *** As per policy';
     }
     
     $html.='</td>
