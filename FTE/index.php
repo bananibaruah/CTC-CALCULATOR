@@ -558,7 +558,7 @@
 <body>
 <div class="col-lg-6">
 <button class="GFG1" 
-    onclick="window.location.href = 'http://localhost/CTC/';" style="float: center;">
+    onclick="window.location.href = 'http://localhost/CTC-CALCULATOR/';" style="float: center;">
         CTC CALCULATOR
     </button>
 </div>

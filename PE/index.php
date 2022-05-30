@@ -69,6 +69,7 @@
     var Food_Allowance =0,lta=0, r=0, m_c_r=0, Attire_Allowance=0, driver_reimbursement=0;
     var STRB=0;
     var Incentive_Bounus=0;
+    var total_esic=0;
     $(document).ready(function() {
 
 

@@ -30,3 +30,48 @@
   display: inline-block;
   cursor: pointer;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 0.7em;
+  font-family: sans-serif;
+  min-width: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ffffff;
+}
+
+.styled-table thead tr {
+  background-color: #0056b3;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 8px 8px;
+}
+
+
+.styled-table tbody tr {
+  border-bottom: 2px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+  border-bottom: 5px solid #0056b3;
+}
