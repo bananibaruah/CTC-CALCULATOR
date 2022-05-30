@@ -8,7 +8,6 @@ $doj = $_POST["doj"];
 $Ad1 = $_POST["Ad1"];
 $Ad2 = $_POST["Ad2"];
 $Ad3 = $_POST["Ad3"];
-$jbamount = $_POST["jbamount"];
 $Position = $_POST["Position"];
 $Pincode = $_POST["Pincode"];
 $City = $_POST["City"];
@@ -20,7 +19,6 @@ $grade = $_POST["grade"];
 $ctc = $_POST["ctc"];
 
 $basic = $_POST["basic"];
-$basicp = $_POST['basicp'];
 $hra = $_POST["hra"];
 $basic1 = round($basic / 12);
 $hra1 = round($hra / 12);
@@ -52,7 +50,7 @@ $PF1 = round($PF / 12);
 $ESIC = $_POST['ESIC'];
 $ESIC1 = round($ESIC / 12);
 $gratuity = $_POST['gratuity'];
-$gratuity1 = round($gratuity / 12);
+$Gratuity1 = round($gratuity / 12);
 
 $Total_B = $_POST['Total_B'];
 $Total_B1 = round($Total_B / 12);
@@ -61,22 +59,23 @@ $LTOTAL = $_POST['LTotal'];
 $LTOTAL1 = round($LTOTAL / 12);
 $Variable_Pay = $_POST['Variable_Pay'];
 $Variable_Pay1 = round($Variable_Pay / 12);
+
+$STRB = $_POST['STRB'];
+$STRB1 = round($STRB / 12);
+
+$Incentive_Bonus = $_POST['Incentive_Bonus'];
+$Incentive_Bonus1 = round($Incentive_Bonus / 12);
+
 $Total_II = $_POST['Total_II'];
 $Total_II1 = round($Total_II / 12);
 
 $TOTAL = $_POST['TOTAL'];
 $TOTAL1 = round($TOTAL / 12);
 
-$wsd = $_POST['wsd'];
-$wed = $_POST['wed'];
-
-$aloc = $_POST['aloc'];
-
 $Code = $_POST['Code'];
-$chkPassPort = $_POST['chkPassPort'];
 
-$ins_sql = "INSERT INTO fte_ol(Code, Name, Address1, Address2, Address3, City, Pincode, State, Start_Date, End_Date, DOJ,Position,CTC,Basic_Per, Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,EXECUTIVE_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,TOTAL, J_Bonus) 
-            Values('$Code', '$name', '$Ad1', '$Ad2', '$Ad3', '$City', '$Pincode', '$state', '$Sd', '$ed', '$doj', '$Position', '$ctc', '$basicp', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$Executive_Allowance','$Total_A', '$PF', '$ESIC', '$Total_B', '$TOTAL', '$jbamount')";
+$ins_sql = "INSERT INTO pe_jt(Code, Name, State,DOJ,Position,CTC,Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,LTA,EXECUTIVE_ALLOWANCE,FOOD_ALLOWANCE,MOBILE_REIMBURSEMENT,ATTIRE_ALLOWANCE,VEHICLE_REIMBURSEMENT,RETENTION_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,VARIABLE_PAY,TOTAL_AB,TOTAL) 
+            Values('$Code', '$name', '$state', '$doj', '$Position', '$ctc', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$lta','$Executive_Allowance','$Food_Allowance','$m_c_r', '$Attire_Allowance', '$vr', '$driver_reimbursement', '$Retention_Allowance', '$Total_A', '$PF', '$ESIC', '$gratuity', '$Total_B', '$LTOTAL', $Variable_Pay', '$Total_II', '$TOTAL')";
 
 $link->query($ins_sql);
 
@@ -210,7 +209,7 @@ $html .= <<<EOD
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-<b>OFFER LETTER </b>
+<b>Provisional Offer Letter </b>
 
 <b>
 <br>$doj1<br>
@@ -222,25 +221,31 @@ $Ad3 ,<br>
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
-We are pleased to offer you employment in our organization NSEIT ltd as “<b>$Position</b>” for a fixed period of employment (Contract) on the following terms and conditions.<br><br>
-The term of your employment shall be valid from <b>$Sd1</b> to <b>$ed1</b>. Notwithstanding this, in the event of the project/work for which you are being employed terminates before the aforementioned period, this contract shall be co terminus with the project/work. <br><br>
-Details of your salary break up with components are as per the Annexure I attached herewith.<br><br>
-This contract shall be terminable by either party giving 30 days notice in writing or salary in lieu of notice to the other party.<br><br>
-In addition to the terms of appointment mentioned in this letter you are also governed by the terms and conditions of the company, which are attached to this letter. The combined rules and procedures as contained in this letter and the annexure will constitute the employment rules and you are required to read both of them in conjunction.	<br><br>
-As a token of your understanding and acceptance of the terms and conditions you are requested to sign the duplicate copy of this letter and return it within a day, failing which this offer stands withdrawn. <br><br>
-You are required to report for duty on <b>$Sd1</b> not later than <b>9.30 a.m</b>.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>
-Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.
-Wishing you the very best for your assignment with us.<br><br>
+Further to your application and subsequent discussions that we had with you, we are pleased to offer you the position of a “<b>$position</b>” in our company.<br>
+1.	Your appointment will be subject to your scoring minimum aggregate (aggregate of all subjects in all semesters) marks of 60% or above in the first attempt in Graduation/Post Graduation examination which includes successful completion of your final semester/year without any pending arrears/back logs during the entire course duration. As per NSEIT eligibility criteria, marks/CGPA obtained during the normal duration of the course and your performance during the professional training period only will be considered to decide on the eligibility.<br>
+2.	You  will  be  eligible  for  a  monthly  gross  salary  of  Rs. /- <b>$basic1</b> per month w.e.f.  <b>$d1</b>, subject to fulfillment of clause no 1.<br>
+3.	You will require to undergo professional training of four weeks with NSEIT from the DOJ i.e. effective <b>$doj</b>. <br>
+4.	In case the result of the final semester has not been declared by <b>$doj</b>, then you shall be taken as an intern on a per day stipend of Rs.450/- only till the time results are declared. Subject to fulfillment of clause no 1.<br>
+5.	At the start of your professional training, you are required to sign a service agreement committing to serve 24 months training period which will be bifurcated into four weeks of professional training and 23 months of on-the-job training.<br>
+6.	On successful completion of the professional training you will be appointed as “<b>$position</b>” effective from your date of joining i.e.  <b>$doj</b>. You will be on probation for a period of 6 months from your date of joining. The company reserves the right to extend your probation if necessary and you shall be informed of such an extension in writing. If at any stage during probation your work or any aspect of your behavior is found unsatisfactory, your probation will be discontinued with immediate effect. On successful completion of the probation period your appointment to the post of “<b>$position</b>” will be confirmed in writing and you will then become eligible for all the confirmation linked benefits / components of the salary as per the prevalent policies of the company.<br>
+
+EOD;
+
+$html .= <<<EOD
+<br><br>
+7.	Your appointment will be subject to you being found medically fit for service in the company and satisfactory report thereof being received.<br>
+As communicated to you through various forums during the recruitment process, your appointment is subject to completion of your course within the stipulated time as specified by your University/Institute and as per NSEIT selection guidelines.<br>
+It is mandatory to declare the gaps/arrears/backlogs, if any, during your academics. The management reserves the right to withdraw/revoke the offer/appointment at any time, at its sole discretion in case any discrepancy or false information is found in the details submitted by you.<br>
+<b>8.	Background Verification:</b><br>
+The Company reserves the right to carry out reference verifications or background checks (not restricted to the last salary drawn, past employment, use of banned / illegal drugs / narcotic substances, criminal records etc.) prior to your joining the Company or during the course of your employment with the Company. You understand and acknowledge that this is a requirement and you have no objections whatsoever if such checks are carried out by the company or a third party agency engaged by the company.<br>
+If you find the above terms and conditions acceptable, we expect you to join us on or before <b>$doj</b>.
+Kindly return the duplicate copy of this letter duly signed as a token of acceptance of offer.<br>
+A detailed appointment letter will be issued to you on joining.<br>
+We look forward to work with you.<br>
 Yours sincerely,<br>
 <img src="Sig.png" style="height:60px , width:30px"><br>
 <b>Tina Mathew<br>
 Head – HR<br><br>
-Encl:-</b><br>
-&nbsp;&nbsp;&nbsp;1.	Offer details<br>
-&nbsp;&nbsp;&nbsp;2.	Annexure I and II.<br><br>
-<i><u><b>Signature & Date</b></u></i><br>
-
-
 
 EOD;
 
@@ -249,7 +254,7 @@ $html .= <<<EOD
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-<b>OFFER LETTER OFFICE COPY </b>
+<b>Provisional Offer Letter Office Copy</b>
 
 <b>
 <br><br>$doj1<br>
@@ -261,107 +266,32 @@ $Ad3 ,<br>
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
-We are pleased to offer you employment in our organization NSEIT ltd as “<b>$Position</b>” for a fixed period of employment (Contract) on the following terms and conditions.<br><br>
-The term of your employment shall be valid from <b>$Sd1</b> to <b>$ed1</b>. Notwithstanding this, in the event of the project/work for which you are being employed terminates before the aforementioned period, this contract shall be co terminus with the project/work. <br><br>
-Details of your salary break up with components are as per the Annexure I attached herewith.<br><br>
-This contract shall be terminable by either party giving 30 days notice in writing or salary in lieu of notice to the other party.<br><br>
-In addition to the terms of appointment mentioned in this letter you are also governed by the terms and conditions of the company, which are attached to this letter. The combined rules and procedures as contained in this letter and the annexure will constitute the employment rules and you are required to read both of them in conjunction.	<br><br>
-As a token of your understanding and acceptance of the terms and conditions you are requested to sign the duplicate copy of this letter and return it within a day, failing which this offer stands withdrawn. <br><br>
-You are required to report for duty on <b>$Sd1</b> not later than <b>9.30 a.m</b>.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>
-Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.
-Wishing you the very best for your assignment with us.<br><br>
+Further to your application and subsequent discussions that we had with you, we are pleased to offer you the position of a “<b>$position</b>” in our company.<br>
+1.	Your appointment will be subject to your scoring minimum aggregate (aggregate of all subjects in all semesters) marks of 60% or above in the first attempt in Graduation/Post Graduation examination which includes successful completion of your final semester/year without any pending arrears/back logs during the entire course duration. As per NSEIT eligibility criteria, marks/CGPA obtained during the normal duration of the course and your performance during the professional training period only will be considered to decide on the eligibility.<br>
+2.	You  will  be  eligible  for  a  monthly  gross  salary  of  Rs. /- <b>$basic1</b> per month w.e.f.  <b>$d1</b>, subject to fulfillment of clause no 1.<br>
+3.	You will require to undergo professional training of four weeks with NSEIT from the DOJ i.e. effective <b>$doj</b>. <br>
+4.	In case the result of the final semester has not been declared by <b>$doj</b>, then you shall be taken as an intern on a per day stipend of Rs.450/- only till the time results are declared. Subject to fulfillment of clause no 1.<br>
+5.	At the start of your professional training, you are required to sign a service agreement committing to serve 24 months training period which will be bifurcated into four weeks of professional training and 23 months of on-the-job training.<br>
+6.	On successful completion of the professional training you will be appointed as “<b>$position</b>” effective from your date of joining i.e.  <b>$doj</b>. You will be on probation for a period of 6 months from your date of joining. The company reserves the right to extend your probation if necessary and you shall be informed of such an extension in writing. If at any stage during probation your work or any aspect of your behavior is found unsatisfactory, your probation will be discontinued with immediate effect. On successful completion of the probation period your appointment to the post of “<b>$position</b>” will be confirmed in writing and you will then become eligible for all the confirmation linked benefits / components of the salary as per the prevalent policies of the company.<br>
+EOD;
+
+$html .= <<<EOD
+<br><br>
+7.	Your appointment will be subject to you being found medically fit for service in the company and satisfactory report thereof being received.<br>
+As communicated to you through various forums during the recruitment process, your appointment is subject to completion of your course within the stipulated time as specified by your University/Institute and as per NSEIT selection guidelines.<br>
+It is mandatory to declare the gaps/arrears/backlogs, if any, during your academics. The management reserves the right to withdraw/revoke the offer/appointment at any time, at its sole discretion in case any discrepancy or false information is found in the details submitted by you.<br>
+<b>8.	Background Verification:</b><br>
+The Company reserves the right to carry out reference verifications or background checks (not restricted to the last salary drawn, past employment, use of banned / illegal drugs / narcotic substances, criminal records etc.) prior to your joining the Company or during the course of your employment with the Company. You understand and acknowledge that this is a requirement and you have no objections whatsoever if such checks are carried out by the company or a third party agency engaged by the company.<br>
+If you find the above terms and conditions acceptable, we expect you to join us on or before <b>$doj</b>.
+Kindly return the duplicate copy of this letter duly signed as a token of acceptance of offer.<br>
+A detailed appointment letter will be issued to you on joining.<br>
+We look forward to work with you.<br>
 Yours sincerely,<br>
 <img src="Sig.png" style="height:60px , width:30px"><br>
 <b>Tina Mathew<br>
 Head – HR<br><br>
-Encl:-</b><br>
-&nbsp;&nbsp;&nbsp;1.	Offer details<br>
-&nbsp;&nbsp;&nbsp;2.	Annexure I and II.<br><br>
-<i><b><u>Signature & Date</u></b></i>
+
 EOD;
-
-$html .= '
-<br><br><br>' . $name . '<br><br><br>
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-<b><u>OFFER DETAILS</u></b><br><br><br>
-
-
-<b>1.	Term of employment:</b><br>
-
-You are on a fixed term employment from <b>' . $Sd1 . '</b> to <b>' . $ed1 . '</b>.<br><br>
-
-Your working days will be <b>' . $wsd . '</b> to <b>' . $wed . '</b>.<br><br>
-
-
-<b>2.	Probation:</b><br>
-
-You will be on probation for a period of 3 months from your date of joining.<br><br>
-
-
-
-<b>3.	Remuneration:</b><br>';
-if ($chkPassPort == "no") 
-{
-    $html .= 'Your salary and allowances will be as per the details attached to this letter and marked as Annexure I.';
-
-
-    $html .= '<br><br><br>';
-}
-if ($chkPassPort == "yes") 
-{
-    $html .= 'Your salary and allowances will be as per the details attached to this letter and marked as Annexure I.<br>In addition to the compensation package detailed in Annexure I, you will be eligible to receive a total amount of
-    <b>' . $jbamount . '</b> as a part of a Joining Bonus only if you join the company on or before <b>' . $Sd1 . '</b>
-    (TDS would be deducted as applicable on the said amount.) In the event that you cease to be in the employment of 
-    the company within 12 months of your joining date, you shall pay back the entire amount paid to you as a Joining Bonus. 
-    Further, the said amount is due and payable to you as a joining bonus shall be paid to you at the time and along with 
-    the salary payable to you at the end of the second month from the month in which you have joined the services of the company.
-    <br><br>';
-}
-
-$html .= '
-<b>4.	Medical Fitness:</b><br>
-
-Your appointment will be subject to your being found medically fit for service in the Company and furnishing a duly stamped and signed letter by a registered medical practitioner as a memorandum thereof.
-<br><br>
-
-<b>5.	Submission of Documents:</b><br><br>
-Your appointment is been made on the basis of the particulars such as qualification, experience etc. as given in your application. If any statement, documentation, declaration or information given by you at any time, is found to be fraudulent / false or if any material / particular is suppressed / misinformed, your services are liable to be terminated forthwith without any notice or compensation in lieu thereof.
-<br>
-Your appointment will be subject to your furnishing such information as the Company may require from time to time and subject to your services being acceptable in the light of the information furnished.
-<br><br>
-
-
-<b>6.	Background Verification:</b><br><br>
-
-The Company reserves the right to carry out reference verifications or background checks (not restricted to the last salary drawn, past employment, use of banned / illegal drugs / narcotic substances, criminal records etc.) prior to your joining the Company or during the course of your employment with the Company. You understand and acknowledge that this is a requirement and you have no objections whatsoever if such checks are carried out by the company or a third party agency engaged by the company.
-
-<br><br><br><br>
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<b>_________________</b><br>
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Initials</b>
-<br><br><br><br><br><br><br><br><br><br>
-';
-
-
 
 
 $html .= '<br>' . $name . '<br><br><br>
@@ -375,31 +305,33 @@ $html .= '<br>' . $name . '<br><br><br>
 <br><br>
 <table cellspacing="0" cellpadding="1" border="1" style="border-color:gray width:100% height:100%;">
 <tr>
-        
-		<td style="text-align:center" colspan="4">&nbsp; <b>ANNEXURE I</b></td>
+        <td style="text-align:center"></td>
+		<td style="text-align:center">&nbsp; <b>ANNEXURE I</b></td>
+        <td style= "width:20%;"><b>&nbsp; &nbsp; &nbsp;Location</b></td>
+        <td style= "width:20%;"><b>&nbsp; &nbsp; &nbsp;' . $aloc . '</b></td>
+
     </tr>
 
     <tr>
       <td style= "width:15%;"><b>&nbsp; &nbsp; &nbsp;FTE Name</b></td>
       <td style= "width:45%;"><b>&nbsp; &nbsp; &nbsp;' . $name . '</b></td>
-      <td style= "width:20%;"><b>&nbsp; &nbsp; &nbsp;Location</b></td>
-      <td style= "width:20%;"><b>&nbsp; &nbsp; &nbsp;' . $aloc . '</b></td>
+      <td style= "width:20%;"></td>
+      <td style= "width:20%;">></td>
     </tr>
     <tr>
         <td><b>&nbsp; &nbsp; &nbsp;Designation</b></td>
         <td><b>&nbsp; &nbsp; &nbsp;' . $Position . '</b></td>
-        <td></td>
-		<td></td>
+        <td style="text-align:center"><b>Grade</b></td>
+		<td style="text-align:center"><b>' . $grade . '</b></td>
     </tr>
 	<tr>
         <td><b>&nbsp; &nbsp; &nbsp;w.e.f</b></td>
         <td><b>&nbsp; &nbsp; &nbsp;' . $Sd1 . '</b></td>
-		<td style="text-align:center"><b>Grade</b></td>
-		<td style="text-align:center"><b>' . $grade . '</b></td>
+		<td style="text-align:center" colspan="2">All Figures in INR</td>
     </tr>
 	<tr>
-        <td><b></b></td>
-        <td>&nbsp; &nbsp; &nbsp;<b>Compensation Head</b></td>
+        <td>></td>
+        <td></td>
 		<td style="text-align:center"><b>Monthly</b></td>
 		<td style="text-align:center"><b>Annual</b></td>
     </tr>
@@ -417,189 +349,209 @@ $html .= '<br>' . $name . '<br><br><br>
     </tr>
     <tr>
         <td><b></b></td>
-        <td>&nbsp; &nbsp; &nbsp;Basic</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $basic1) . '</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $basic) . '</td>
+        <td>Basic</td>
+		<td>' . $basic1 . '</td>
+		<td>' . $basic . '</td>
     </tr>
     <tr>
         <td><b></b></td>
-        <td>&nbsp; &nbsp; &nbsp;HRA</td>
-        <td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $hra1) . '</td>
-        <td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $hra) . '</td>
+        <td>HRA</td>
+        <td>' . $hra1 . '</td>
+        <td>' . $hra . '</td>
     </tr>
     <tr>
         <td><b></b></td>
-        <td>&nbsp; &nbsp; &nbsp;Conveyance Allowance</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Conveyance_Allowance1) . '</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Conveyance_Allowance) . '</td>
+        <td>Conveyance Allowance</td>
+		<td>' . $Conveyance_Allowance1 . '</td>
+		<td>' . $Conveyance_Allowance . '</td>
     </tr>
     <tr>
         <td><b></b></td>
-        <td>&nbsp; &nbsp; &nbsp;Statutory Bonus</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Statutory_Bonus1) . '</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Statutory_Bonus) . '</td>
+        <td>Statutory Bonus</td>
+		<td>' . $Statutory_Bonus1 . '</td>
+		<td>' . $Statutory_Bonus . '</td>
     </tr>';
 
-
+if ($lta1 != 0) {
+    $html .= '<tr>
+        <td><b></b></td>
+        <td>LTA</td>
+		<td>' . $lta1 . '</td>
+		<td>' . $lta . '</td>
+    </tr>';
+}
 $html .= '<tr>
     <td><b></b></td>
-        <td>&nbsp; &nbsp; &nbsp;Executive Allowance</td>
-        <td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Executive_Allowance1) . '</td>
-        <td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Executive_Allowance) . '</td>
+        <td>Executive Allowance</td>
+        <td>' . $Executive_Allowance1 . '</td>
+        <td>' . $Executive_Allowance . '</td>
     </tr>';
+if ($Food_Allowance1 != 0) {
+    $html .= '<tr>
+        <td><b></b></td>
+        <td>Food Allowance</td>
+		<td>' . $Food_Allowance1 . '</td>
+		<td>' . $Food_Allowance . '</td>
+    </tr>';
+}
+$html .= '<tr>
+        <td><b></b></td>
+        <td>Mobile Reimbursement Charges</td>
+		<td>' . $m_c_r1 . '</td>
+		<td>' . $m_c_r . '</td>
+    </tr>';
+if ($Attire_Allowance1 != 0) {
+    $html .= '<tr>
+        <td><b></b></td>
+        <td>Attire Allowance</td>
+		<td>' . $Attire_Allowance1 . '</td>
+		<td>' . $Attire_Allowance . '</td>
+    </tr>';
+}
 
+if ($vr1 != 0) {
+    $html .= '<tr>
+        <td><b></b></td>
+        <td>Vehicle Reimbursement</td>
+		<td>' . $vr1 . '</td>
+		<td>' . $vr . '</td>
+    </tr>';
+}
+
+if ($driver_reimbursement1 != 0) {
+    $html .= '<tr>
+        <td><b></b></td>
+        <td>Driver Reimbursement</td>
+		<td>' . $driver_reimbursement1 . '</td>
+		<td>' . $driver_reimbursement . '</td>
+    </tr>';
+}
+
+if ($dRetention_Allowance1 != 0) {
+    $html .= '<tr>
+        <td><b></b></td>
+        <td>Retention Allowance</td>
+		<td>' . $Retention_Allowance1 . '</td>
+		<td>' . $Retention_Allowance . '</td>
+    </tr>';
+}
 
 $html .= '<tr>
         <td><b></b></td>
-        <td><b>&nbsp; &nbsp; &nbsp;Total A</b></td>
-		<td style="text-align: right;"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_A1) . '</b></td>
-		<td style="text-align: right;"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_A) . '</b></td>
+        <td><b>Total A</b></td>
+		<td><b>' . $Total_A1 . '</b></td>
+		<td><b>' . $Total_A . '</b></td>
     </tr>
     <tr>
-        <td><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;B</b></td>
-        <td><b>&nbsp; &nbsp; &nbsp; Retirals / Other Benefits </b></td>
+        <td><b>B</b></td>
+        <td><b> Retirals / Other Benefits </b></td>
         <td><b></b></td>
 		<td><b></b></td>
     </tr>
     <tr>
         <td><b></b></td>
-        <td>&nbsp; &nbsp; &nbsp;Employer Contribution to Provident Fund </td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $PF1) . '</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $PF) . '</td>
+        <td>Employer Contribution to Provident Fund </td>
+		<td>' . $PF1 . '</td>
+		<td>' . $PF . '</td>
     </tr>';
 
 
 if ($ESIC != 0) {
     $html .= '<tr>
         <td><b></b></td>
-        <td>&nbsp; &nbsp; &nbsp;ESIC</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $ESIC1) . '</td>
-		<td style="text-align: right;">' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $ESIC) . '</td>
+        <td>ESIC</td>
+		<td>' . $ESIC1 . '</td>
+		<td>' . $ESIC . '</td>
     </tr>';
 }
 
 $html .= '<tr>
         <td><b></b></td>
-        <td><b>&nbsp; &nbsp; &nbsp;Total B</b></td>
-		<td style="text-align: right;"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_B1) . '</b></td>
-		<td style="text-align: right;"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_B) . '</b></td>
+        <td>Gratuity</td>
+		<td>' . $gratuity1 . '</td>
+		<td>' . $gratuity . '</td>
     </tr>
     <tr>
         <td><b></b></td>
-        <td><b>&nbsp; &nbsp; &nbsp;Total of PART I (A+B)</b>  </td>
-		<td style="text-align: right;"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $TOTAL1) . '</b></td>
-		<td style="text-align: right;"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTOTAL) . '</b></td>
+        <td><b>Total B</b></td>
+		<td><b>' . $Total_B1 . '</b></td>
+		<td><b>' . $Total_B . '</b></td>
+    </tr>
+    <tr>
+        <td><b></b></td>
+        <td><b>Total of PART I (A+B)</b>  </td>
+		<td><b>' . $LTOTAL1 . '</b></td>
+		<td><b>' . $LTOTAL . '</b></td>
     </tr>  
-   
+    <tr>
+        <td><b>PART II</b></td>
+        <td><b>Variable Components</b>  </td>
+        <td><b></b></td>
+        <td><b></b></td>
+    </tr>';
+if ($Variable_Pay != 0) {
+        $html .= '<tr>
+        <td><b></b></td>
+        <td> ' . $vp . ' </td>
+        <td></td>
+        <td>' . $Variable_Pay . '</td>
+    </tr>';
+}
+
+if ($STRB != 0) {
+    $html .= '<tr>
+    <td><b></b></td>
+    <td>  STRB </td>
+    <td></td>
+    <td>' . $STRB . '</td>
+</tr>';
+}
+
+if ($Incentive_Bonus != 0) {
+$html .= '<tr>
+<td><b></b></td>
+<td> Incentive Bonus </td>
+<td></td>
+<td>' . $Incentive_Bonus. '</td>
+</tr>';
+}
+
+$html .= '<tr>
+        <td><b></b></td>
+        <td><b> Total of Part II</b>  </td>
+		<td><b></b></td>
+		<td><b>' . $Total_II . '</b></td>
+    </tr>
     <tr>
     <td><b></b></td>
-        <td><b> &nbsp; &nbsp; &nbsp;Cost to Company PART I (A + B) </b>  </td>
+        <td><b> Cost to Company Part I + Part II</b>  </td>
         <td><b></b></td>
-        <td style="text-align: right;"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $TOTAL) . '</b></td>
+        <td><b>' . $TOTAL . '</b></td>
     </tr>
     <tr>
-        <td colspan="4"><b>&nbsp; &nbsp; Please note: </b></td>
+        <td colspan="4"><b>Please note: </b></td>
     </tr>
     <tr>
-        <td colspan="4">&nbsp; &nbsp;Please note:<br>
-        The company provides the following benefits for their FTEs, the premium for which is directly paid by the company:<br>
-        * Personal Accident Policy for the FTEs.<br>
-        * Incase of any amendment in compliance law, the company reserves right to restructure the salary components keeping the CTC  intact adhering to compliance.<br>
-        
+        <td colspan="4">1. All Allowances / Bonuses / Incentives / Rewards / Benefits will be paid / reimbursed as per the Company policy. Employees who are on the rolls of the organization on the day of disbursement will be eligible for the same. <br>2. All employees are requested to keep themselves updated with changes announced in policies and procedures on the HRMS. <br> 3. Payment of Gratuity will be in accordance with the Gratuity Act, 1972.<br>4. Incase of any amendment in compliance law, the company reserves right to restructure the salary components keeping the CTC intact adhering to compliance
         </td>
     </tr>
-   
-</table>
-<br><br><br><br><br><br><br><br>
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<b>_________________</b><br>
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Initials</b>
-<P style="page-break-before: always"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-';
-
-$html .= '
-<br><br><br><br><br><br><br><br><br><br>' . $name . '<br>
-<br><br>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-<b>Annexure II</b><br>
-<br>
-
-
-
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; 
-<b><u>LIST OF DOCUMENTS</u></b><br><br>
-
-<b>You are required to submit the following documents* on the day you join the Company:</b><br><br>
-
-1.	<u>Experience Certificate :</u><br><br>
-    Relieving letter / Resignation Acceptance Letter from immediate previous employer.<br><br>
-    (All the previous organizations mentioned in Employee Application Form).<br><br>
-    
-2.	<u>Academic Qualification : </u><br><br>
-    Certificate(s) / Marksheet (s) awarded by University/Institutes for S.S.C., H.S.C., Graduation, Diploma level / Post graduation as applicable. <br><br>
+    <tr>
+        <td colspan="4">';
+        if($vp == "Variable Pay * ")
+        {
+            $html.='* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.';
+        }
         
-3.	<u>Proof of Age (Any One) :</u><br><br>
-    School Leaving Certificate, S.S.C. Certificate, Birth Certificate, Transfer Certificate<br><br>
-
-4.	<b>Proof of Residence (Any One) :</b><br><br>
-    Driving License, Passport, Ration Card, Ownership Agreement, Bank Statement, Electricity Bill, Telephone Bill, Passport, Leave and License Agreement<br><br>
-    
-5.	<u>PAN Card</u><br><br>
-
-6.	<u>Aadhaar Card </u>(in case of not having Aadhaar Card, please submit Enrolment ID receipt)<br><br>
-
-7.	<u>Photographs</u> 	(3 passport size photos with white colour background)<br><br>
-    1 stamp size photograph for ID Card<br><br>
-
-<b>•	Please note that the copies of qualification/ mark sheets and experience certificates should be duly attested or else originals can be produced for verification purpose.</b><br><br>
-
-<b>•	You are requested to note that the processing of the salary will be subject to the submission of the PAN details. In case you do not have a PAN number please initiate the application process for the same immediately and carry the acknowledgement as issued by the Income Tax authorities with you on the day of joining. A copy of this acknowledgement would need to be submitted for our records, in the interim period, till you receive the PAN card.</b><br><br><br><br>
-
-
-<br>
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<b>_________________</b><br>
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;<b>Initials</b>
-
-<br>
-';
+        $html.='</td>
+    </tr>
+    <tr>
+        <td colspan="4"><b>In addition to the above: </b><br>The company provides the following benefits for their employees, the premium for which is directly paid by the company:<br>
+        a. Mediclaim for employees and their eligible dependents (as defined by the company).<br>
+        b. Personal Accident Policy for the employees        
+        </td>
+    </tr>
+</table>
+<P style="page-break-before: always"><br>';
 
 $pdf->writeHTML($html, true, false, true, false, '');
 ob_end_clean();

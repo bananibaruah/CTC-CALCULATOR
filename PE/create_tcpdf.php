@@ -621,8 +621,13 @@ $html .= '<tr>
         </td>
     </tr>
     <tr>
-        <td colspan="4">* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.
-        </td>
+        <td colspan="4">';
+        if($vp == "Variable Pay * ")
+        {
+            $html.='* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.';
+        }
+        
+        $html.='</td>
     </tr>
     <tr>
         <td colspan="4"><b>In addition to the above: </b><br>The company provides the following benefits for their employees, the premium for which is directly paid by the company:<br>
