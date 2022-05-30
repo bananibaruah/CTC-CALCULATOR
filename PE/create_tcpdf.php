@@ -443,20 +443,27 @@ $name<br>
         <td>HRA</td>
         <td>' . $hra1 . '</td>
         <td>' . $hra . '</td>
-    </tr>
-    <tr>
+    </tr>';
+
+if ($Conveyance_Allowance != 0) {
+
+        $html .= '<tr>
         <td><b></b></td>
         <td>Conveyance Allowance</td>
 		<td>' . $Conveyance_Allowance1 . '</td>
 		<td>' . $Conveyance_Allowance . '</td>
-    </tr>
-    <tr>
+    </tr>';
+    }
+
+if ($Statutory_Bonus != 0) {
+
+        $html .= '<tr>
         <td><b></b></td>
         <td>Statutory Bonus</td>
 		<td>' . $Statutory_Bonus1 . '</td>
 		<td>' . $Statutory_Bonus . '</td>
     </tr>';
-
+    }
 if ($lta1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
@@ -479,12 +486,14 @@ if ($Food_Allowance1 != 0) {
 		<td>' . $Food_Allowance . '</td>
     </tr>';
 }
-$html .= '<tr>
+if ($m_c_r1 != 0) {
+    $html .= '<tr>
         <td><b></b></td>
         <td>Mobile Reimbursement Charges</td>
 		<td>' . $m_c_r1 . '</td>
 		<td>' . $m_c_r . '</td>
     </tr>';
+}
 if ($Attire_Allowance1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
