@@ -192,37 +192,31 @@
             <div class="col-lg-3">
                 <div id="rcorners2">
                     <br>
-                    <centre><a href="FTE"><img class="card-img-top" src="images\org.png" alt=""
-                                style="width:80px"></centre></a>
+                    <centre><a href="FTE"><img class="card-img-top" src="images\1.jpg" alt=""
+                                ></centre></a>
+                                <h5 style="font-family:verdana"><br><br>FTE</h5>
                 </div><br>
-                <lable>
-                    <h5 style="font-family:verdana">FTE</h5>
-                </lable>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
             <div class="col-lg-3">
                 <div id="rcorners2">
                     <br>
-                    <centre><a href="PE"><img class="card-img-top" src="images\faqs.png" alt=""
-                                style="width:80px"></centre></a>
+                    <centre><a href="PE"><img class="card-img-top" src="images\2.jpg" alt=""
+                                style="height:80px"></centre></a>   
+                                <h5 style="font-family:verdana"><br><br>PE E10 to S10</h5>
                 </div><br>
-                <lable>
-                    <h5 style="font-family:verdana">PE E10 to S10</h5>
-                </lable>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
             <div class="col-lg-3">
                 <div id="rcorners2">
                     <br>
-                    <centre><a href="PE (M10 & Above)"><img class="card-img-top" src="images\at.png" alt=""
+                    <centre><a href="PE (M10 & Above)"><img class="card-img-top" src="images\3.jpg" alt=""
                                 style="width:80px">
                     </centre></a>
+                    <h5 style="font-family:verdana"><br><br>PE (M10 & Above)
+                    </h5>
                 </div>
                 <br>
-                <lable>
-                    <h5 style="font-family:verdana">PE (M10 & Above)
-                    </h5>
-                </lable>
 
             </div>
 </div>
@@ -231,31 +225,27 @@
 <div class="col-lg-3"></div>
 <div class="col-lg-3">
                 <div id="rcorners2"><br>
-                    <centre><a href=""><img class="card-img-top" src="images\bgv.png" alt=""
-                                style="width:80px">
+                    <centre><a href="CAMPUS"><img class="card-img-top" src="images\4.jpg" alt=""
+                                style="height:80px">
                     </centre></a>
+                    <h5 style="font-family:verdana"><br><br>CAMPUS</h3>
                 </div>
                 <br>
-                <lable>
-                    <h5 style="font-family:verdana">CAMPUS</h3>
-                </lable>
 </div>
     <br>
-    <br>
+    <br><br><br>
 
  
             <div class="col-lg-3">
                 <div id="rcorners2">
                     <br>
-                    <centre><a href=""><img class="card-img-top" src="images\docs.png" alt=""
+                    <centre><a href="OFF CAMPUS"><img class="card-img-top" src="images\5.png" alt=""
                                 style="width:80px">
                     </centre></a>
+                    <h5 style="font-family:verdana"><br><br>OFF CAMPUS</h5>
                     <br>
 
                 </div><br>
-                <lable>
-                    <h5 style="font-family:verdana">OFF CAMPUS</h5>
-                </lable>
             </div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </div>
