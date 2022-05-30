@@ -213,7 +213,7 @@ Please take the time to read and understand the offer details. Should you have a
 You are requested to give us your e-mail confirmation of having accepted the terms and conditions of our offer letter within 2 days of our e-mail, followed by sending us a duly signed copy of the same in token of your acceptance of the said offer letter no later than 10 days from the date of issue of this letter, failing which this offer stands withdrawn. <br><br>
 You are required to report for duty on <b>$doj1</b> not later than 9.30 a.m.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>       																							         
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.<br><br>
-Ashwini Patange we look forward to you joining NSEIT for a mutually rewarding association.<br><br>
+<b>$name</b> we look forward to you joining NSEIT for a mutually rewarding association.<br><br>
 Yours sincerely,<br>
 <img src="Sig.png" style="height:60px , width:30px"><br>
 <b>Tina Mathew<br>
@@ -247,7 +247,7 @@ Please take the time to read and understand the offer details. Should you have a
 You are requested to give us your e-mail confirmation of having accepted the terms and conditions of our offer letter within 2 days of our e-mail, followed by sending us a duly signed copy of the same in token of your acceptance of the said offer letter no later than 10 days from the date of issue of this letter, failing which this offer stands withdrawn. <br><br>
 You are required to report for duty on <b>$doj1</b> not later than 9.30 a.m.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>       																							         
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.<br><br>
-Ashwini Patange we look forward to you joining NSEIT for a mutually rewarding association.<br><br>
+<b>$name</b> we look forward to you joining NSEIT for a mutually rewarding association.<br><br>
 Yours sincerely,<br>
 <img src="Sig.png" style="height:60px , width:30px"><br>
 <b>Tina Mathew<br>
@@ -260,7 +260,7 @@ We request you to return all the documents attached duly signed and join us on o
 <P style="page-break-before: always">
 EOD;
 
-$html .= <<<EOD
+$html .= '
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -279,8 +279,26 @@ The initial place of work for carrying out your assignment shall be as given bel
 
 Your working days will be <b>Monday to Friday</b>.<br><br>
 
-<b>Remuneration:</b><br><br>
-Your salary and allowances will be as per the details attached to this letter and marked as Annexure I. <br><br>
+<b>Remuneration:</b><br><br>';
+if ($chkPassPort == "no") 
+{
+    $html .= 'Your salary and allowances will be as per the details attached to this letter and marked as Annexure I.';
+
+
+    $html .= '<br><br><br>';
+}
+if ($chkPassPort == "yes") 
+{
+    $html .= 'Your salary and allowances will be as per the details attached to this letter and marked as Annexure I.<br>In addition to the compensation package detailed in Annexure I, you will be eligible to receive a total amount of
+    <b>' . $jbamount . '</b> as a part of a Joining Bonus only if you join the company on or before <b>' . $Sd1 . '</b>
+    (TDS would be deducted as applicable on the said amount.) In the event that you cease to be in the employment of 
+    the company within 12 months of your joining date, you shall pay back the entire amount paid to you as a Joining Bonus. 
+    Further, the said amount is due and payable to you as a joining bonus shall be paid to you at the time and along with 
+    the salary payable to you at the end of the second month from the month in which you have joined the services of the company.
+    <br><br>';
+}
+
+$html .= '
 
 <b>Probation:</b><br><br>
 You will be on probation for a period of 6 months from your date of joining. <br><br>
@@ -315,7 +333,7 @@ Background Verification:The Company reserves the right to carry out reference ve
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;<b>Initials</b>
 <br>
-EOD;
+';
 
 $html .= <<<EOD
 <br><br>
@@ -555,13 +573,15 @@ $html .= '<tr>
         <td><b>Variable Components</b>  </td>
         <td><b></b></td>
         <td><b></b></td>
-    </tr>
-    <tr>
+    </tr>';
+if ($Variable_Pay != 0) {
+        $html .= '<tr>
         <td><b></b></td>
         <td> ' . $vp . ' </td>
         <td></td>
         <td>' . $Variable_Pay . '</td>
     </tr>';
+}
 
 if ($STRB != 0) {
     $html .= '<tr>
@@ -571,6 +591,7 @@ if ($STRB != 0) {
     <td>' . $STRB . '</td>
 </tr>';
 }
+
 if ($Incentive_Bonus != 0) {
 $html .= '<tr>
 <td><b></b></td>
@@ -579,6 +600,7 @@ $html .= '<tr>
 <td>' . $Incentive_Bonus. '</td>
 </tr>';
 }
+
 $html .= '<tr>
         <td><b></b></td>
         <td><b> Total of Part II</b>  </td>
