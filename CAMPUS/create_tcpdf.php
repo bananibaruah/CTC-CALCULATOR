@@ -536,13 +536,43 @@ $html .= '<tr>
         </td>
     </tr>
     <tr>
-        <td colspan="4">';
-        if($vp == "Variable Pay * ")
-        {
-            $html.='* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.';
-        }
-        
-        $html.='</td>
+    <td colspan="4">';
+    if($vp == 0)
+    {
+
+    }
+    if($vp == "Variable Pay * ")
+    {
+        $html.='* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.';
+        $html .= ' <br><br>';
+    }
+    if($vp=="Sales Incentive *** ")
+    {
+        $html.='*** As per policy';
+        $html .= ' <br><br>';
+    }
+    if($vp=="Business Incentive *** ")
+    {
+        $html.='* *** As per policy';
+        $html .= ' <br><br>';
+    }
+    
+if($comp1YesNo == "no"){
+    $html .= ' <br><br>';
+}
+if($comp1YesNo == "yes"){
+    $html .= '** Payable in 2 equal installments (after completion of every 6 months) from the effective date of this letter; s.t. your being on the rolls of the organization on those dates. On completion of 12 months this component will be redundant and the amount will be aligned to the fixed component.';
+    $html .= ' <br><br>';
+}
+if($comp2YesNo == "no"){
+    $html .= ' <br><br>';
+}
+if($comp2YesNo == "yes"){
+    $html .= '#  Payable Monthly as an exception. Recoverable if you resign the organization within 12 months of the effective date of this letter. On completion of 12 months this component will be redundant and the amount will be aligned to the fixed component.';
+    $html .= ' <br><br>';
+}
+
+    $html.='</td>
     </tr>
     <tr>
         <td colspan="4"><b>In addition to the above: </b><br>The company provides the following benefits for their employees, the premium for which is directly paid by the company:<br>

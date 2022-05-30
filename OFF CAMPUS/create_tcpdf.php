@@ -74,6 +74,10 @@ $TOTAL1 = round($TOTAL / 12);
 
 $Code = $_POST['Code'];
 
+$comp1YesNo = $_POST['comp1YesNo'];
+
+$comp2YesNo = $_POST['comp2YesNo'];
+
 $ins_sql = "INSERT INTO pe_jt(Code, Name, State,DOJ,Position,CTC,Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,LTA,EXECUTIVE_ALLOWANCE,FOOD_ALLOWANCE,MOBILE_REIMBURSEMENT,ATTIRE_ALLOWANCE,VEHICLE_REIMBURSEMENT,RETENTION_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,VARIABLE_PAY,TOTAL_AB,TOTAL) 
             Values('$Code', '$name', '$state', '$doj', '$Position', '$ctc', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$lta','$Executive_Allowance','$Food_Allowance','$m_c_r', '$Attire_Allowance', '$vr', '$driver_reimbursement', '$Retention_Allowance', '$Total_A', '$PF', '$ESIC', '$gratuity', '$Total_B', '$LTOTAL', $Variable_Pay', '$Total_II', '$TOTAL')";
 
@@ -655,16 +659,34 @@ $html .= '<tr>
     if($vp == "Variable Pay * ")
     {
         $html.='* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.';
+        $html .= ' <br><br>';
     }
     if($vp=="Sales Incentive *** ")
     {
         $html.='*** As per policy';
+        $html .= ' <br><br>';
     }
     if($vp=="Business Incentive *** ")
     {
         $html.='* *** As per policy';
+        $html .= ' <br><br>';
     }
     
+if($comp1YesNo == "no"){
+    $html .= ' <br><br>';
+}
+if($comp1YesNo == "yes"){
+    $html .= '** Payable in 2 equal installments (after completion of every 6 months) from the effective date of this letter; s.t. your being on the rolls of the organization on those dates. On completion of 12 months this component will be redundant and the amount will be aligned to the fixed component.';
+    $html .= ' <br><br>';
+}
+if($comp2YesNo == "no"){
+    $html .= ' <br><br>';
+}
+if($comp2YesNo == "yes"){
+    $html .= '#  Payable Monthly as an exception. Recoverable if you resign the organization within 12 months of the effective date of this letter. On completion of 12 months this component will be redundant and the amount will be aligned to the fixed component.';
+    $html .= ' <br><br>';
+}
+
     $html.='</td>
 
 </tr>
