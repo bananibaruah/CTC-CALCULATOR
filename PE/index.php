@@ -362,20 +362,21 @@
                     dy = Math.floor((ctc * (x / 100)) / 12);
                     dy1 = dy * 0.01;
                     y = parseInt(Math.floor(dy1) + "00");
-                    //console.log(y);
+                    console.log(y);
 
                     if (yflag == 0) {
 
                         hr = y / 2;
 
                         ca = 1600;
+
                         if(caflag == 1)
                         {
                             ca = parseInt(rechange_ca);
                         }
 
                         if (flag == 0) {
-                            ta1 = y + hr + ca + total_state + lta+vr+Food_Allowance+Attire_Allowance+driver_reimbursement + ra;
+                            ta1 = y + hr + ca + total_state + total_grade + ra;
                         }
                         if (flag == 1) {
                             var ct = 0,
@@ -387,7 +388,7 @@
                             ca = parseInt(rechange_ca);
                         }
 
-                            ta1 = y + hr + ca + total_state + lta+vr+Food_Allowance+Attire_Allowance+driver_reimbursement + ra;;
+                            ta1 = y + hr + ca + total_state + total_grade + ra;
                         }
 
 
@@ -406,7 +407,7 @@
                         {
                             ca = parseInt(rechange_ca);
                         }
-                            ta1 =y + hr + ca + total_state + lta+vr+Food_Allowance+Attire_Allowance+driver_reimbursement + ra;;
+                            ta1 =y + hr + ca + total_state + total_grade + ra;
                         }
                         if (flag == 1) {
                             var ct = 0,
@@ -418,11 +419,12 @@ if(caflag == 1)
                             ca = parseInt(rechange_ca);
                         }
 
-                            ta1 = y + hr + ca + total_state + lta+vr+Food_Allowance+Attire_Allowance+driver_reimbursement + ra;;
+                            ta1 = y + hr + ca + total_state + total_grade + ra;
                         }
 
 
                     }
+
 
                     // console.log(ta1);
 
@@ -501,7 +503,7 @@ if(caflag == 1)
                         ta2 = ta1 + e;
                     }
             
-                    enew =y + hr + ca + total_state + lta+vr+Food_Allowance+Attire_Allowance+driver_reimbursement + ra + gt + total_esic + w;
+                    enew =y + hr + ca + total_state + total_grade + pf + gt + total_esic + w;
 
                     // console.log("y", y * 12);
                     // console.log("hr", hr * 12);
@@ -529,7 +531,7 @@ if(caflag == 1)
 
 
                     tb2 = pf + gt + total_esic;
-                    ta1 = y + hr + ca + total_state + total_grade + ra;
+
                     taf = (ta1 * 12)  + ef;
 
                     total2 = taf + (tb2 * 12);
@@ -582,7 +584,7 @@ if(caflag == 1)
                 <div class="card-body">
                 
                     <div style="text-align: center;">
-                    <b>PE</b>
+                    <b>PE E10 - S10</b>
                     </div>
                     <br />
                     <div class="green box">
