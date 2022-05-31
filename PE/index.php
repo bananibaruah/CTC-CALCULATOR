@@ -562,7 +562,7 @@
                     tafn = y + hr + ca + total_state + total_grade + ra;
 
                     efn=0;
-                    enewn =y + hr + ca + total_state + total_grade + (pfs1/12) + gt + total_es1 + w;
+                    enewn =y + hr + ca + total_state + total_grade + (pfs1/12) + gt + ra +total_es1 + w;
                     efn = ctc - (enewn * 12);
 
 
@@ -619,6 +619,10 @@
                     }
 
                     tb2n1= pfs11+ (gt*12)+ (total_es11 *12);
+
+                    efn1=0;
+                    enewn1 =y + hr + ca + total_state + total_grade + (pfs11/12) + gt + ra +  total_es11 + w;
+                    efn1 = ctc - (enewn1 * 12);
                     
                    
                     total2 = taff + tb2n;
@@ -639,7 +643,7 @@
                     $("#Total_B").val(Math.round(tb2n1));
                    
                 
-                    $("#Executive_Allowance").val(Math.round(efn));
+                    $("#Executive_Allowance").val(Math.round(efn1));
                    
                     $("#Retention_Allowance").val(Math.round(ra * 12));
                     $("#Total_A").val(Math.round(taff));
