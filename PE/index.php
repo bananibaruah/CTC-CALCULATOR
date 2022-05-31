@@ -15,7 +15,7 @@
 
 
     <script>
-    var x = 0,
+    var x = 0,efn=0, taff=0, tb2n1=0;
         y = 0;
     var y1 = 0;
     var hr1 = 0;
@@ -178,7 +178,6 @@
                             parseInt(Attire_Allowance) +
                             parseInt(driver_reimbursement)
                         );
-            // console.log("Total Grade : "+total_grade+" | Reg_lta : "+lta);
             basic_pay_ch();
         });
         $("#vr").on('change', function() {
@@ -193,7 +192,6 @@
                             parseInt(Attire_Allowance) +
                             parseInt(driver_reimbursement)
                         );
-            // console.log("Total Grade : "+total_grade+" | Reg_lta : "+lta);
             basic_pay_ch();
         });
         $("#Food_Allowance").on('change', function() {
@@ -208,7 +206,6 @@
                             parseInt(Attire_Allowance) +
                             parseInt(driver_reimbursement)
                         );
-            // console.log("Total Grade : "+total_grade+" | Reg_lta : "+lta);
             basic_pay_ch();
         });
         $("#m_C_r").on('change', function() {
@@ -223,7 +220,6 @@
                             parseInt(Attire_Allowance) +
                             parseInt(driver_reimbursement)
                         );
-            // console.log("Total Grade : "+total_grade+" | Reg_lta : "+lta);
             basic_pay_ch();
         });
         $("#Attire_Allowance").on('change', function() {
@@ -238,7 +234,6 @@
                             parseInt(Attire_Allowance) +
                             parseInt(driver_reimbursement)
                         );
-            // console.log("Total Grade : "+total_grade+" | Reg_lta : "+lta);
             basic_pay_ch();
         });
         $("#driver_reimbursement").on('change', function() {
@@ -253,7 +248,6 @@
                             parseInt(Attire_Allowance) +
                             parseInt(driver_reimbursement)
                         );
-            // console.log("Total Grade : "+total_grade+" | Reg_lta : "+lta);
             basic_pay_ch();
         });
 
@@ -262,7 +256,7 @@
             var ctc = $("#ctc").val();
             wf = 0;
             if (ctc != "") {
-                if (z >= 5 && z <= 50) {
+                if (z >= 3 && z <= 50) {
                     $("#al2").css('display', 'none');
                     w1 = ctc * (z / 100);
                     w = w1 / 12;
@@ -321,7 +315,7 @@
 
         $("#Executive_Allowance").on('change', function() {
             rechange_e = $("#Executive_Allowance").val();
-            rechange_e = (rechange_e / 12);
+            rechange_e = (rechange_e * 12);
             eflag = 1;
             basic_pay_ch();
         });
@@ -341,7 +335,7 @@
 
         $("#Retention_Allowance").on('change', function() {
             mra = $("#Retention_Allowance").val();
-            mra = (mra / 12);
+            mra = (mra);
             flag = 1;
             basic_pay_ch();
         });
@@ -362,7 +356,6 @@
                     dy = Math.floor((ctc * (x / 100)) / 12);
                     dy1 = dy * 0.01;
                     y = parseInt(Math.floor(dy1) + "00");
-                    console.log(y);
 
                     if (yflag == 0) {
 
@@ -393,10 +386,6 @@
 
 
                     }
-                    if(caflag == 1)
-                    {
-                        ca = parseInt(rechange_ca);
-                    }
                     if (yflag == 1) {
                         y = rechange_y;
                         hr = y / 2;
@@ -414,7 +403,7 @@
                                 ct1 = 0;
                             ct = parseInt(mra);
                             ra = Math.floor(ct / 12);
-if(caflag == 1)
+                        if(caflag == 1)
                         {
                             ca = parseInt(rechange_ca);
                         }
@@ -425,33 +414,37 @@ if(caflag == 1)
 
                     }
 
-
-                    // console.log(ta1);
-
-
-                    var y_12 = y / 12;
+                    var y_12 = y;
                     var total_y_12 = 0;
                     var pf = 0;
                     var pf1 = 0;
-                    if (y_12 <= 15000) {
+                    if (y_12 > 15000) {
                         total_y_12 = y_12 * (12 / 100);
                         pf = total_y_12 * 12;
-                        pf1 = pf * 12;
+                        pf1 = pf;
                         $("#PF").val(Math.round(pf1));
+                      
 
                     } else {
+                        console.log("ta1",ta1);
                         y_12 = ta1 - hr;
+                        console.log("y_12",y_12);
                         if (y_12 > 15000) {
                             y_12 = 1800;
                             total_y_12 = y_12 * 12;
-                            pf = total_y_12 * 12;
-                            pf1 = pf * 12;
+                            console.log("total_y_12",total_y_12);
+                            pf = total_y_12;
+                            console.log("pf",pf);
+                            pf1 = pf;
+                            console.log("pf1",pf1);
                             $("#PF").val(Math.round(pf1));
+                         
                         } else {
                             total_y_12 = y_12 * (12 / 100);
                             pf = total_y_12 * 12;
-                            pf1 = pf * 12;
+                            pf1 = pf;
                             $("#PF").val(Math.round(pf1));
+                      
                         }
                     }
                     gt = (y / 12);
@@ -478,8 +471,6 @@ if(caflag == 1)
                     ctc3 = ctc / 12;
                     e1old = ctc3 - valtab1;
                     e = e1old;
-                    // console.log("e1lod : " + e1old);
-                    // // alert(e);
                     if (e < 0) {
                         alert("Executive Allowance Value in Minus");
                         if (flag == 0) {
@@ -496,46 +487,141 @@ if(caflag == 1)
                     if (e < 0) {
                         ta2 = ta1;
                     }
-                    if (eflag == 1) {
-                        e = rechange_e;
+                    // if (eflag == 1) {
+                    //     e = rechange_e;
                         ta2 = ta1 + e;
-                    } else {
-                        ta2 = ta1 + e;
-                    }
+                    // } else {
+                    //     ta2 = ta1 + e;
+                    // }
             
                     enew =y + hr + ca + total_state + total_grade + pf + gt + total_esic + w;
 
-                    // console.log("y", y * 12);
-                    // console.log("hr", hr * 12);
-                    // console.log("ca", ca * 12);
-                    // console.log("ts", total_state * 12);
-                    // console.log("tg", total_grade * 12);
-                    // console.log("ra", ra * 12);
-                    // console.log("pf", pf * 12);
-                    // console.log("esic", total_esic * 12);
-                    // console.log("gt", gt * 12);
-                    // console.log("w", w * 12);
-                    // console.log("enew", enew * 12);
 
                     ef = ctc - (enew * 12);
-                    // console.log("ef", ef);
-
-                    // taf = (ta1 * 12) + ef;
-                    // console.log("taf", taf);
-
-                    // totalnab = taf + (tb2 * 12);
-                    // console.log("totalab", totalnab);
-
-                    // ctotal = (w * 12) + totalnab;
-                    // console.log("ctotal", ctotal);
 
 
                     tb2 = pf + gt + total_esic;
 
-                    taf = (ta1 * 12)  + ef;
+                    // if(eflag==0){
+                    //     taf = (ta1 * 12)  + ef;
+                    // }
+                    // if(eflag==1){
+                    //     ef=rechange_e;
+                        taf = (ta1 * 12)  + ef;
+                    // }
+                    
 
-                    total2 = taf + (tb2 * 12);
+                    
 
+                    var pfsy = y;
+                    var total_pfsy = 0;
+                    var pfs = 0;
+                    var pfs1 = 0;
+                    if (pfsy > 15000) {
+                        total_pfsy = pfsy * (12 / 100);
+                        pfs = total_pfsy * 12;
+                        pfs1 = pfs;
+                        $("#PF").val(Math.round(pfs1));
+
+                    } else {
+                        var taf1=taf/12;
+                        pfsy = taf1 - hr;
+                        if (pfsy > 15000) {
+                            pfsy = 1800;
+                            total_pfsy = pfsy * 12;
+                            pfs = total_pfsy;
+                            pfs1 = pfs;
+                            $("#PF").val(Math.round(pfs1));
+                        } else {
+                            total_pfsy = pfsy * (12 / 100);
+                            pfs = total_pfsy * 12;
+                            pfs1 = pfs;
+                            $("#PF").val(Math.round(pfs1));
+                        }
+                    }
+                    gt = (y / 12);
+
+
+                    var taf1=taf/12;
+                    var es = 0;
+                    var es1 = 0;
+                    var total_es1 = 0;
+                    var es = (taf1 - ca);
+                    esic12 = es;
+                    if (esic12 <= 21000) {
+                        total_es1 = es * (3.25 / 100);
+                        $("#ESIC").val(Math.round(total_es1*12));
+                    } else {
+                        total_es1 = 0;
+                        $("#ESIC").val(Math.round(total_es1*12));
+                    }
+
+                    tb2n= pfs1+ (gt*12)+ (total_es1 *12);
+
+                    
+                    tafn = y + hr + ca + total_state + total_grade + ra;
+
+                    efn=0;
+                    enewn =y + hr + ca + total_state + total_grade + (pfs1/12) + gt + total_es1 + w;
+                    efn = ctc - (enewn * 12);
+
+
+                    if(eflag==0){
+                        taff=(tafn *12)+efn;
+                    }
+                    if (eflag==1){
+                        efn=rechange_e;
+                        taff=(tafn *12)+efn;
+                    }
+                   
+
+                    var pfsy1 = y;
+                    var total_pfsy1 = 0;
+                    var pfs1 = 0;
+                    var pfs11 = 0;
+                    if (pfsy1 > 15000) {
+                        total_pfsy1 = pfsy1 * (12 / 100);
+                        pfs1 = total_pfsy1 * 12;
+                        pfs11 = pfs1;
+                        $("#PF").val(Math.round(pfs11));
+
+                    } else {
+                        var taf11=taff/12;
+                        pfsy1 = taf11 - hr;
+                        if (pfsy1 > 15000) {
+                            pfsy1 = 1800;
+                            total_pfsy1 = pfsy1 * 12;
+                            pfs1 = total_pfsy1;
+                            pfs11 = pfs1;
+                            $("#PF").val(Math.round(pfs11));
+                        } else {
+                            total_pfsy1 = pfsy1 * (12 / 100);
+                            pfs1 = total_pfsy1 * 12;
+                            pfs11 = pfs1;
+                            $("#PF").val(Math.round(pfs11));
+                        }
+                    }
+                    gt = (y / 12);
+
+
+                    var taf11=taff/12;
+                    var es1 = 0;
+                    var es11 = 0;
+                    var total_es11 = 0;
+                    var es1 = (taf11 - ca);
+                    esic121 = es1;
+                    if (esic121 <= 21000) {
+                        total_es11 = es1 * (3.25 / 100);
+                        $("#ESIC").val(Math.round(total_es11*12));
+                    } else {
+                        total_es11 = 0;
+                        $("#ESIC").val(Math.round(total_es11*12));
+                    }
+
+                    tb2n1= pfs11+ (gt*12)+ (total_es11 *12);
+                    
+                   
+                    total2 = taff + tb2n;
                     ctotal = (w * 12) + total2;
 
 
@@ -550,10 +636,13 @@ if(caflag == 1)
                         $("#Statutory_Bonus").val(total_state * 12);
                     }
                     $("#gratuity").val(Math.round(gt * 12));
-                    $("#Total_B").val(Math.round(tb2 * 12));
-                    $("#Executive_Allowance").val(Math.round(ef));
+                    $("#Total_B").val(Math.round(tb2n1));
+                   
+                
+                    $("#Executive_Allowance").val(Math.round(efn));
+                   
                     $("#Retention_Allowance").val(Math.round(ra * 12));
-                    $("#Total_A").val(Math.round(taf));
+                    $("#Total_A").val(Math.round(taff));
                     $("#LTotal").val(Math.round(total2));
                     $("#TOTAL").val(Math.round(ctotal));
 
