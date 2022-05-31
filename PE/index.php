@@ -624,6 +624,7 @@
                     enewn1 =y + hr + ca + total_state + total_grade + (pfs11/12) + gt + ra +  total_es11 + w;
                     efn1 = ctc - (enewn1 * 12);
                     
+                    
                    
                     total2 = taff + tb2n;
                     ctotal = (w * 12) + total2;
