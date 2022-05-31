@@ -1,25 +1,4 @@
 <?php
-// use function UI\Draw\Text\Font\fontFamilies;
-// // Initialize the session
-// session_start();
-
-
-// // Check if the user is logged in, if not then redirect him to login page
-// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-//     header("location: index.php");
-//     exit;
-// }
-
-// if (isset($_POST['logout'])) {
-//     echo "Logged Out ";
-//     session_destroy();
-//     header("location: index.php");
-
-// }
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -40,26 +19,12 @@
     <meta name="keywords" content="">
     <meta name="author" content="tabthemes">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-    <!-- Bootstrap CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- CSS Files For Plugin -->
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/font-awesome/font-awesome.min.css" rel="stylesheet">
     <link href="css/magnific-popup.css" rel="stylesheet" />
     <link href="css/YTPlayer.css" rel="stylesheet" />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <style>
     body {
         background: #ffff;
@@ -74,52 +39,29 @@
         width: 150px;
         height: 150px;
         background: #ffff;
-        /* background:#E6E6FA;#F5F5F5 */
-        /* box-shadow: 10px 10px; */
         box-shadow: 0 4px 8px 0 rgba(176, 196, 222), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
     </style>
 </head>
 
 <body>
-    <!-- <a href="#home"><img class="logo" src="image\NseLogo.jpg" width="250" height="80" alt="logo" data-rjs="2"></a> -->
+    
     <header>
-        <!-- 
-       <div class="container-fluid"> -->
 
-        <nav class="navbar navbar-light"
-            style="  background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);">
-
-
+        <nav class="navbar navbar-light" style="  background-image: linear-gradient(135deg, #FAB2FF 10%, #1904E5 100%);"> 
             <form class="container-fluid justify-content-start" method="post">
-
-                <a href=""><img class="logo" src="images\nselogo.png" width="100" height="75" alt="logo"
-                        data-rjs="2"></a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                <h5 class="my-2">Welcome to <br>CTC CALCULATOR
-                </h5>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-                <!-- <input class="favorite styled" type="submit" name="logout" value="Logout"> -->
+                <a href=""><img class="logo" src="images\nselogo.png" width="100" height="75" alt="logo"data-rjs="2"></a>
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <b><p class="my-2" style="text-align:center">Welcome to <br>CTC CALCULATOR</p></b>
             </form>
-
-
-
-
-
 
         </nav>
     </header>
-    </div><br><br><br><br><br><br>
+    </div><br><br><br><br><br><br><br><br><br>
     <style>
     .styled {
         border: 0;
@@ -150,7 +92,7 @@
         background-attachment: fixed;
         font-family: "Open Sans", sans-serif;
         color: white;
-    }
+        text-align: center !important;
     }
     </style>
 
@@ -179,76 +121,46 @@
     }
     </style>
 
-<!-- <option value="blue"><a href="FTE">FTE</a></option>
-                        <option value="red" selected><a href="PE">PE E10 to S10</a></option>
-                            <option value="red" selected><a href="">PE (M10 & Above)</a></option>
-                            
-                            <option value="yellow"><a href="">CAMPUS</a></option>
-                            <option value="yellow"><a href="">OFF CAMPUS</a></option> -->
     <div class="container">
         <div class="row">
-            &nbsp;
+            <div class="col-lg-1"></div>
 
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div id="rcorners2">
-                    <br>
-                    <centre><a href="FTE"><img class="card-img-top" src="images\1.jpg" alt=""
-                                ></centre></a>
-                                <h5 style="font-family:verdana"><br><br>FTE</h5>
-                </div><br>
-            </div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
-            <div class="col-lg-3">
-                <div id="rcorners2">
-                    <br>
-                    <centre><a href="PE"><img class="card-img-top" src="images\2.jpg" alt=""
-                                style="height:80px"></centre></a>   
-                                <h5 style="font-family:verdana"><br><br>PE E10 to S10</h5>
-                </div><br>
-            </div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
-            <div class="col-lg-3">
-                <div id="rcorners2">
-                    <br>
-                    <centre><a href="PE (M10 & Above)"><img class="card-img-top" src="images\3.jpg" alt=""
-                                style="width:80px">
-                    </centre></a>
-                    <h5 style="font-family:verdana"><br><br>PE (M10 & Above)
-                    </h5>
+                    <centre><a href="FTE"><img class="card-img-top" src="images\1.jpg" alt="" style="height:80px" ></centre></a>
+                    <h5 style="font-family:verdana"><br><br><br>FTE</h5>
                 </div>
-                <br>
+            </div>
+            
+            <div class="col-lg-2">
+                <div id="rcorners2">
+                    <centre><a href="PE"><img class="card-img-top" src="images\2.jpg" alt=""style="height:80px"></centre></a>   
+                    <h5 style="font-family:verdana"><br><br><br>PE E10 to S10</h5>
+                </div>
+            </div>
+           
+            <div class="col-lg-2">
+                <div id="rcorners2">
+                    <centre><a href="PE (M10 & Above)"><img class="card-img-top" src="images\3.jpg" alt=""style="width:80px"></centre></a>
+                    <h5 style="font-family:verdana"><br><br><br>PE (M10 & Above)</h5>
+                </div>
+            </div>
 
-            </div>
-</div>
-</div><br><br>
-<div class="row">
-<div class="col-lg-3"></div>
-<div class="col-lg-3">
-                <div id="rcorners2"><br>
-                    <centre><a href="CAMPUS"><img class="card-img-top" src="images\4.jpg" alt=""
-                                style="height:80px">
-                    </centre></a>
-                    <h5 style="font-family:verdana"><br><br>CAMPUS</h3>
+            <div class="col-lg-2">
+                <div id="rcorners2">
+                    <centre><a href="CAMPUS"><img class="card-img-top" src="images\4.jpg" alt=""style="height:80px"></centre></a>
+                    <h5 style="font-family:verdana"><br><br><br>CAMPUS</h3>
                 </div>
-                <br>
-</div>
-    <br>
-    <br><br><br>
+            </div>
 
  
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div id="rcorners2">
-                    <br>
-                    <centre><a href="OFF CAMPUS"><img class="card-img-top" src="images\5.png" alt=""
-                                style="width:80px">
-                    </centre></a>
-                    <h5 style="font-family:verdana"><br><br>OFF CAMPUS</h5>
-                    <br>
-
-                </div><br>
+                    <centre><a href="OFF CAMPUS"><img class="card-img-top" src="images\5.png" alt=""style="width:80px"></centre></a>
+                    <h5 style="font-family:verdana"><br><br><br>OFF CAMPUS</h5>  
+                </div>
             </div>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</div>
+            <div class="col-lg-1"></div>
         </div>
     </div>
 </body>
