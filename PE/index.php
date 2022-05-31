@@ -55,6 +55,7 @@
         mcr1 = 0,
         dr1 = 0,
         old_check = 0;
+        executive_allowance=0;
     oc1 = 0;
     ctotal = 0;
     var w = 0;
@@ -70,6 +71,8 @@
     var STRB=0;
     var Incentive_Bounus=0;
     var total_esic=0;
+    var Total_A=0;
+    Total_B=0;
     $(document).ready(function() {
 
 
@@ -261,8 +264,8 @@
                     w1 = ctc * (z / 100);
                     w = w1 / 12;
                     wf = w * 12;
-                    $('#Variable_Pay').val(wf);
-                    $('#Total_II').val(wf);
+                    $('#Variable_Pay').Math.round(val(wf));
+                    $('#Total_II').Math.round(val(wf));
 
                 } else {
                     $("#Variable_Pay").val('0');
@@ -426,17 +429,17 @@
                       
 
                     } else {
-                        console.log("ta1",ta1);
+                        // console.log("ta1",ta1);
                         y_12 = ta1 - hr;
-                        console.log("y_12",y_12);
+                        // console.log("y_12",y_12);
                         if (y_12 > 15000) {
                             y_12 = 1800;
                             total_y_12 = y_12 * 12;
-                            console.log("total_y_12",total_y_12);
+                            // console.log("total_y_12",total_y_12);
                             pf = total_y_12;
-                            console.log("pf",pf);
+                            // console.log("pf",pf);
                             pf1 = pf;
-                            console.log("pf1",pf1);
+                            // console.log("pf1",pf1);
                             $("#PF").val(Math.round(pf1));
                          
                         } else {
@@ -619,15 +622,24 @@
                     }
 
                     tb2n1= pfs11+ (gt*12)+ (total_es11 *12);
+                    Total_B=tb2n1/12;
 
                     efn1=0;
                     enewn1 =y + hr + ca + total_state + total_grade + (pfs11/12) + gt + ra +  total_es11 + w;
                     efn1 = ctc - (enewn1 * 12);
+                    executive_allowance = efn1/12;
                     
-                    
-                   
-                    total2 = taff + tb2n;
-                    ctotal = (w * 12) + total2;
+                    Total_A=(y+hr+ca+total_state+total_grade+executive_allowance+ra);
+                    // console.log("basic", y);
+                    // console.log("hra", hr);
+                    // console.log("ca",ca);
+                    // console.log("total_state", total_state);
+                    // console.log("total_grade",total_grade);
+                    // console.log("executive aalowance", executive_allowance);
+                    // console.log("RA", ra);
+                    // console.log("Total_A",Total_A);
+                    total2 = Total_A + Total_B;
+                    ctotal = w + total2;
 
 
 
@@ -641,15 +653,15 @@
                         $("#Statutory_Bonus").val(total_state * 12);
                     }
                     $("#gratuity").val(Math.round(gt * 12));
-                    $("#Total_B").val(Math.round(tb2n1));
+                    $("#Total_B").val(Math.round(Total_B*12));
                    
                 
-                    $("#Executive_Allowance").val(Math.round(efn1));
+                    $("#Executive_Allowance").val(Math.round(executive_allowance*12));
                    
                     $("#Retention_Allowance").val(Math.round(ra * 12));
-                    $("#Total_A").val(Math.round(taff));
-                    $("#LTotal").val(Math.round(total2));
-                    $("#TOTAL").val(Math.round(ctotal));
+                    $("#Total_A").val(Math.round(Total_A*12));
+                    $("#LTotal").val(Math.round(total2*12));
+                    $("#TOTAL").val(Math.round(ctotal*12));
 
 
                 } else {
