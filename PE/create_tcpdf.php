@@ -435,14 +435,14 @@ $name<br>
     <tr>
         <td><b></b></td>
         <td>Basic</td>
-		<td>' . $basic1 . '</td>
-		<td>' . $basic . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $basic1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $basic) . '</td>
     </tr>
     <tr>
         <td><b></b></td>
         <td>HRA</td>
-        <td>' . $hra1 . '</td>
-        <td>' . $hra . '</td>
+        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $hra1) . '</td>
+        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $hra) . '</td>
     </tr>';
 
 if ($Conveyance_Allowance != 0) {
@@ -450,8 +450,8 @@ if ($Conveyance_Allowance != 0) {
         $html .= '<tr>
         <td><b></b></td>
         <td>Conveyance Allowance</td>
-		<td>' . $Conveyance_Allowance1 . '</td>
-		<td>' . $Conveyance_Allowance . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Conveyance_Allowance1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Conveyance_Allowance) . '</td>
     </tr>';
     }
 
@@ -460,46 +460,46 @@ if ($Statutory_Bonus != 0) {
         $html .= '<tr>
         <td><b></b></td>
         <td>Statutory Bonus</td>
-		<td>' . $Statutory_Bonus1 . '</td>
-		<td>' . $Statutory_Bonus . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Statutory_Bonus1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Statutory_Bonus) . '</td>
     </tr>';
     }
 if ($lta1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>LTA</td>
-		<td>' . $lta1 . '</td>
-		<td>' . $lta . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $lta1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $lta) . '</td>
     </tr>';
 }
 $html .= '<tr>
     <td><b></b></td>
         <td>Executive Allowance</td>
-        <td>' . $Executive_Allowance1 . '</td>
-        <td>' . $Executive_Allowance . '</td>
+        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Executive_Allowance1) . '</td>
+        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Executive_Allowance) . '</td>
     </tr>';
 if ($Food_Allowance1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Food Allowance</td>
-		<td>' . $Food_Allowance1 . '</td>
-		<td>' . $Food_Allowance . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Food_Allowance1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Food_Allowance) . '</td>
     </tr>';
 }
 if ($m_c_r1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Mobile Reimbursement Charges</td>
-		<td>' . $m_c_r1 . '</td>
-		<td>' . $m_c_r . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $m_c_r1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $m_c_r) . '</td>
     </tr>';
 }
 if ($Attire_Allowance1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Attire Allowance</td>
-		<td>' . $Attire_Allowance1 . '</td>
-		<td>' . $Attire_Allowance . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Attire_Allowance1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Attire_Allowance) . '</td>
     </tr>';
 }
 
@@ -507,8 +507,8 @@ if ($vr1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Vehicle Reimbursement</td>
-		<td>' . $vr1 . '</td>
-		<td>' . $vr . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $vr1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $vr) . '</td>
     </tr>';
 }
 
@@ -516,8 +516,8 @@ if ($driver_reimbursement1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Driver Reimbursement</td>
-		<td>' . $driver_reimbursement1 . '</td>
-		<td>' . $driver_reimbursement . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $driver_reimbursement1). '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $driver_reimbursement) . '</td>
     </tr>';
 }
 
@@ -525,16 +525,16 @@ if ($dRetention_Allowance1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Retention Allowance</td>
-		<td>' . $Retention_Allowance1 . '</td>
-		<td>' . $Retention_Allowance . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Retention_Allowance1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Retention_Allowance) . '</td>
     </tr>';
 }
 
 $html .= '<tr>
         <td><b></b></td>
         <td><b>Total A</b></td>
-		<td><b>' . $Total_A1 . '</b></td>
-		<td><b>' . $Total_A . '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_A1) . '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_A) . '</b></td>
     </tr>
     <tr>
         <td><b>B</b></td>
@@ -545,8 +545,8 @@ $html .= '<tr>
     <tr>
         <td><b></b></td>
         <td>Employer Contribution to Provident Fund </td>
-		<td>' . $PF1 . '</td>
-		<td>' . $PF . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $PF1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $PF) . '</td>
     </tr>';
 
 
@@ -554,28 +554,28 @@ if ($ESIC != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>ESIC</td>
-		<td>' . $ESIC1 . '</td>
-		<td>' . $ESIC . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $ESIC1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $ESIC) . '</td>
     </tr>';
 }
 
 $html .= '<tr>
         <td><b></b></td>
         <td>Gratuity</td>
-		<td>' . $gratuity1 . '</td>
-		<td>' . $gratuity . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $gratuity1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $gratuity) . '</td>
     </tr>
     <tr>
         <td><b></b></td>
         <td><b>Total B</b></td>
-		<td><b>' . $Total_B1 . '</b></td>
-		<td><b>' . $Total_B . '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_B1) . '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_B). '</b></td>
     </tr>
     <tr>
         <td><b></b></td>
         <td><b>Total of PART I (A+B)</b>  </td>
-		<td><b>' . $LTOTAL1 . '</b></td>
-		<td><b>' . $LTOTAL . '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTOTAL1) . '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTOTAL) . '</b></td>
     </tr>  
     <tr>
         <td><b>PART II</b></td>
@@ -588,7 +588,7 @@ if ($Variable_Pay != 0) {
         <td><b></b></td>
         <td> ' . $vp . ' </td>
         <td></td>
-        <td>' . $Variable_Pay . '</td>
+        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Variable_Pay) . '</td>
     </tr>';
 }
 
@@ -597,7 +597,7 @@ if ($STRB != 0) {
     <td><b></b></td>
     <td>  STRB </td>
     <td></td>
-    <td>' . $STRB . '</td>
+    <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $STRB). '</td>
 </tr>';
 }
 
@@ -606,7 +606,7 @@ $html .= '<tr>
 <td><b></b></td>
 <td> Incentive Bonus </td>
 <td></td>
-<td>' . $Incentive_Bonus. '</td>
+<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Incentive_Bonus). '</td>
 </tr>';
 }
 
@@ -614,13 +614,13 @@ $html .= '<tr>
         <td><b></b></td>
         <td><b> Total of Part II</b>  </td>
 		<td><b></b></td>
-		<td><b>' . $Total_II . '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_II ). '</b></td>
     </tr>
     <tr>
     <td><b></b></td>
         <td><b> Cost to Company Part I + Part II</b>  </td>
         <td><b></b></td>
-        <td><b>' . $TOTAL . '</b></td>
+        <td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $TOTAL) . '</b></td>
     </tr>
     <tr>
         <td colspan="4"><b>Please note: </b></td>
