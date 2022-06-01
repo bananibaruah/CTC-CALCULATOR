@@ -678,11 +678,13 @@
 <br><br>
 
 <body>
-<div class="col-lg-6">
-<button class="GFG1" 
-    onclick="window.location.href = 'http://localhost/CTC/';" style="float: center;">
-        CTC CALCULATOR
-    </button><br><br>
+<div class="wrapper">
+        <div class="container-fluid"><br>
+            <a href="index.php"><img src="..\images\nselogo.png" height="70px" width="110px"></a>
+            <a href="https://hr.nseit.com/CTC-CALCULATOR" class="btn btn-primary ml-3" style="float: right;">Home</a>
+            <a href="../logout.php" class="btn btn-danger ml-3" style="float: right;">Sign Out of Your Account</a>
+            <h5><b><center><font color="#0056b3">CAMPUS CALCULATOR</font></center></b></h5>
+        </div>
 </div>
     <form method="post" action="create_tcpdf.php">
         <div class="container">
@@ -690,7 +692,6 @@
                 <div class="card-body">
                 
                     <div style="text-align: center;">
-                    <b>PE E10 - S10</b>
                     </div>
                     <br />
                     <div class="green box">
