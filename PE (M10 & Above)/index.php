@@ -678,7 +678,6 @@
 <br><br>
 
 <body>
-<div class="col-lg-6">
 <div class="wrapper">
         <div class="container-fluid"><br>
             <a href="index.php"><img src="..\images\nselogo.png" height="70px" width="110px"></a>
@@ -691,9 +690,11 @@
         <div class="container">
             <div class="card" style=background-color:#BFD7ED>
                 <div class="card-body">
+                
                     <br />
                     <div class="green box">
                         <div class="row">
+
                             <div class="col-lg-6">
                                 <label=""><b>CODE</b></label>
                                     <input type="text" class="form-control" id="Code" name="Code" placeholder="Code" />
