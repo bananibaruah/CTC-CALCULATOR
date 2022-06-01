@@ -694,7 +694,6 @@
                     <br />
                     <div class="green box">
                         <div class="row">
-
                             <div class="col-lg-6">
                                 <label=""><b>CODE</b></label>
                                     <input type="text" class="form-control" id="Code" name="Code" placeholder="Code" />
