@@ -514,7 +514,39 @@
                         }
                     }
 
-                    tb2 = pf + total_esic;
+                    var ys = y;
+                        var total_ys = 0;
+                        var pfs = 0;
+                        var pfs1 = 0;
+                        var ys1 = 0;
+                        if (ys > 15000) {
+                            total_ys = ys * (12 / 100);
+                            pfs = total_ys * 12;
+                            pfs1 = pfs;
+                            pfs = pfs1;
+                            $("#PF").val(Math.round(pfs));
+
+                        } else {
+                            ys1 = ta2 - hr;
+                            if (ys1 > 15000) {
+                                ys = 1800;
+                                total_ys = ys;
+                                pfs = total_ys * 12;
+                                pfs1 = pfs;
+                                pfs = pfs1;
+                                $("#PF").val(Math.round(pfs));
+                            } 
+                        else {
+
+                                total_ys = ys1 * (12 / 100);
+                                pfs = total_ys * 12;
+                                pfs1 = pfs;
+                                pfs = pfs1;
+                                $("#PF").val(Math.round(pfs));
+                            }
+                        }
+
+                    tb2 = pfs + total_esic;
 
                     total2 = (ta2 * 12) + tb2;
 
@@ -545,17 +577,11 @@
                         $("#Statutory_Bonus").val(total_state * 12);
                     }
 
-                    // $("#gratuity")
-                    //     .val(Math.round(gt * 12));
                     $("#Total_B").val(Math.round(tb2));
                     $("#Executive_Allowance").val(Math.round(e * 12));
-                    //$("#Retention_Allowance").val(ra * 12);
                     $("#Total_A").val(Math.round(ta2 * 12));
                     $("#LTotal").val(Math.round(total2));
                     $("#TOTAL").val(Math.round(ctotal));
-                    // $("#Old_Retention_Allowance").val(ra * 12);
-
-
                 } else {
                     $("#basic").val('0');
                     $("#al1").css('display', 'inline-block');
