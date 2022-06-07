@@ -102,9 +102,11 @@
                                     if (sbb > state_val) {
                                         total_state = (sbb);
                                         $('#Statutory_Bonus').val(total_state * 12);
+                                        $('#MStatutory_Bonus').val(total_state);
                                     } else {
                                         total_state = state_val;
                                         $('#Statutory_Bonus').val(total_state * 12);
+                                        $('#MStatutory_Bonus').val(total_state);
                                     }
                                 } else {
                                     alert(data);
@@ -265,323 +267,369 @@
                     y = parseInt(Math.floor(dy1) + "00");
 
                     if (yflag == 0) {
+
                         hr = y / 2;
+
                         ca = 1600;
-                        if (caflag == 0) {
-                            ta1 = y + hr + ca + total_state;
-                        }
+
                         if (caflag == 1) {
-                            ca = rechange_ca;
+                            ca = parseInt(rechange_ca);
+                        }
+
+                        if (flag == 0) {
                             ta1 = y + hr + ca + total_state;
                         }
 
-                        // alert(ta1 * 12);
-                        var y_12 = y;
-                        var total_y_12 = 0;
-                        var pf = 0;
-                        var pf1 = 0;
-                        var y_121 = 0;
-                        if (y_12 > 15000) {
-                            total_y_12 = y_12 * (12 / 100);
-                            pf = total_y_12 * 12;
-                            pf1 = pf;
-                            pf = pf1;
-                            $("#PF").val(Math.round(pf));
 
-                        } else {
-                            y_121 = ta1 - hr;
-                            if (y_121 > 15000) {
-                                y_12 = 1800;
-                                total_y_12 = y_12;
-                                pf = total_y_12 * 12;
-                                pf1 = pf;
-                                pf = pf1;
-                                $("#PF").val(Math.round(pf));
-                            } else {
-                                total_y_12 = y_121 * (12 / 100);
-                                pf = total_y_12 * 12;
-                                pf1 = pf;
-                                pf = pf1;
-                                $("#PF").val(Math.round(pf));
-
-
-                            }
-
-                        }
                     }
                     if (yflag == 1) {
                         y = rechange_y;
                         hr = y / 2;
-                        ca = 1600;
 
-                        if (caflag == 0) {
+
+                        if (flag == 0) {
+                            if (caflag == 1) {
+                                ca = parseInt(rechange_ca);
+                            }
                             ta1 = y + hr + ca + total_state;
                         }
-                        if (caflag == 1) {
-                            ca = rechange_ca;
-                            ta1 = y + hr + ca + total_state;
-                        }
 
-                        // alert(ta1 * 12);
-                        var y_121 = y;
-                        var total_y_121 = 0;
-                        var pf1 = 0;
-                        var pf12 = 0;
-                        var y_1211 = 0;
-                        if (y_121 > 15000) {
-                            total_y_121 = y_121 * (12 / 100);
-                            pf1 = total_y_121 * 12;
-                            pf12 = pf1;
-                            pf1 = pf12;
-                            // $("#PF").val(Math.round(pf1));
+
+                    }
+
+                    var y_12 = y;
+                    var total_y_12 = 0;
+                    var pf = 0;
+                    var pf1 = 0;
+                    if (y_12 > 15000) {
+                        total_y_12 = y_12 * (12 / 100);
+                        pf = total_y_12 * 12;
+                        pf1 = pf;
+                        $("#PF").val(Math.round(pf1));
+                        $("#MPF").val(Math.round(pf1 / 12));
+
+
+                    } else {
+                        y_12 = ta1 - hr;
+                        if (y_12 > 15000) {
+                            y_12 = 1800;
+                            total_y_12 = y_12 * 12;
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val(Math.round(pf1));
+                            $("#MPF").val(Math.round(pf1 / 12));
 
                         } else {
-                            y_1211 = ta1 - hr;
-                            if (y_1211 > 15000) {
-                                y_121 = 1800;
-                                total_y_121 = y_121;
-                                pf1 = total_y_121 * 12;
-                                pf11 = pf1;
-                                pf1 = pf12;
-                                // $("#PF").val(Math.round(pf));
-                            } else {
-
-                                total_y_121 = y_1211 * (12 / 100);
-                                pf1 = total_y_121 * 12;
-                                pf11 = pf1;
-                                pf1 = pf12;
-                                // $("#PF").val(Math.round(pf));
-
-                            }
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12 * 12;
+                            pf1 = pf;
+                            $("#PF").val(Math.round(pf1));
+                            $("#MPF").val(Math.round(pf1 / 12));
 
                         }
                     }
 
-
-
-                    var e_12_1 = 0;
-                    var esic_1 = 0;
-                    var total_esic_1 = 0;
-                    var e_12_1 = (ta1 - ca);
-                    esic12 = e_12_1;
-                    if (esic12 <= 21000) {
-                        total_esic_1 = e_12_1 * (3.25 / 100);
-                        $("#ESIC").val(Math.round(total_esic_1));
-                    } else {
-                        total_esic_1 = 0;
-                        $("#ESIC").val(Math.round(total_esic_1));
-                    }
-
-
-                    tb12_1 = pf + total_esic_1;
-                    tb1_1 = tb12_1 / 12;
-
-
-
-                    valtab_1 = 0;
-                    valtab1_1 = 0;
-                    valtab_1 = ta1 + tb1_1;
-                    valtab1_1 = valtab_1;
-
-                    var e1old_1 = 0;
-                    var eold_1 = 0;
-                    e1_1 = ctc - valtab1_1;
-                    ctc3_1 = ctc / 12;
-                    e1old_1 = ctc3_1 - valtab1_1;
-                    e_1 = e1old_1;
-                    console.log("e1lod : " + e1old_1);
-
-                    // // alert(e);
-                    if (e_1 < 0) {
-                        alert("Executive Allowance Value in Minus");
-                        if (flag == 0) {
-                            eold_1 = e_1;
-                            $("#Old_Executive_Allowance").val(eold_1);
-                            $("#OEAV").html(Math.round(eold_1));
-
-                            e_1 = 0;
-                        }
-                    }
-                    if (e_1 < 0) {
-                        ta2 = ta1;
-                    }
-                    if (eflag == 1) {
-                        e_1 = rechange_e;
-                        ta2_1 = ta1 + e_1;
-                    } else {
-                        ta2_1 = ta1 + e_1;
-                        console.log(e_1);
-                    }
-
-                    ta2_3 = y + hr + ca + total_state + e_1;
                     var e_12 = 0;
                     var esic = 0;
                     var total_esic = 0;
-                    var e_12 = (ta2_3 - ca);
+                    var e_12 = ta1 - ca;
                     esic = e_12;
-                    if (esic <= 21000) {
-                        total_esic = ((e_12 * (3.25 / 100)) * 12);
-                        $("#ESIC").val(Math.round(total_esic));
+                    if (esic < 21000) {
+                        total_esic = e_12 * (3.25 / 100);
+                        $("#ESIC").val(total_esic * 12);
+                        $("#MESIC").val(total_esic);
                     } else {
                         total_esic = 0;
-                        $("#ESIC").val(Math.round(total_esic * 12));
+                        $("#ESIC").val(total_esic * 12);
+                        $("#MESIC").val(total_esic);
                     }
-
-
-                    tb12 = pf + total_esic;
-                    tb1 = tb12 / 12;
-
-
+                    tb1 = pf + total_esic;
 
                     valtab = 0;
                     valtab1 = 0;
                     valtab = ta1 + tb1;
                     valtab1 = valtab;
-
                     var e1old = 0;
                     var eold = 0;
                     e1 = ctc - valtab1;
                     ctc3 = ctc / 12;
                     e1old = ctc3 - valtab1;
                     e = e1old;
-                    console.log("e1lod : " + e1old);
-
-                    // // alert(e);
                     if (e < 0) {
                         alert("Executive Allowance Value in Minus");
                         if (flag == 0) {
                             eold = e;
-                            $("#Old_Executive_Allowance").val(eold);
-                            $("#OEAV").html(Math.round(eold));
+                            $("#Old_Executive_Allowance").val(eold * 12);
+                            $("#OEAV").html(Math.round(eold * 12));
 
                             e = 0;
                         }
                     }
+
                     if (e < 0) {
                         ta2 = ta1;
                     }
-                    if (eflag == 1) {
-                        e = rechange_e;
-                        ta2 = ta1 + e;
+
+                    ta2 = ta1 + e;
+
+                    enew = y + hr + ca + total_state + pf + total_esic;
+
+
+                    ef = ctc - (enew * 12);
+
+
+                    tb2 = pf + total_esic;
+
+                    taf = (ta1 * 12) + ef;
+
+                    var pfsy = y;
+                    var total_pfsy = 0;
+                    var pfs = 0;
+                    var pfs1 = 0;
+                    if (pfsy > 15000) {
+                        total_pfsy = pfsy * (12 / 100);
+                        pfs = total_pfsy * 12;
+                        pfs1 = pfs;
+                        $("#PF").val(Math.round(pfs1));
+                        $("#MPF").val(Math.round(pfs1 / 12));
+
                     } else {
-                        ta2 = ta1 + e;
-                        console.log(e);
-                    }
-
-                    if (yflag == 1) {
-                        y = rechange_y;
-                        hr = y / 2;
-                        ca = 1600;
-                        if (caflag == 0) {
-                            ta1 = y + hr + ca + total_state;
-                        }
-                        if (caflag == 1) {
-                            ca = rechange_ca;
-                            ta1 = y + hr + ca + total_state;
-                        }
-                        // alert(ta1 * 12);
-                        var y_12 = y;
-                        var total_y_12 = 0;
-                        var pf = 0;
-                        var pf1 = 0;
-                        var y_121 = 0;
-                        if (y_12 > 15000) {
-                            total_y_12 = y_12 * (12 / 100);
-                            pf = total_y_12 * 12;
-                            pf1 = pf;
-                            pf = pf1;
-                            $("#PF").val(Math.round(pf));
-
-                        } else {
-                            y_121 = ta2 - hr;
-                            if (y_121 > 15000) {
-                                y_12 = 1800;
-                                total_y_12 = y_12;
-                                pf = total_y_12 * 12;
-                                pf1 = pf;
-                                pf = pf1;
-                                $("#PF").val(Math.round(pf));
-                            } else {
-
-                                total_y_12 = y_121 * (12 / 100);
-                                pf = total_y_12 * 12;
-                                pf1 = pf;
-                                pf = pf1;
-                                $("#PF").val(Math.round(pf));
-
-                            }
-
-                        }
-                    }
-
-                    var ys = y;
-                        var total_ys = 0;
-                        var pfs = 0;
-                        var pfs1 = 0;
-                        var ys1 = 0;
-                        if (ys > 15000) {
-                            total_ys = ys * (12 / 100);
-                            pfs = total_ys * 12;
+                        var taf1 = taf / 12;
+                        pfsy = taf1 - hr;
+                        if (pfsy > 15000) {
+                            pfsy = 1800;
+                            total_pfsy = pfsy * 12;
+                            pfs = total_pfsy;
                             pfs1 = pfs;
-                            pfs = pfs1;
-                            $("#PF").val(Math.round(pfs));
-
+                            $("#PF").val(Math.round(pfs1));
+                            $("#MPF").val(Math.round(pfs1 / 12));
                         } else {
-                            ys1 = ta2 - hr;
-                            if (ys1 > 15000) {
-                                ys = 1800;
-                                total_ys = ys;
-                                pfs = total_ys * 12;
-                                pfs1 = pfs;
-                                pfs = pfs1;
-                                $("#PF").val(Math.round(pfs));
-                            } 
-                        else {
-
-                                total_ys = ys1 * (12 / 100);
-                                pfs = total_ys * 12;
-                                pfs1 = pfs;
-                                pfs = pfs1;
-                                $("#PF").val(Math.round(pfs));
-                            }
+                            total_pfsy = pfsy * (12 / 100);
+                            pfs = total_pfsy * 12;
+                            pfs1 = pfs;
+                            $("#PF").val(Math.round(pfs1));
+                            $("#MPF").val(Math.round(pfs1 / 12));
                         }
+                    }
 
-                    tb2 = pfs + total_esic;
+                    var taf1 = taf / 12;
+                    var es = 0;
+                    var es1 = 0;
+                    var total_es1 = 0;
+                    var es = (taf1 - ca);
+                    esic12 = es;
+                    if (esic12 < 21000) {
+                        total_es1 = es * (3.25 / 100);
+                        $("#ESIC").val(Math.round(total_es1 * 12));
+                        $("#MESIC").val(Math.round(total_es1));
+                    } else {
+                        total_es1 = 0;
+                        $("#MESIC").val(Math.round(total_es1));
+                        $("#MESIC").val(Math.round(total_es1));
+                    }
 
-                    total2 = (ta2 * 12) + tb2;
+                    tb2n = pfs1 + (total_es1 * 12);
 
+
+                    tafn = y + hr + ca + total_state;
+
+                    efn = 0;
+                    enewn = y + hr + ca + total_state + (pfs1 / 12) + total_es1;
+                    efn = ctc - (enewn * 12);
+
+
+                    if (eflag == 0) {
+                        taff = (tafn * 12) + efn;
+                    }
+                    if (eflag == 1) {
+                        efn = rechange_e;
+                        taff = (tafn * 12) + efn;
+                    }
+
+
+                    var pfsy1 = y;
+                    console.log("y", y);
+                    var total_pfsy1 = 0;
+                    var pfs1 = 0;
+                    var pfs11 = 0;
+                    if (pfsy1 > 15000) {
+                        total_pfsy1 = pfsy1 * (12 / 100);
+                        console.log("y>15000", total_pfsy1);
+                        pfs1 = total_pfsy1 * 12;
+                        pfs11 = pfs1;
+                        $("#PF").val(Math.round(pfs11));
+                        $("#MPF").val(Math.round(pfs11 / 12));
+
+                    } else {
+                        var taf11 = taff / 12;
+                        console.log("taf11", taf11);
+                        pfsy1 = taf11 - hr;
+                        console.log("totala-hr", pfsy1);
+                        if (pfsy1 > 15000) {
+                            pfsy1 = 1800;
+                            console.log("totala-hr>15000", pfsy1);
+                            total_pfsy1 = pfsy1 * 12;
+                            pfs1 = total_pfsy1;
+                            pfs11 = pfs1;
+                            $("#PF").val(Math.round(pfs11));
+                            $("#MPF").val(Math.round(pfs11 / 12));
+                        } else {
+                            total_pfsy1 = pfsy1 * (12 / 100);
+                            console.log("totala-hr<15000", total_pfsy1);
+                            pfs1 = total_pfsy1 * 12;
+                            pfs11 = pfs1;
+                            $("#PF").val(Math.round(pfs11));
+                            $("#MPF").val(Math.round(pfs11 / 12));
+                        }
+                    }
+
+                    var taf11 = taff / 12;
+                    var es1 = 0;
+                    var es11 = 0;
+                    var total_es11 = 0;
+                    var es1 = (taf11 - ca);
+                    esic121 = es1;
+                    if (es1 < 21000) {
+                        total_es11 = es1 * (3.25 / 100);
+                        $("#ESIC").val(Math.round(total_es11 * 12));
+                        $("#MESIC").val(Math.round(total_es11));
+                    } else {
+                        total_es11 = 0;
+                        $("#ESIC").val(Math.round(total_es11 * 12));
+                        $("#MESIC").val(Math.round(total_es11));
+                    }
+
+
+
+                    efn = 0;
+                    enewn = y + hr + ca + total_state + (pfs1 / 12) + total_es1;
+                    efn = ctc - (enewn * 12);
+
+
+                    if (eflag == 0) {
+                        taff = (tafn * 12) + efn;
+                    }
+                    if (eflag == 1) {
+                        efn = rechange_e;
+                        taff = (tafn * 12) + efn;
+                    }
+
+
+                    tb2n1 = pfs11 + (total_es11 * 12);
+                    Total_B = tb2n1 / 12;
+
+                    efn1 = 0;
+                    enewn1 = y + hr + ca + total_state + (pfs11 / 12) + total_es11;
+                    efn1 = ctc - (enewn1 * 12);
+                    executive_allowance = efn1 / 12;
+
+                    Total_A = (y + hr + ca + total_state + (efn1 / 12));
+                    total2 = Total_A + Total_B;
                     ctotal = total2;
 
-                    if (ctc == ctotal){
-                        $("#MCTC").html(Math.round(ctc/12));
-                        $("#MBASIC").html(Math.round(y));
-                        $("#MHRA").html(Math.round(hr));
-                        $("#MCA").html(Math.round(ca));
-                        $("#MSB").html(Math.round(total_state));
-                        $("#MEA").html(Math.round(e));
-                        $("#MTA").html(Math.round(ta2));
-                        $("#MESIC").html(Math.round(total_esic/12));
-                        $("#MPF").html(Math.round(pf/12));
-                        $("#MTB").html(Math.round(tb2/12));
-                        $("#MAB").html(Math.round(total2/12));
-                        $("#MT").html(Math.round(ctotal/12));
+
+                    var pfsy1 = y;
+                    console.log("y", y);
+                    var total_pfsy1 = 0;
+                    var pfs1 = 0;
+                    var pfs11 = 0;
+                    if (pfsy1 > 15000) {
+                        total_pfsy1 = pfsy1 * (12 / 100);
+                        console.log("y>15000", total_pfsy1);
+                        pfs1 = total_pfsy1 * 12;
+                        pfs11 = pfs1;
+                        $("#PF").val(Math.round(pfs11));
+                        $("#MPF").val(Math.round(pfs11 / 12));
+
+                    } else {
+                        var taf11 = taff / 12;
+                        console.log("taf11", taf11);
+                        pfsy1 = Total_A - hr;
+                        console.log("totala-hr", pfsy1);
+                        if (pfsy1 > 15000) {
+                            pfsy1 = 1800;
+                            console.log("totala-hr>15000", pfsy1);
+                            total_pfsy1 = pfsy1 * 12;
+                            pfs1 = total_pfsy1;
+                            pfs11 = pfs1;
+                            $("#PF").val(Math.round(pfs11));
+                            $("#MPF").val(Math.round(pfs11 / 12));
+                        } else {
+                            total_pfsy1 = pfsy1 * (12 / 100);
+                            console.log("totala-hr<15000", total_pfsy1);
+                            pfs1 = total_pfsy1 * 12;
+                            pfs11 = pfs1;
+                            $("#PF").val(Math.round(pfs11));
+                            $("#MPF").val(Math.round(pfs11 / 12));
+                        }
                     }
 
+                    var taf11 = taff / 12;
+                    var es1 = 0;
+                    var es11 = 0;
+                    var total_es11 = 0;
+                    var es1 = (Total_A - ca);
+                    esic121 = es1;
+                    if (es1 < 21000) {
+                        total_es11 = es1 * (3.25 / 100);
+                        $("#ESIC").val(Math.round(total_es11 * 12));
+                        $("#MESIC").val(Math.round(total_es11));
+                    } else {
+                        total_es11 = 0;
+                        $("#ESIC").val(Math.round(total_es11 * 12));
+                        $("#MESIC").val(Math.round(total_es11));
+                    }
+
+
+                    tb2n1 = pfs11 + (total_es11 * 12);
+                    Total_B = tb2n1 / 12;
+
+                    efn1 = 0;
+                    enewn1 = y + hr + ca + total_state + (pfs11 / 12) + total_es11;
+                    efn12f = ctc - (enewn1 * 12);
+                    executive_allowance = efn12f / 12;
+
+                    Total_A = (y + hr + ca + total_state + (efn12f / 12));
+                    total2 = Total_A + Total_B;
+                    ctotal = total2;
+
+
+
+
                     $("#basic").val(y * 12);
+                    $("#Mbasic").val(Math.round(y));
+
                     $("#hra").val(hr * 12);
-                    $("#Conveyance_Allowance")
-                        .val(ca * 12);
+                    $("#Mhra").val(Math.round(hr));
+
+                    $("#Conveyance_Allowance").val(ca * 12);
+                    $("#MConveyance_Allowance").val(Math.round(ca));
+
                     if (y < 21000) {
                         total_state = 0;
                     } else {
                         $("#Statutory_Bonus").val(total_state * 12);
+                        $("#MStatutory_Bonus").val(Math.round(total_state));
                     }
 
-                    $("#Total_B").val(Math.round(tb2));
-                    $("#Executive_Allowance").val(Math.round(e * 12));
-                    $("#Total_A").val(Math.round(ta2 * 12));
-                    $("#LTotal").val(Math.round(total2));
-                    $("#TOTAL").val(Math.round(ctotal));
+
+                    $("#Total_B").val(Math.round(Total_B * 12));
+                    $("#MTotal_B").val(Math.round(Math.round(Total_B)));
+
+
+                    $("#Executive_Allowance").val(Math.round(efn12f));
+                    $("#MExecutive_Allowance").val(Math.round(efn12f / 12));
+
+                    $("#Total_A").val(Math.round(Total_A * 12));
+                    $("#MTotal_A").val(Math.round(Total_A));
+
+                    $("#LTotal").val(Math.round(total2 * 12));
+                    $("#MLTotal").val(Math.round(total2));
+
+                    $("#TOTAL").val(Math.round(ctotal * 12));
+                    $("#MTOTAL").val(Math.round(ctotal));
+
+
                 } else {
                     $("#basic").val('0');
                     $("#al1").css('display', 'inline-block');
@@ -593,58 +641,59 @@
     }
     </script>
 </head>
+
 <body>
-<div class="wrapper">
+    <div class="wrapper">
         <div class="container-fluid"><br>
             <a href="index.php"><img src="..\images\nselogo.png" height="70px" width="110px"></a>
             <a href="https://hr.nseit.com/CTC-CALCULATOR" class="btn btn-primary ml-3" style="float: right;">Home</a>
             <a href="../logout.php" class="btn btn-danger ml-3" style="float: right;">Sign Out of Your Account</a>
-            <h5><b><center><font color="#0056b3">FTE CALCULATOR</font></center></b></h5>
+            <h5><b>
+                    <center>
+                        <font color="#0056b3">FTE CALCULATOR</font>
+                    </center>
+                </b></h5>
         </div>
-</div>
-<br>
-
+    </div>
+    <br>
+    <style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
+    </style>
 
     <form method="post" action="create_tcpdf.php">
-    <div class="container">
-    <div class="card" style=background-color:#BFD7ED>
-    <div class="card-body">
-            <!-- <div style="text-align: center;"><b>FTE</b></div> <br /> -->
-                <div class="green box">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label=""><b>Reference number of offer letter</b></label>
-                            <input type="text" class="form-control" id="Code" name="Code" placeholder="Code" />
-                            <br>
-                            <label="">Address Line 1</label>
-                            <input type="text" class="form-control" id="Ad1" name="Ad1" placeholder="Address Line 1" />
-                            <br>
-                            <label="">Address Line 3</label>
-                            <input type="text" class="form-control" id="Ad3" name="Ad3" placeholder="Address Line 3" />
-                            <br>
-                            <label="">Work Location</label>
-                            <input type="text" class="form-control" id="aloc" name="aloc" placeholder="Annexure Location" />
-                            <br>
-                            <label="">Offer date</label>
-                            <input type="date" class="form-control" id="doj" name="doj" placeholder="DOJ" />
-                            <br>
-                            <label="">End Date</label>
-                            <input type="date" class="form-control" id="ed" name="ed" placeholder="End Date" />
-                            <br>
-                            <label="">Working End Day</label>
-                            <input type="text" class="form-control" id="wed" name="wed" placeholder="Working End Day" />
-                            <br>
-                            <label=""><b>TARGETED CTC</b></label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                            <span id="MCTC"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="ctc" name="ctc" placeholder="CTC" />
-                            <br>
-                            <label=""><b>State</b></label>
-                            <select id="state" name="state" class="custom-select">
-                            <option selected>Select State</option>
-                            <?php
+        <div class="container">
+            <div class="card" style=background-color:#BFD7ED>
+                <div class="card-body">
+                    <!-- <div style="text-align: center;"><b>FTE</b></div> <br /> -->
+                    <div class="green box">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label=""><b>Reference number of offer letter</b></label>
+                                    <input type="text" class="form-control" id="Code" name="Code" placeholder="Code" />
+                                    <br>
+                            </div>
+                            <div class="col-lg-3">
+                                <label=""><b>TARGETED CTC</b></label>
+                                    <input type="text" class="form-control" id="ctc" name="ctc" placeholder="CTC" />
+                            </div>
+
+                            <div class="col-lg-3">
+                                <label=""><b>BASIC PERCENTAGE<small id="al1" style="display:none;"
+                                            class="badge badge-danger"> (Enter % between 5 to 50) </small></b></label>
+                                    <input type="number" class="form-control" id="basicp" name="basicp"
+                                        placeholder="basicp" />
+                            </div>
+
+
+                            <div class="col-lg-3">
+                                <label=""><b>State</b></label>
+                                    <select id="state" name="state" class="custom-select">
+                                        <option selected>Select State</option>
+                                        <?php
                                 $g_sql = "SELECT DISTINCT COL_1 FROm stat";
                                 $g_result = $link->query($g_sql);
                                 if ($g_result->num_rows > 0) {
@@ -653,141 +702,351 @@
                                     }
                                 }
                             ?>
-                                </select><br><br>
-                            <label="">BASIC</label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp;&nbsp;
-                            <span id="MBASIC"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="basic" name="basic" placeholder="basic" />
-                            <br>
-                            <label="">CONVEYANCE ALLOWANCE</label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <span id="MCA"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="Conveyance_Allowance" name="Conveyance_Allowance" placeholder="Conveyance_Allowance" />
-                            <br>
-                            <label="">EXECUTIVE ALLOWANCE</label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                            &nbsp; &nbsp; &nbsp;
-                            <span id="MEA"class="badge badge-info">Monthly Value : 0</span>
-                            <span id="OEAV" class="badge badge-danger"> Old Value : 0</span>
-                            <input type="text" class="form-control" id="Executive_Allowance" name="Executive_Allowance" placeholder="Executive_Allowance" />
-                            <br>
-                            <label=""> PF</label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                            <span id="MPF"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text"class="form-control" id="PF"name="PF" placeholder="PF" />
-                            <br>
-                            <label=""><b>TOTAL B</b></label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-                            <span id="MTB"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="Total_B" name="Total_B" placeholder="Total_B" />
-                            <br>
-                            <label><b>COST TO COMPANY (PART I + PART II)</b> </label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-                            <span id="MT"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="TOTAL" name="TOTAL" placeholder=" COST TO COMPANY (PART I+ PART II" />
-                            <br>
-                        </div>
-                        <div class="col-lg-6">
-                            <label="">Name</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Name" />
-                            <br>
-                            <label="">Address Line2</label>
-                            <input type="text" class="form-control" id="Ad2" name="Ad2" placeholder="Address Line 2" />
-                            <br>
-                            <label="">City</label>
-                            <input type="text" class="form-control" id="City" name="City" placeholder="City" />
-                            <br>
-                            <label="">Pincode</label>
-                            <input type="text" class="form-control" id="Pincode" name="Pincode" placeholder="Pincode" />
-                            <br>
-                            <label="">Start Date</label>
-                            <input type="date" class="form-control" id="Sd" name="Sd" placeholder="Start Date" />
-                            <br>
-                            <label="">Working Start Day</label>
-                            <input type="text" class="form-control" id="wsd" name="wsd" placeholder="Working Start Day" />
-                            <br>
-                            <label="">Position</label>
-                            <input type="text" class="form-control" id="Position" name="Position" placeholder="Position" />
-                            <br>
-                            <label=""><b>BASIC PERCENTAGE 
-                            <small id="al1" style="display:none;" class="badge badge-danger"> (Enter % between 5 to 50 ) </small></b></label>
-                            <input type="number" class="form-control" id="basicp" name="basicp" placeholder="basicp" />
-                            <br>
-                            <label=""><b>GRADE</b></label>
-                            <input class="form-control" id="grade" name="grade" value="F00" readonly/>
-                            <br>
-                            <label="">HRA</label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp;&nbsp; &nbsp;
-                            <span id="MHRA"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="hra" name="hra" placeholder="hra" />
-                            <br>
-                            <label="">STATUTORY BONUS</label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp; 
-                            <span id="MSB"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="Statutory_Bonus" name="Statutory_Bonus" placeholder="Statutory_Bonus" />
-                            <br>
-                            <label=""> <b>TOTAL  A</b></label>
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-                            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; 
-                            <span id="MTA"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="Total_A" name="Total_A" placeholder="Total_A" />
-                            <br>
-                            <div>
-                            <label=""> ESIC</label>
-                            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; 
-                            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; 
-                            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-                            <span id="MESIC"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="ESIC" name="ESIC" placeholder="ESIC" />
+                                    </select><br><br>
+
                             </div>
-                            <br>
-                            <label=""><b>TOTAL OF  PART I(A+B)</b></label>
-                            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; 
-                            &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-                            <span id="MAB"class="badge badge-info">Monthly Value : 0</span>
-                            <input type="text" class="form-control" id="LTotal" name="LTotal" placeholder="Total A+B" />
-                            <br><br><br>
-                            <script type="text/javascript">
-                                function ShowHideDiv() {
-                                    var chkYes = document.getElementById("chkYes");
-                                    var jbamount = document.getElementById("jbamount");
-                                    jbamount.style.display = chkYes.checked ? "block" : "none";
-                                }
-                            </script>
-                            <span>Joining Bonus</span>
-                            <label for="chkYes">
-                            <input type="radio" id="chkYes" name="chkPassPort" value="yes" onclick="ShowHideDiv()" />Yes</label>
-                            <label for="chkNo">
-                            <input type="radio" id="chkNo" name="chkPassPort" value="no" onclick="ShowHideDiv()" />No </label>
-                            <hr/>
-                            <div id="jbamount" style="display: none">Joining Bonus :
-                            <input type="text" name="jbamount" id="jbamount" />
                         </div>
-                        <br>
-                    </div>
-                </div>
+                        <table style="width:100%">
+                            <tr>
+                                <th>
+                                    <label="">Name</label>
+                                </th>
+                                <th><input type="text" class="form-control" id="name" name="name" placeholder="Name" />
+                                </th>
+                                <th>
+                                    <label="">Work Location</label>
+                                </th>
+                                <th> <input type="text" class="form-control" id="aloc" name="aloc"
+                                        placeholder="Annexure Location" />
+
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label="">
+                                        <label="">Address Line 1</label></label>
+                                </td>
+                                <td><input type="text" class="form-control" id="Ad1" name="Ad1"
+                                        placeholder="Address Line 1" />
+
+                                </td>
+                                <td>
+                                    <label="">Address Line2</label>
+                                </td>
+                                <td> <input type="text" class="form-control" id="Ad2" name="Ad2"
+                                        placeholder="Address Line 2" />
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label="">Address Line 3</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="Ad3" name="Ad3"
+                                        placeholder="Address Line 3" />
+
+                                </td>
+                                <td>
+                                    <label="">City</label>
+                                </td>
+                                <td> <input type="text" class="form-control" id="City" name="City" placeholder="City" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label="">Pincode</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="Pincode" name="Pincode"
+                                        placeholder="Pincode" />
+
+                                </td>
+                                <td>
+                                    <label="">Offer date</label>
+                                </td>
+                                <td> <input type="date" class="form-control" id="doj" name="doj" placeholder="DOJ" />
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label="">Designation</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="Position" name="Position"
+                                        placeholder="Position" />
+                                </td>
+                                <td>Grade</td>
+                                <td><input class="form-control" id="grade" name="grade" value="F00" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label="">Start Date</label>
+                                </td>
+                                <td><input type="date" class="form-control" id="Sd" name="Sd"
+                                        placeholder="Start Date" /></td>
+                                <td>
+                                    <label="">End Date</label>
+                                </td>
+                                <td><input type="date" class="form-control" id="ed" name="ed" placeholder="End Date" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label="">
+                                        <label="">Working Start Day</label></label>
+                                </td>
+                                <td> <input type="text" class="form-control" id="wsd" name="wsd"
+                                        placeholder="Working Start Day" />
+                                </td>
+                                <td>
+                                    <label="">
+                                        <label="">Working End Day</label></label>
+                                </td>
+                                <td> <input type="text" class="form-control" id="wed" name="wed"
+                                        placeholder="Working End Day" />
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <b>
+                                        <label="">Monthly</label>
+                                    </b>
+                                </td>
+                                <td>
+                                    <b>
+                                        <label="">Annual</label>
+                                    </b>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>PART I</b></td>
+                                <td><b>Fixed Componenets</b></td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>A</b></td>
+                                <td><b>Salary</b></td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <label="">BASIC</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="Mbasic" name="Mbasic"
+                                        placeholder="Mbasic" />
+                                </td>
+                                <td><input type="text" class="form-control" id="basic" name="basic"
+                                        placeholder="Abasic" />
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <label="">HRA</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="Mhra" name="Mhra" placeholder="Mhra" />
+
+                                </td>
+                                <td><input type="text" class="form-control" id="hra" name="hra" placeholder="Ahra" />
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <label="">STATUTORY BONUS</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="MStatutory_Bonus"
+                                        name="MStatutory_Bonus" placeholder="MStatutory_Bonus" />
+
+                                </td>
+                                <td><input type="text" class="form-control" id="Statutory_Bonus" name="Statutory_Bonus"
+                                        placeholder="AStatutory_Bonus" />
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <label="">CONVEYANCE ALLOWANCE</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="MConveyance_Allowance"
+                                        name="MConveyance_Allowance" placeholder="MConveyance_Allowance" />
+                                </td>
+                                <td><input type="text" class="form-control" id="Conveyance_Allowance"
+                                        name="Conveyance_Allowance" placeholder="AConveyance_Allowance" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <label="">EXECUTIVE ALLOWANCE</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="MExecutive_Allowance"
+                                        name="MExecutive_Allowance" placeholder="MExecutive_Allowance" />
+
+                                </td>
+                                <td><input type="text" class="form-control" id="Executive_Allowance"
+                                        name="Executive_Allowance" placeholder="AExecutive_Allowance" />
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <b>
+                                        <label=""> <b>TOTAL A</b></label>
+                                    </b>
+                                </td>
+                                <td><input type="text" class="form-control" id="MTotal_A" name="MTotal_A"
+                                        placeholder="MTotal_A" />
+                                </td>
+                                <td><input type="text" class="form-control" id="Total_A" name="Total_A"
+                                        placeholder="ATotal_A" />
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><b>B</b>
+                                </td>
+                                <td>
+                                    <b>
+                                        Retirals / Other Benefits
+                                    </b>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <label=""> Employer Contribution to Provident Fund</label>
+                                </td>
+                                <td><input type="text" class="form-control" id="MPF" name="MPF" placeholder="MPF" />
+
+                                </td>
+                                <td><input type="text" class="form-control" id="PF" name="PF" placeholder="APF" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <label=""> ESIC</label>
+                                </td>
+                                <td> <input type="text" class="form-control" id="MESIC" name="MESIC"
+                                        placeholder="MESIC" />
+
+
+                                </td>
+                                <td> <input type="text" class="form-control" id="ESIC" name="ESIC"
+                                        placeholder="AESIC" />
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <b>
+                                        <label=""><b>TOTAL B</b></label>
+                                    </b>
+                                </td>
+                                <td> <input type="text" class="form-control" id="MTotal_B" name="MTotal_B"
+                                        placeholder="MTotal_B" />
+
+
+
+                                </td>
+                                <td> <input type="text" class="form-control" id="Total_B" name="Total_B"
+                                        placeholder="ATotal_B" />
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <b>
+                                        <label=""><b>TOTAL OF PART I(A+B)</b></label>
+
+                                    </b>
+                                </td>
+                                <td>
+                                    <input type="text" class="form-control" id="MLTotal" name="MLTotal"
+                                        placeholder="MTotal A+B" />
+
+
+
+
+                                </td>
+                                <td> <input type="text" class="form-control" id="LTotal" name="LTotal"
+                                        placeholder="ATotal A+B" />
+
+
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <b>
+                                        <label><b>COST TO COMPANY (PART I + PART II)</b> </label>
+
+                                    </b>
+                                </td>
+                                <td> <input type="text" class="form-control" id="MTOTAL" name="MTOTAL"
+                                        placeholder=" M COST TO COMPANY (PART I+ PART II" />
+
+
+
+
+                                </td>
+                                <td> <input type="text" class="form-control" id="TOTAL" name="TOTAL"
+                                        placeholder=" A COST TO COMPANY (PART I+ PART II" />
+
+
+
+                                </td>
+                            </tr>
+                        </table>
+                        <br><br>
                         <div class="row">
                             <div class="col-lg-6"><input type="submit" name="submit" value="Export to PDF"></div>
                         </div>
-    </div> 
-    </div>
-    </div>
+                    </div>
+                </div>
+            </div>
     </form>
     <br>
-<body>
+
+    <body>
+
 </html>
