@@ -931,7 +931,7 @@
             <a href="../logout.php" class="btn btn-danger ml-3" style="float: right;">Sign Out of Your Account</a>
             <h5><b>
                     <center>
-                        <font color="#0056b3">OFF CAMPUS</font>
+                        <font color="#0056b3">PE E10 - S10 CALCULATOR</font>
                     </center>
                 </b></h5>
         </div>
