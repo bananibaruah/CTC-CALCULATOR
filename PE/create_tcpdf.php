@@ -91,7 +91,7 @@ $pdf->SetFont('times', '', 10.8);
 $pdf->SetMargins(10, 10, 15, true);
 $pdf->AddPage();
 $pdf->SetAutoPageBreak(TRUE, 30);
-$doj1 = date("M-d-Y", strtotime($doj));
+$doj1 = date("M-d-Y", strtotime($doj));s
 
 echo $doj1;
 
