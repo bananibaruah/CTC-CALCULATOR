@@ -640,10 +640,6 @@
                         }
 
 
-                        if (executive_allowance < 0) {
-                            alert("Executive Allowance Value in Minus");
-
-                        }
 
 
                         //Total_B
