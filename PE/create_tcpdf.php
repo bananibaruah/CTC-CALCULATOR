@@ -74,8 +74,11 @@ $TOTAL1 = round($TOTAL / 12);
 
 $Code = $_POST['Code'];
 
-$ins_sql = "INSERT INTO pe_jt(Code, Name, State,DOJ,Position,CTC,Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,LTA,EXECUTIVE_ALLOWANCE,FOOD_ALLOWANCE,MOBILE_REIMBURSEMENT,ATTIRE_ALLOWANCE,VEHICLE_REIMBURSEMENT,RETENTION_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,VARIABLE_PAY,TOTAL_AB,TOTAL) 
-            Values('$Code', '$name', '$state', '$doj', '$Position', '$ctc', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$lta','$Executive_Allowance','$Food_Allowance','$m_c_r', '$Attire_Allowance', '$vr', '$driver_reimbursement', '$Retention_Allowance', '$Total_A', '$PF', '$ESIC', '$gratuity', '$Total_B', '$LTOTAL', $Variable_Pay', '$Total_II', '$TOTAL')";
+$ins_sql = "INSERT INTO olt (Code, Name, State,DOJ,Position,CTC,Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,LTA,EXECUTIVE_ALLOWANCE,FOOD_ALLOWANCE,MOBILE_REIMBURSEMENT,
+            ATTIRE_ALLOWANCE,VEHICLE_REIMBURSEMENT,RETENTION_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,VARIABLE_PAY,TOTAL_AB,TOTAL) 
+            Values('$Code', '$name', '$state', '$doj', '$Position', '$ctc', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$lta','$Executive_Allowance',
+            '$Food_Allowance','$m_c_r', '$Attire_Allowance', '$vr', '$driver_reimbursement', '$Retention_Allowance', '$Total_A', '$PF', '$ESIC', '$gratuity', '$Total_B', 
+            '$LTOTAL', $Variable_Pay', '$Total_II', '$TOTAL')";
 
 $link->query($ins_sql);
 
