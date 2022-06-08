@@ -225,7 +225,7 @@ $Ad3 ,<br>
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
-Further to your application and subsequent discussions that we had with you, we are pleased to offer you the position of a “<b>$position</b>” in our company.
+Further to your application and subsequent discussions that we had with you, we are pleased to offer you the position of a “<b>$Position</b>” in our company.
 1.	Your traineeship will be for a period of Two years from the date of your appointment in the company. <br>
 2.	During  training  period,  you  will  be  eligible  for  a  monthly  gross  salary  of <b>Rs. $basic1/-</b> per month. <br>
 3.	You are required to sign a commitment for serving the organization for a minimum period of 2 years from the date of joining the organization.<br>
@@ -233,11 +233,11 @@ Further to your application and subsequent discussions that we had with you, we 
 If you find the above terms and conditions acceptable, we expect you to join us on or before <b>$doj</b><br>
 Kindly return the duplicate copy of this letter duly signed as a token of acceptance of offer.<br>
 A detailed appointment letter will be issued to you on joining.<br>
-We look forward to work with you.<br>
+We look forward to work with you.<br><br>
 
 Yours sincerely,<br>
 <img src="Sig.png" style="height:60px , width:30px"><br>
-<b>Tina Mathew<br>
+<b>Tina Mathew</b><br>
 Head – HR<br><br>
 
 
@@ -249,10 +249,10 @@ $html .= <<<EOD
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
-<b>OFFER LETTER OFFICE COPY </b>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b>OFFER LETTER OFFICE COPY </b>
 
 <b>
-<br><br>$doj1<br>
+<br>$doj1<br>
 $Code<br><br>
 $name <br>
 $Ad1 ,<br>
@@ -261,7 +261,7 @@ $Ad3 ,<br>
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
-Further to your application and subsequent discussions that we had with you, we are pleased to offer you the position of a “<b>$position</b>” in our company.
+Further to your application and subsequent discussions that we had with you, we are pleased to offer you the position of a “<b>$Position</b>” in our company.
 1.	Your traineeship will be for a period of Two years from the date of your appointment in the company. <br>
 2.	During  training  period,  you  will  be  eligible  for  a  monthly  gross  salary  of <b>Rs. $basic1/-</b> per month. <br>
 3.	You are required to sign a commitment for serving the organization for a minimum period of 2 years from the date of joining the organization.<br>
@@ -269,17 +269,19 @@ Further to your application and subsequent discussions that we had with you, we 
 If you find the above terms and conditions acceptable, we expect you to join us on or before <b>$doj</b><br>
 Kindly return the duplicate copy of this letter duly signed as a token of acceptance of offer.<br>
 A detailed appointment letter will be issued to you on joining.<br>
-We look forward to work with you.<br>
+We look forward to work with you.<br><br>
+
 Yours sincerely,<br>
 <img src="Sig.png" style="height:60px , width:30px"><br>
-<b>Tina Mathew<br>
+<b>Tina Mathew<br></b>
 Head – HR<br><br>
-<i><b>I accept the terms and conditions of my Offer.</b></i>
+
+<i><b>I accept the terms and conditions of my Offer.</b></i><br><br><br><br>
 <i><b><u>Signature & Date</u></b></i>
 EOD;
 
 $html .= '
-<br><br><br>' . $name . '<br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>' . $name . '<br><br><br>
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -411,11 +413,10 @@ EOD;
 
 
 
-$html .= '<br>' . $name . '<br><br><br>
-
+$html .= '<br>' . $name . '<br>
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-<b>Annexure I</b><br>
+&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;<b>Annexure I</b><br>
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 <u><b>COMPENSATION DETAILS </b></u>
@@ -698,26 +699,21 @@ b. Personal Accident Policy for the employees
 </tr>
    
 </table>
-<br><br><br><br><br><br><br><br>
+<br><br>
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;<b>_________________</b><br>
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Initials</b>
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+<b>Initials</b>
 <P style="page-break-before: always"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 ';
 
