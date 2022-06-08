@@ -69,6 +69,7 @@
         eflag = 0,
         yflag = 0,
         wf = 0;
+    bwf = 0;
     rechange_e = 0, rechange_y = 0;
     caflag = 0, rechange_ca = 0;
     var Food_Allowance = 0,
@@ -85,6 +86,7 @@
     P12 = 0;
     swf = 0, iwf = 0;
     rechange_vp = 0, vpflag = 0;
+    rechange_bp = 0, bpflag = 0;
     $(document).ready(function() {
 
 
@@ -183,7 +185,7 @@
                     } else {
                         alert(data);
                     }
-
+                    basic_pay_ch();
                 },
             });
 
@@ -304,6 +306,7 @@
                     } else {
                         alert(data);
                     }
+                    basic_pay_ch();
 
                 },
             });
@@ -319,7 +322,28 @@
                 wf = (ctc * (rechange_vp / 100));
                 vpflag = 1;
                 $('#Variable_Pay').val(wf);
-                $("#MVariable_Pay").val(wf / 12);
+                $("#MVariable_Pay").val(Math.roun(wf / 12));
+
+
+            } else {
+                alert('enter ctc first..');
+            }
+            basic_pay_ch();
+        });
+
+
+        $("#bp1").on("change", function() {
+            var ctc = $("#ctc").val();
+            if (ctc != "") {
+                $("#al2").css('display', 'none');
+                rechange_bp = $('#bp1').val();
+                dy1 = 0;
+                bwf = ((ctc * (rechange_bp / 100)) / 12);
+                dy1 = bwf * 0.01;
+                y = parseInt(Math.floor(dy1) + "00");
+                bpflag = 1;
+                $('#basic').val(y);
+                $("#Mbasic").val(Math.round(y / 12));
 
 
             } else {
@@ -354,6 +378,7 @@
             } else {
                 alert('enter ctc first..');
             }
+            basic_pay_ch();
 
         });
 
@@ -380,17 +405,15 @@
             } else {
                 alert('enter ctc first..');
             }
-
+            basic_pay_ch();
         });
-
-
-
 
 
         $("#oldctc").on("change", function() {
             oc1 = $("#oldctc").val();
             var ctc = $("#ctc").val();
             hike = Math.round((ctc / oc1 - 1) * 100);
+            console.log("hike", hike);
             old_check = (oc1 * 1.8);
             if (hike >= 81) {
                 var dra = 0,
@@ -402,8 +425,10 @@
             } else {
                 ra = 0;
             }
+            basic_pay_ch();
 
         });
+
 
         $("#basicp").on("keyup", function() {
             basic_pay_ch();
@@ -412,6 +437,7 @@
 
         $("#ctc").on("keyup", function() {
             var ctc = $("#ctc").val();
+            basic_pay_ch();
         });
 
 
@@ -421,11 +447,12 @@
 
             y = basic / 2;
             $("#hra").val(y);
+            basic_pay_ch();
         });
 
         $("#Executive_Allowance").on('change', function() {
             rechange_e = $("#Executive_Allowance").val();
-            rechange_e = (rechange_e * 12);
+            rechange_e = (rechange_e / 12);
             eflag = 1;
             basic_pay_ch();
         });
@@ -458,190 +485,440 @@
             x = $("#basicp").val();
             var ctc = $("#ctc").val(); //ctc
             oc1 = $("#oldctc").val(); //old ctc
+
             if (ctc != "") {
-                if (x >= 5 && x <= 50) {
-                    $("#al1").css('display', 'none');
-                    var dy = 0,
-                        dy1 = 0;
-                    dy = Math.floor((ctc * (x / 100)) / 12);
-                    dy1 = dy * 0.01;
-                    y = parseInt(Math.floor(dy1) + "00");
+                if (bpflag == 0) {
+                    if (x = 40) {
+                        $("#al1").css('display', 'none');
+                        var dy = 0,
+                            dy1 = 0;
+                        dy = Math.floor((ctc * (x / 100)) / 12);
+                        dy1 = dy * 0.01;
+                        y = parseInt(Math.floor(dy1) + "00");
+                        console.log("y 40", y);
 
-                    if (yflag == 0) {
+                        if (yflag == 0) {
 
-                        hr = y / 2;
+                            hr = y / 2;
 
-                        ca = 1600;
+                            ca = 1600;
 
-                        if (caflag == 1) {
-                            ca = parseInt(rechange_ca);
+                            if (caflag == 1) {
+                                ca = parseInt(rechange_ca);
+                            }
+
+
+
                         }
+                        if (yflag == 1) {
+                            y = rechange_y;
+                            hr = y / 2;
 
+                            ca = 1600;
 
+                            if (caflag == 1) {
+                                ca = parseInt(rechange_ca);
+                            }
 
-                    }
-                    if (yflag == 1) {
-                        y = rechange_y;
-                        hr = y / 2;
-
-                        ca = 1600;
-
-                        if (caflag == 1) {
-                            ca = parseInt(rechange_ca);
                         }
+                        gross = 0;
+                        gross = ctc / 12;
 
-                    }
+                        //Variable Pay
 
-                    //Gross
-                    gross = 0;
-                    gross = ctc / 12;
-
-                    //Variable Pay
-
-                    vp = 0;
-                    vp1 = 0;
-                    vp1 = wf;
-                    vp = vp1 / 12;
+                        vp = 0;
+                        vp1 = 0;
+                        vp1 = wf;
+                        vp = vp1 / 12;
 
 
-                    //PF
-                    var y_12 = y;
-                    var total_y_12 = 0;
-                    var pf = 0;
-                    var pf1 = 0;
-                    if (y_12 > 15000) {
-                        total_y_12 = y_12 * (12 / 100);
-                        pf = total_y_12;
-                        pf1 = pf;
-                        $("#PF").val(Math.round(pf1 * 12));
-                        $("#MPF").val(Math.round(pf1));
-
-
-                    } else {
-                        y_12 = gross - hr;
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
                         if (y_12 > 15000) {
-                            y_12 = 1800;
-                            total_y_12 = y_12;
-                            pf = total_y_12;
-                            pf1 = pf;
-                            $("#PF").val(Math.round(pf1 * 12));
-                            $("#MPF").val(Math.round(pf1));
-
-                        } else {
                             total_y_12 = y_12 * (12 / 100);
                             pf = total_y_12;
                             pf1 = pf;
                             $("#PF").val(Math.round(pf1 * 12));
                             $("#MPF").val(Math.round(pf1));
 
+
+                        } else {
+                            y_12 = gross - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            }
                         }
-                    }
 
-                    //Gratuity
-                    gt = (y / 12);
+                        //Gratuity
+                        gt = (y / 12);
 
-                    //Total_A
+                        //Total_A
 
-                    Total_A = gross - vp - pf1 - gt;
-
+                        Total_A = gross - vp - pf1 - gt;
 
 
-                    //ESIC
-                    esic = 0;
-                    total_esic = 0;
-                    esic = Total_A - ra - ca;
-                    if (esic < 21000) {
-                        total_esic = esic * (3.25 / 100);
-                        $("#ESIC").val(total_esic * 12);
-                        $("#MESIC").val(total_esic);
-                    } else {
+
+                        //ESIC
+                        esic = 0;
                         total_esic = 0;
-                        $("#ESIC").val(total_esic * 12);
-                        $("#MESIC").val(total_esic);
-                    }
+                        esic = Total_A - ra - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val(total_esic * 12);
+                            $("#MESIC").val(total_esic);
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val(total_esic * 12);
+                            $("#MESIC").val(total_esic);
+                        }
 
-                    //executive_allowance
-                    if (eflag == 0) {
-                        var e = 0;
-                        e = y + hr + ca + total_state + total_grade + ra;
-                        executive_allowance = (Total_A - e);
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            executive_allowance = e;
+                            if (flag == 1) {
+                                var ct = 0,
+                                    ct1 = 0;
+                                ct = parseInt(mra);
+                                ra = Math.floor(ct / 12);
+                                var e = 0;
+                                e = y + hr + ca + total_state + total_grade + ra;
+                                executive_allowance = (Total_A - e);
+
+
+                            }
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            e = y + hr + ca + total_state + total_grade + ra;
+                            executive_allowance = (Total_A - e);
+
+                            if (flag == 1) {
+                                var ct = 0,
+                                    ct1 = 0;
+                                ct = parseInt(mra);
+                                ra = Math.floor(ct / 12);
+                                var e = 0;
+                                e = y + hr + ca + total_state + total_grade + ra;
+                                executive_allowance = (Total_A - e);
+
+
+                            }
+                        }
+
                         if (flag == 1) {
                             var ct = 0,
                                 ct1 = 0;
                             ct = parseInt(mra);
                             ra = Math.floor(ct / 12);
+                            var e = 0;
                             e = y + hr + ca + total_state + total_grade + ra;
                             executive_allowance = (Total_A - e);
+
+                            if (eflag == 1) {
+                                e = rechange_e;
+                                executive_allowance = e;
+                            }
                         }
-                        if (eflag == 1) {
-                            var e = 0;
-                            rechange_e = e;
-                            executive_allowance = (e);
+
+
+                        if (executive_allowance < 0) {
+                            alert("Executive Allowance Value in Minus");
+
                         }
+
+
+                        //Total_B
+                        Total_B = pf1 + total_esic + gt;
+
+                        //TotalA+TotalB
+                        total2 = Total_A + Total_B;
+
+                        //Part2 Total
+                        P12 = wf + swf + iwf;
+
+                        //Part I + part II Total
+                        ctotal = total2 + (P12 / 12);
+
+                        $("#span_hike").html("Hike % : " + (hike));
+
+                        $("#basic").val(y * 12);
+                        $("#Mbasic").val(Math.round(y));
+
+                        $("#hra").val(hr * 12);
+                        $("#Mhra").val(Math.round(hr));
+
+                        $("#Conveyance_Allowance").val(ca * 12);
+                        $("#MConveyance_Allowance").val(ca);
+
+                        if (y > 21000) {
+                            total_state = 0;
+                            $("#Statutory_Bonus").val(total_state * 12);
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                        } else {
+                            $("#Statutory_Bonus").val(total_state * 12);
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                        }
+
+                        $("#gratuity").val(Math.round(gt * 12));
+                        $("#Mgratuity").val(Math.round(gt));
+
+                        $("#Total_B").val(Math.round(Total_B * 12));
+                        $("#MTotal_B").val(Math.round(Total_B));
+
+                        $("#Executive_Allowance").val(Math.round(executive_allowance * 12));
+                        $("#MExecutive_Allowance").val(Math.round(executive_allowance));
+
+                        $("#Retention_Allowance").val(Math.round(ra * 12));
+                        $("#MRetention_Allowance").val(Math.round(ra));
+
+                        $("#Total_A").val(Math.round(Total_A * 12));
+                        $("#MTotal_A").val(Math.round(Total_A));
+
+                        $("#LTotal").val(Math.round(total2 * 12));
+                        $("#MLTotal").val(Math.round(total2));
+
+                        $("#Total_II").val(Math.round(P12));
+                        $("#MTotal_II").val(Math.round(P12 / 12));
+
+                        $("#TOTAL").val(Math.round(ctotal * 12));
+                        $("#MTOTAL").val(Math.round(ctotal));
                     }
-
-
-                    //Total_B
-                    Total_B = pf1 + total_esic + gt;
-
-                    //TotalA+TotalB
-                    total2 = Total_A + Total_B;
-
-                    //Part2 Total
-                    P12 = wf + swf + iwf;
-
-                    //Part I + part II Total
-                    ctotal = total2 + (P12 / 12);
-
-
-
-                    $("#basic").val(y * 12);
-                    $("#Mbasic").val(Math.round(y));
-
-                    $("#hra").val(hr * 12);
-                    $("#Mhra").val(Math.round(hr));
-
-                    $("#Conveyance_Allowance").val(ca * 12);
-                    $("#MConveyance_Allowance").val(ca);
-
-                    if (y > 21000) {
-                        total_state = 0;
-                        $("#Statutory_Bonus").val(total_state * 12);
-                        $("#MStatutory_Bonus").val(Math.round(total_state));
-                    } else {
-                        $("#Statutory_Bonus").val(total_state * 12);
-                        $("#MStatutory_Bonus").val(Math.round(total_state));
-                    }
-
-                    $("#gratuity").val(Math.round(gt * 12));
-                    $("#Mgratuity").val(Math.round(gt));
-
-                    $("#Total_B").val(Math.round(Total_B * 12));
-                    $("#MTotal_B").val(Math.round(Total_B));
-
-                    $("#Executive_Allowance").val(Math.round(executive_allowance * 12));
-                    $("#MExecutive_Allowance").val(Math.round(executive_allowance));
-
-                    $("#Retention_Allowance").val(Math.round(ra * 12));
-                    $("#MRetention_Allowance").val(Math.round(ra));
-
-                    $("#Total_A").val(Math.round(Total_A * 12));
-                    $("#MTotal_A").val(Math.round(Total_A));
-
-                    $("#LTotal").val(Math.round(total2 * 12));
-                    $("#MLTotal").val(Math.round(total2));
-
-                    $("#Total_II").val(Math.round(P12));
-                    $("#MTotal_II").val(Math.round(P12 / 12));
-
-                    $("#TOTAL").val(Math.round(ctotal * 12));
-                    $("#MTOTAL").val(Math.round(ctotal));
-
-                } else {
-                    $("#basic").val('0');
-                    $("#al1").css('display', 'inline-block');
                 }
-            } else {
+
+                if (bpflag == 1) {
+                    if (x = rechange_bp) {
+                        $("#al1").css('display', 'none');
+                        var dy = 0,
+                            dy1 = 0;
+                        dy = Math.floor((ctc * (rechange_bp / 100)) / 12);
+                        dy1 = dy * 0.01;
+                        y = parseInt(Math.floor(dy1) + "00");
+                        $("#basic").val(y * 12);
+                        $("#Mbasic").val(Math.round(y));
+                        console.log("y M", y);
+
+
+                        if (yflag == 0) {
+
+                            hr = y / 2;
+
+                            ca = 1600;
+
+                            if (caflag == 1) {
+                                ca = parseInt(rechange_ca);
+                            }
+
+
+
+                        }
+                        if (yflag == 1) {
+                            y = rechange_y;
+                            hr = y / 2;
+
+                            ca = 1600;
+
+                            if (caflag == 1) {
+                                ca = parseInt(rechange_ca);
+                            }
+
+                        }
+                        gross = 0;
+                        gross = ctc / 12;
+
+                        //Variable Pay
+
+                        vp = 0;
+                        vp1 = 0;
+                        vp1 = wf;
+                        vp = vp1 / 12;
+
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val(Math.round(pf1 * 12));
+                            $("#MPF").val(Math.round(pf1));
+
+
+                        } else {
+                            y_12 = gross - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            }
+                        }
+
+                        //Gratuity
+                        gt = (y / 12);
+
+                        //Total_A
+
+                        Total_A = gross - vp - pf1 - gt;
+
+
+
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        esic = Total_A - ra - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val(total_esic * 12);
+                            $("#MESIC").val(total_esic);
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val(total_esic * 12);
+                            $("#MESIC").val(total_esic);
+                        }
+
+                        //Executive Allowance
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            executive_allowance = e;
+                            if (flag == 1) {
+                                var ct = 0,
+                                    ct1 = 0;
+                                ct = parseInt(mra);
+                                ra = Math.floor(ct / 12);
+                                var e = 0;
+                                e = y + hr + ca + total_state + total_grade + ra;
+                                executive_allowance = (Total_A - e);
+                            }
+
+                        }
+
+                        if (eflag == 0) {
+
+                            var e = 0;
+                            e = y + hr + ca + total_state + total_grade + ra;
+                            executive_allowance = (Total_A - e);
+
+                            if (flag == 1) {
+                                var ct = 0,
+                                    ct1 = 0;
+                                ct = parseInt(mra);
+                                ra = Math.floor(ct / 12);
+                                var e = 0;
+                                e = y + hr + ca + total_state + total_grade + ra;
+                                executive_allowance = (Total_A - e);
+
+
+                            }
+                        }
+
+                        if (flag == 1) {
+                            var ct = 0,
+                                ct1 = 0;
+                            ct = parseInt(mra);
+                            ra = Math.floor(ct / 12);
+                            var e = 0;
+                            e = y + hr + ca + total_state + total_grade + ra;
+                            executive_allowance = (Total_A - e);
+                            if (eflag == 1) {
+                                e = rechange_e;
+                                executive_allowance = e;
+                            }
+                        }
+
+                        //Total_B
+                        Total_B = pf1 + total_esic + gt;
+
+                        //TotalA+TotalB
+                        total2 = Total_A + Total_B;
+
+                        //Part2 Total
+                        P12 = wf + swf + iwf;
+
+                        //Part I + part II Total
+                        ctotal = total2 + (P12 / 12);
+
+                        $("#span_hike").html("Hike % : " + (hike));
+
+                        $("#basic").val(y * 12);
+                        $("#Mbasic").val(Math.round(y));
+
+                        $("#hra").val(hr * 12);
+                        $("#Mhra").val(Math.round(hr));
+
+                        $("#Conveyance_Allowance").val(ca * 12);
+                        $("#MConveyance_Allowance").val(ca);
+
+                        if (y > 21000) {
+                            total_state = 0;
+                            $("#Statutory_Bonus").val(total_state * 12);
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                        } else {
+                            $("#Statutory_Bonus").val(total_state * 12);
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                        }
+
+                        $("#gratuity").val(Math.round(gt * 12));
+                        $("#Mgratuity").val(Math.round(gt));
+
+                        $("#Total_B").val(Math.round(Total_B * 12));
+                        $("#MTotal_B").val(Math.round(Total_B));
+
+                        $("#Executive_Allowance").val(Math.round(executive_allowance * 12));
+                        $("#MExecutive_Allowance").val(Math.round(executive_allowance));
+
+                        $("#Retention_Allowance").val(Math.round(ra * 12));
+                        $("#MRetention_Allowance").val(Math.round(ra));
+
+                        $("#Total_A").val(Math.round(Total_A * 12));
+                        $("#MTotal_A").val(Math.round(Total_A));
+
+                        $("#LTotal").val(Math.round(total2 * 12));
+                        $("#MLTotal").val(Math.round(total2));
+
+                        $("#Total_II").val(Math.round(P12));
+                        $("#MTotal_II").val(Math.round(P12 / 12));
+
+                        $("#TOTAL").val(Math.round(ctotal * 12));
+                        $("#MTOTAL").val(Math.round(ctotal));
+                    }
+                }
+            } else
+            //     $("#basic").val('0');
+            //     $("#al1").css('display', 'inline-block');
+
+            {
                 alert('enter ctc first..');
             }
         });
@@ -658,7 +935,7 @@
             <a href="../logout.php" class="btn btn-danger ml-3" style="float: right;">Sign Out of Your Account</a>
             <h5><b>
                     <center>
-                        <font color="#0056b3">PE (M10 & Above)</font>
+                        <font color="#0056b3">PE(M10 & Above)</font>
                     </center>
                 </b></h5>
         </div>
@@ -675,44 +952,24 @@
             <div class="card" style=background-color:#BFD7ED>
                 <div class="card-body"><br />
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <label=""><b>Reference number of offer letter</b></label>
                                 <input type="text" class="form-control" id="Code" name="Code" placeholder="" />
                                 <br>
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-lg-4">
                             <label=""><b>TARGETED CTC</b></label>
                                 <input type="text" class="form-control" id="ctc" name="ctc" placeholder="" />
                         </div>
-                        <div class="col-lg-2">
+                        <div class="col-lg-4">
                             <label=""><b>OLD CTC</b></label>
-                                <span id="hike" name="hike" class="badge badge-danger">Hike % </span>
+                                <span style="float:right" id="span_hike" class="badge badge-primary">Hike % : </span>
                                 <input type="text" class="form-control" id="oldctc" name="oldctc" placeholder="" />
 
                         </div>
 
-                        <div class="col-lg-2">
-                            <label=""><b>BASIC PERCENTAGE<small id="al1" style="display:none;"
-                                        class="badge badge-danger"> (Enter % between 5 to 50) </small></b></label>
-                                <input type="number" class="form-control" id="basicp" name="basicp" placeholder="" />
-                        </div>
-                        <div class="col-lg-3">
-                            <label=""><b>STATE</b></label>
-                                <select id="state" name="state" class="custom-select">
-                                    <option selected>Select State</option>
-                                    <?php
-                                $g_sql = "SELECT DISTINCT COL_1 FROm stat";
-                                $g_result = $link->query($g_sql);
-                                if ($g_result->num_rows > 0) {
-                                    while ($g_row = $g_result->fetch_assoc()) {
-                                        echo "<option value='" . $g_row['COL_1'] . "'>" . $g_row['COL_1'] . "</option>";
-                                    }
-                                }
-                            ?>
-                                </select><br><br>
 
-                        </div>
                     </div><br>
 
 
@@ -813,6 +1070,34 @@
 
                             </td>
                         </tr>
+
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                            <td>
+                                <b>
+                                    <label=""><b>STATE</b></label>
+                                </b>
+                            </td>
+                            <td>
+                                <b>
+                                    <select id="state" name="state" class="custom-select">
+                                        <option selected>Select State</option>
+                                        <?php
+                                $g_sql = "SELECT DISTINCT COL_1 FROm stat";
+                                $g_result = $link->query($g_sql);
+                                if ($g_result->num_rows > 0) {
+                                    while ($g_row = $g_result->fetch_assoc()) {
+                                        echo "<option value='" . $g_row['COL_1'] . "'>" . $g_row['COL_1'] . "</option>";
+                                    }
+                                }
+                            ?>
+                                    </select> </b>
+                            </td>
+                        </tr>
+
+
                         <tr>
                             <td></td>
                             <td></td>
@@ -848,10 +1133,26 @@
                             <td>
                             </td>
                             <td>
-                                <label="">BASIC</label>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <label="">BASIC</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label=""><b>BASIC PERCENTAGE<small id="al1" style="display:none;"
+                                                    class="badge badge-danger"> (Enter % between 5 to 50)
+                                                </small></b></label>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <input type="number" class="form-control" id="bp1" name="bp1" placeholder="" />
+                                    </div>
+
+                                </div>
                             </td>
-                            <td><input type="text" class="form-control" id="Mbasic" name="Mbasic" placeholder="" />
+                            <td>
+                                <input type="text" class="form-control" id="Mbasic" name="Mbasic" placeholder="" />
                             </td>
+
                             <td><input type="text" class="form-control" id="basic" name="basic" placeholder="" />
 
                             </td>
