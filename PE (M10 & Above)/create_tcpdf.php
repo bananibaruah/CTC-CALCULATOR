@@ -74,11 +74,8 @@ $TOTAL1 = round($TOTAL / 12);
 
 $Code = $_POST['Code'];
 
-$ins_sql = "INSERT INTO olt (Code, Name, State,DOJ,Position,CTC,Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,LTA,EXECUTIVE_ALLOWANCE,FOOD_ALLOWANCE,MOBILE_REIMBURSEMENT,
-            ATTIRE_ALLOWANCE,VEHICLE_REIMBURSEMENT,RETENTION_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,VARIABLE_PAY,TOTAL_AB,TOTAL) 
-            Values('$Code', '$name', '$state', '$doj', '$Position', '$ctc', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$lta','$Executive_Allowance',
-            '$Food_Allowance','$m_c_r', '$Attire_Allowance', '$vr', '$driver_reimbursement', '$Retention_Allowance', '$Total_A', '$PF', '$ESIC', '$gratuity', '$Total_B', 
-            '$LTOTAL', $Variable_Pay', '$Total_II', '$TOTAL')";
+$ins_sql = "INSERT INTO pe_jt(Code, Name, State,DOJ,Position,CTC,Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,LTA,EXECUTIVE_ALLOWANCE,FOOD_ALLOWANCE,MOBILE_REIMBURSEMENT,ATTIRE_ALLOWANCE,VEHICLE_REIMBURSEMENT,RETENTION_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,VARIABLE_PAY,TOTAL_AB,TOTAL) 
+            Values('$Code', '$name', '$state', '$doj', '$Position', '$ctc', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$lta','$Executive_Allowance','$Food_Allowance','$m_c_r', '$Attire_Allowance', '$vr', '$driver_reimbursement', '$Retention_Allowance', '$Total_A', '$PF', '$ESIC', '$gratuity', '$Total_B', '$LTOTAL', $Variable_Pay', '$Total_II', '$TOTAL')";
 
 $link->query($ins_sql);
 
@@ -91,7 +88,7 @@ $pdf->SetFont('times', '', 10.8);
 $pdf->SetMargins(10, 10, 15, true);
 $pdf->AddPage();
 $pdf->SetAutoPageBreak(TRUE, 30);
-$doj1 = date("M-d-Y", strtotime($doj));s
+$doj1 = date("M-d-Y", strtotime($doj));
 
 echo $doj1;
 
@@ -211,9 +208,9 @@ $Ad2 ,<br>
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
-Further to our discussions we are pleased to offer you the role of "<b>$Position</b>". The detailed terms and conditions of your offer have been set out in Annexures I and II and are enclosed herewith.<br><br>
+Further to our discussions we are pleased to offer you the role of “<b>$Position</b>". The detailed terms and conditions of your offer have been set out in Annexures I and II and are enclosed herewith.<br><br>
 Please take the time to read and understand the offer details. Should you have any queries on the terms please contact your Talent Acquisition representative. <br><br>
-You are requested to give us your e-mail confirmation of having accepted the terms and conditions of our offer letter within 2 days of our e-mail, followed by sending us a duly signed copy of the same in token of your acceptance of the said offer letter no later than 10 days from the date of issue of this letter, failing which this offer stands withdrawn. <br><br>
+You are requested to give us your e-mail confirmation of having accepted the terms and conditions of our offer letter within 2 days of our e-mail, followed by sending us a duly signed copy of the same in token of your acceptance of the said offer letter no later than 10 days from the date of issue of this letter, failing which this offer stands withdrawn.  <br><br>
 You are required to report for duty on <b>$doj1</b> not later than 9.30 a.m.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>       																							         
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.<br><br>
 <b>$name</b> we look forward to you joining NSEIT for a mutually rewarding association.<br><br>
@@ -307,14 +304,14 @@ $html .= '
 You will be on probation for a period of 6 months from your date of joining. <br><br>
 
 <b>Medical Fitness:</b><br><br>
-Your appointment will be subject to your being found medically fit for service in the Company and furnishing a duly stamped and signed letter by a registered medical practitioner as a memorandum thereof.<br><br>
+Your appointment will be subject to your being found medically fit for service in the Company and satisfactory report thereof being received by the Company. You will mandatorily be required to undergo the medical examination at the company designated laboratories prior to joining the company. On receipt of acceptance of the offer, the company will inform you regarding the necessary steps to be taken for the medical.<br><br>
 
 <b>Submission of Documents:</b><br><br>
 At the time of reporting for duty the documents as per Annexure II should be submitted. Original documents must be produced for verification purposes and the same will be returned to you after completion of the verification process. The Company reserves the right to revoke the offer or appointment if any discrepancy is found in your documents. If any statement, documentation, declaration or information given by you at any time, is found to be fraudulent / false or if any material / particular is suppressed / misinformed, your services are liable to be terminated forthwith without any notice or compensation in lieu thereof.<br>
 Your appointment will be subject to your furnishing such information as the Company may require from time to time and subject to your services being acceptable in the light of the information furnished.<br><br>
 
 <b>Background Verification:</b><br><br>
-Background Verification:The Company reserves the right to carry out reference verifications or background checks (not restricted to the last salary drawn, past employment, use of banned / illegal drugs / narcotic substances, criminal records etc.) prior to your joining the Company or during the course of your employment with the Company. You understand and acknowledge that this is a requirement and you have no objections whatsoever if such checks are carried out by the company or a third party agency engaged by the company. <br><br>
+The Company reserves the right to carry out reference verifications or background checks (not restricted to the last salary drawn, past employment, use of banned / illegal drugs / narcotic substances, criminal records etc.) prior to your joining the Company or during the course of your employment with the Company. You understand and acknowledge that this is a requirement and you have no objections whatsoever if such checks are carried out by the company or a third party agency engaged by the company.  <br><br>
 <br>
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -347,15 +344,16 @@ $html .= <<<EOD
 
 a.	Either party can terminate the contract of employment by giving 90 (Ninety) days notice in writing (subject further that such requirement shall extend to you during the tenure of probation period as well) subject to the Company’s right to pay salary in lieu thereof to you. The Company may also waive the requirement of serving notice period by you, either in full or part, solely at its own discretion and recover salary in lieu of notice period (pro rata if applicable) from you. However, should you sign any Service Agreement / undertaking with the company as a part of your employment process or later during the course of your employment with the company, you will then not be allowed to terminate your employment with the company unless you comply with the terms and conditions of the Service Agreement / Undertaking. <br><br>
 
-b.	It will be mandatory for you to serve the full notice period without taking any leave to help with complete hand over of all your responsibilities to an identified person. Any exceptions to this will be allowed only on 
+b.	b.	It will be mandatory for you to serve the full notice period without taking any leave to help with complete hand over of all your responsibilities to an identified person. Any exceptions to this will be allowed only on 
 Special approval of your BU head. In such cases your notice period and release date will be extended on a pro-rata basis to the extent of the leaves taken.
+
  <br><br>
 
 c.	Company may, in certain circumstances, prefer to terminate your services without the notice period or a reduced notice period if there is a lack of business opportunity or your non competence, in such case, you will be paid salary in lieu of thereof for those many days<br><br>
 
 d.	Similarly, if you are willing to serve the full notice period but the Company desires your early release for any reason, the Company will pay you salary in lieu of the relevant notice period.<br><br>
 
-e.	Your services are liable to be terminated forthwith without any notice or compensation or in the alternative, you shall be liable to disciplinary action and imposition of penalty in accordance with the Company Staff Rules if after your report for duty the Company receives information that you have prior to joining the Company’s services committed any act of misconduct, furnished fraudulent information or during your service in the Company, violated Company policy/ Code of conduct/ Staff Rules and regulations, Employment contract or if you are guilty of any act of misconduct, dishonesty, fraud, misdemeanor, which, in the opinion of the Company renders you unfit to serve in the Company.<br><br>
+e.	e.	Your services are liable to be terminated forthwith without any notice or compensation or in the alternative, you shall be liable to disciplinary action and imposition of penalty in accordance with the Company Staff Rules if after your report for duty the Company receives information that you have prior to joining the Company’s services committed any act of misconduct, furnished fraudulent information or during your service in the Company, violated Company policy/ Code of conduct/ Staff Rules and regulations, Employment contract or if you are guilty of any act of misconduct, dishonesty, fraud, misdemeanor, which, in the opinion of the Company renders you unfit to serve in the Company.<br><br>
 
 f.	Salary in all the above cases refers to Basic Salary.  <br><br>
 <br><br><br>
@@ -445,28 +443,21 @@ $name<br>
         <td><b></b></td>
         <td>HRA</td>
         <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $hra1) . '</td>
-        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $hra) . '</td>
-    </tr>';
-
-if ($Conveyance_Allowance != 0) {
-
-        $html .= '<tr>
+        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $hra ). '</td>
+    </tr>
+    <tr>
         <td><b></b></td>
         <td>Conveyance Allowance</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Conveyance_Allowance1) . '</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Conveyance_Allowance) . '</td>
-    </tr>';
-    }
-
-if ($Statutory_Bonus != 0) {
-
-        $html .= '<tr>
+    </tr>
+    <tr>
         <td><b></b></td>
         <td>Statutory Bonus</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Statutory_Bonus1) . '</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Statutory_Bonus) . '</td>
     </tr>';
-    }
+
 if ($lta1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
@@ -479,7 +470,7 @@ $html .= '<tr>
     <td><b></b></td>
         <td>Executive Allowance</td>
         <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Executive_Allowance1) . '</td>
-        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Executive_Allowance) . '</td>
+        <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Executive_Allowance ). '</td>
     </tr>';
 if ($Food_Allowance1 != 0) {
     $html .= '<tr>
@@ -489,19 +480,17 @@ if ($Food_Allowance1 != 0) {
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Food_Allowance) . '</td>
     </tr>';
 }
-if ($m_c_r1 != 0) {
-    $html .= '<tr>
+$html .= '<tr>
         <td><b></b></td>
         <td>Mobile Reimbursement Charges</td>
-		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $m_c_r1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $m_c_r1 ). '</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $m_c_r) . '</td>
     </tr>';
-}
 if ($Attire_Allowance1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Attire Allowance</td>
-		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Attire_Allowance1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Attire_Allowance1 ). '</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Attire_Allowance) . '</td>
     </tr>';
 }
@@ -510,7 +499,7 @@ if ($vr1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Vehicle Reimbursement</td>
-		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $vr1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $vr1 ). '</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $vr) . '</td>
     </tr>';
 }
@@ -519,7 +508,7 @@ if ($driver_reimbursement1 != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>Driver Reimbursement</td>
-		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $driver_reimbursement1). '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $driver_reimbursement1) . '</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $driver_reimbursement) . '</td>
     </tr>';
 }
@@ -557,7 +546,7 @@ if ($ESIC != 0) {
     $html .= '<tr>
         <td><b></b></td>
         <td>ESIC</td>
-		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $ESIC1) . '</td>
+		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $ESIC1 ). '</td>
 		<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $ESIC) . '</td>
     </tr>';
 }
@@ -571,14 +560,14 @@ $html .= '<tr>
     <tr>
         <td><b></b></td>
         <td><b>Total B</b></td>
-		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_B1) . '</b></td>
-		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_B). '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_B1 ). '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_B) . '</b></td>
     </tr>
     <tr>
         <td><b></b></td>
         <td><b>Total of PART I (A+B)</b>  </td>
-		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTOTAL1) . '</b></td>
-		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTOTAL) . '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTOTAL1 ). '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTOTAL ). '</b></td>
     </tr>  
     <tr>
         <td><b>PART II</b></td>
@@ -586,44 +575,42 @@ $html .= '<tr>
         <td><b></b></td>
         <td><b></b></td>
     </tr>';
-if ($Variable_Pay != 0) {
+
+    if ($Variable_Pay != 0) {
         $html .= '<tr>
         <td><b></b></td>
         <td> ' . $vp . ' </td>
         <td></td>
         <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Variable_Pay) . '</td>
     </tr>';
-}
-
+    }
 if ($STRB != 0) {
     $html .= '<tr>
     <td><b></b></td>
     <td>  STRB </td>
     <td></td>
-    <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $STRB). '</td>
+    <td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $STRB ). '</td>
 </tr>';
 }
-
 if ($Incentive_Bonus != 0) {
 $html .= '<tr>
 <td><b></b></td>
 <td> Incentive Bonus </td>
 <td></td>
-<td>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Incentive_Bonus). '</td>
+<td>' .preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,",  $Incentive_Bonus ). '</td>
 </tr>';
 }
-
 $html .= '<tr>
         <td><b></b></td>
         <td><b> Total of Part II</b>  </td>
 		<td><b></b></td>
-		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_II ). '</b></td>
+		<td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $Total_II) . '</b></td>
     </tr>
     <tr>
     <td><b></b></td>
         <td><b> Cost to Company Part I + Part II</b>  </td>
         <td><b></b></td>
-        <td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $TOTAL) . '</b></td>
+        <td><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $TOTAL ). '</b></td>
     </tr>
     <tr>
         <td colspan="4"><b>Please note: </b></td>
@@ -633,43 +620,42 @@ $html .= '<tr>
         </td>
     </tr>
     <tr>
-        <td colspan="4">';
-        if($vp == 0)
-        {
+    <td colspan="4">';
+    if($vp == 0)
+    {
+
+    }
+    if($vp == "Variable Pay * ")
+    {
+        $html.='* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.';
+        $html .= ' <br><br>';
+    }
+    if($vp=="Sales Incentive *** ")
+    {
+        $html.='*** As per policy';
+        $html .= ' <br><br>';
+    }
+    if($vp=="Business Incentive *** ")
+    {
+        $html.='* *** As per policy';
+        $html .= ' <br><br>';
+    }
     
-        }
-        if($vp == "Variable Pay * ")
-        {
-            $html.='* Currently paid bi-annually in April and October every year s.t. performance and you being confirmed on rolls of organization.';
-            $html .= ' <br><br>';
-        }
-        if($vp=="Sales Incentive *** ")
-        {
-            $html.='*** As per policy';
-            $html .= ' <br><br>';
-        }
-        if($vp=="Business Incentive *** ")
-        {
-            $html.='* *** As per policy';
-            $html .= ' <br><br>';
-        }
-        
-    if($comp1YesNo == "no"){
-        $html .= ' <br><br>';
-    }
-    if($comp1YesNo == "yes"){
-        $html .= '** Payable in 2 equal installments (after completion of every 6 months) from the effective date of this letter; s.t. your being on the rolls of the organization on those dates. On completion of 12 months this component will be redundant and the amount will be aligned to the fixed component.';
-        $html .= ' <br><br>';
-    }
-    if($comp2YesNo == "no"){
-        $html .= ' <br><br>';
-    }
-    if($comp2YesNo == "yes"){
-        $html .= '#  Payable Monthly as an exception. Recoverable if you resign the organization within 12 months of the effective date of this letter. On completion of 12 months this component will be redundant and the amount will be aligned to the fixed component.';
-        $html .= ' <br><br>';
-    }
-        
-        $html.='</td>
+if($comp1YesNo == "no"){
+    $html .= ' <br><br>';
+}
+if($comp1YesNo == "yes"){
+    $html .= '** Payable in 2 equal installments (after completion of every 6 months) from the effective date of this letter; s.t. your being on the rolls of the organization on those dates. On completion of 12 months this component will be redundant and the amount will be aligned to the fixed component.';
+    $html .= ' <br><br>';
+}
+if($comp2YesNo == "no"){
+    $html .= ' <br><br>';
+}
+if($comp2YesNo == "yes"){
+    $html .= '#  Payable Monthly as an exception. Recoverable if you resign the organization within 12 months of the effective date of this letter. On completion of 12 months this component will be redundant and the amount will be aligned to the fixed component.';
+    $html .= ' <br><br>';
+}
+$html.='</td>
     </tr>
     <tr>
         <td colspan="4"><b>In addition to the above: </b><br>The company provides the following benefits for their employees, the premium for which is directly paid by the company:<br>
