@@ -91,9 +91,9 @@ $pdf->SetFont('times', '', 10.8);
 $pdf->SetMargins(10, 10, 15, true);
 $pdf->AddPage();
 $pdf->SetAutoPageBreak(TRUE, 30);
-$doj1 = date("M-d-Y", strtotime($doj));s
-
-echo $doj1;
+$doj1 = date("F d, Y", strtotime($doj));
+$Sd1 = date("F d, Y", strtotime($Sd));
+$ed1 = date("F d, Y", strtotime($ed));
 
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF
@@ -380,6 +380,7 @@ f.	Salary in all the above cases refers to Basic Salary.  <br><br>
 &nbsp; &nbsp; &nbsp; &nbsp;<b>Initials</b>
 
 <br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
 
 EOD;
 
