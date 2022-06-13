@@ -66,6 +66,7 @@
         yflag = 0;
     rechange_e = 0, rechange_y = 0;
     caflag = 0, rechange_ca = 0;
+    rechange_bp = 0, bpflag = 0;
 
 
 
@@ -211,6 +212,26 @@
 
         });
 
+        $("#bp1").on("change", function() {
+            var ctc = $("#ctc").val();
+            if (ctc != "") {
+                $("#al2").css('display', 'none');
+                rechange_bp = $('#bp1').val();
+                dy1 = 0;
+                bwf = ((ctc * (rechange_bp / 100)) / 12);
+                dy1 = bwf * 0.01;
+                y = parseInt(Math.floor(dy1) + "00");
+                bpflag = 1;
+                $('#basic').val(y);
+                $("#Mbasic").val(Math.round(y / 12));
+
+
+            } else {
+                alert('enter ctc first..');
+            }
+            basic_pay_ch();
+        });
+
         $("#basicp").on("keyup", function() {
             basic_pay_ch();
 
@@ -258,389 +279,765 @@
             // oc1 = $("#oldctc").val(); //old ctc
             // $("#hike").html(hike, "%");
             if (ctc != "") {
-                if (x >= 5 && x <= 50) {
-                    $("#al1").css('display', 'none');
-                    var dy = 0,
-                        dy1 = 0;
-                    dy = Math.floor((ctc * (x / 100)) / 12);
-                    dy1 = dy * 0.01;
-                    y = parseInt(Math.floor(dy1) + "00");
+                if (bpflag == 0) {
+                    if (x = 40) {
+                        $("#al1").css('display', 'none');
+                        var dy = 0,
+                            dy1 = 0;
+                        dy = Math.floor((ctc * (x / 100)) / 12);
+                        dy1 = dy * 0.01;
+                        y = parseInt(Math.floor(dy1) + "00");
 
-                    if (yflag == 0) {
+                        if (yflag == 0) {
 
-                        hr = y / 2;
+                            hr = y / 2;
 
-                        ca = 1600;
+                            ca = 1600;
 
-                        if (caflag == 1) {
-                            ca = parseInt(rechange_ca);
-                        }
-
-                        if (flag == 0) {
-                            ta1 = y + hr + ca + total_state;
-                        }
-
-
-                    }
-                    if (yflag == 1) {
-                        y = rechange_y;
-                        hr = y / 2;
-
-
-                        if (flag == 0) {
                             if (caflag == 1) {
                                 ca = parseInt(rechange_ca);
                             }
-                            ta1 = y + hr + ca + total_state;
+
+                            if (flag == 0) {
+                                ta1 = y + hr + ca + total_state;
+                            }
+
+
+                        }
+                        if (yflag == 1) {
+                            y = rechange_y;
+                            hr = y / 2;
+
+
+                            if (flag == 0) {
+                                if (caflag == 1) {
+                                    ca = parseInt(rechange_ca);
+                                }
+                                ta1 = y + hr + ca + total_state;
+                            }
+
+
                         }
 
-
-                    }
-
-                    var y_12 = y;
-                    var total_y_12 = 0;
-                    var pf = 0;
-                    var pf1 = 0;
-                    if (y_12 > 15000) {
-                        total_y_12 = y_12 * (12 / 100);
-                        pf = total_y_12 * 12;
-                        pf1 = pf;
-                        $("#PF").val(Math.round(pf1));
-                        $("#MPF").val(Math.round(pf1 / 12));
-
-
-                    } else {
-                        y_12 = ta1 - hr;
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
                         if (y_12 > 15000) {
-                            y_12 = 1800;
-                            total_y_12 = y_12 * 12;
-                            pf = total_y_12;
-                            pf1 = pf;
-                            $("#PF").val(Math.round(pf1));
-                            $("#MPF").val(Math.round(pf1 / 12));
-
-                        } else {
                             total_y_12 = y_12 * (12 / 100);
                             pf = total_y_12 * 12;
                             pf1 = pf;
                             $("#PF").val(Math.round(pf1));
                             $("#MPF").val(Math.round(pf1 / 12));
 
-                        }
-                    }
 
-                    var e_12 = 0;
-                    var esic = 0;
-                    var total_esic = 0;
-                    var e_12 = ta1 - ca;
-                    esic = e_12;
-                    if (esic < 21000) {
-                        total_esic = e_12 * (3.25 / 100);
-                        $("#ESIC").val(total_esic * 12);
-                        $("#MESIC").val(total_esic);
-                    } else {
-                        total_esic = 0;
-                        $("#ESIC").val(total_esic * 12);
-                        $("#MESIC").val(total_esic);
-                    }
-                    tb1 = pf + total_esic;
-
-                    valtab = 0;
-                    valtab1 = 0;
-                    valtab = ta1 + tb1;
-                    valtab1 = valtab;
-                    var e1old = 0;
-                    var eold = 0;
-                    e1 = ctc - valtab1;
-                    ctc3 = ctc / 12;
-                    e1old = ctc3 - valtab1;
-                    e = e1old;
-                    if (e < 0) {
-                        alert("Executive Allowance Value in Minus");
-                        if (flag == 0) {
-                            eold = e;
-                            $("#Old_Executive_Allowance").val(eold * 12);
-                            $("#OEAV").html(Math.round(eold * 12));
-
-                            e = 0;
-                        }
-                    }
-
-                    if (e < 0) {
-                        ta2 = ta1;
-                    }
-
-                    ta2 = ta1 + e;
-
-                    enew = y + hr + ca + total_state + pf + total_esic;
-
-
-                    ef = ctc - (enew * 12);
-
-
-                    tb2 = pf + total_esic;
-
-                    taf = (ta1 * 12) + ef;
-
-                    var pfsy = y;
-                    var total_pfsy = 0;
-                    var pfs = 0;
-                    var pfs1 = 0;
-                    if (pfsy > 15000) {
-                        total_pfsy = pfsy * (12 / 100);
-                        pfs = total_pfsy * 12;
-                        pfs1 = pfs;
-                        $("#PF").val(Math.round(pfs1));
-                        $("#MPF").val(Math.round(pfs1 / 12));
-
-                    } else {
-                        var taf1 = taf / 12;
-                        pfsy = taf1 - hr;
-                        if (pfsy > 15000) {
-                            pfsy = 1800;
-                            total_pfsy = pfsy * 12;
-                            pfs = total_pfsy;
-                            pfs1 = pfs;
-                            $("#PF").val(Math.round(pfs1));
-                            $("#MPF").val(Math.round(pfs1 / 12));
                         } else {
+                            y_12 = ta1 - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12 * 12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1));
+                                $("#MPF").val(Math.round(pf1 / 12));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12 * 12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1));
+                                $("#MPF").val(Math.round(pf1 / 12));
+
+                            }
+                        }
+
+                        var e_12 = 0;
+                        var esic = 0;
+                        var total_esic = 0;
+                        var e_12 = ta1 - ca;
+                        esic = e_12;
+                        if (esic < 21000) {
+                            total_esic = e_12 * (3.25 / 100);
+                            $("#ESIC").val(total_esic * 12);
+                            $("#MESIC").val(total_esic);
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val(total_esic * 12);
+                            $("#MESIC").val(total_esic);
+                        }
+                        tb1 = pf + total_esic;
+
+                        valtab = 0;
+                        valtab1 = 0;
+                        valtab = ta1 + tb1;
+                        valtab1 = valtab;
+                        var e1old = 0;
+                        var eold = 0;
+                        e1 = ctc - valtab1;
+                        ctc3 = ctc / 12;
+                        e1old = ctc3 - valtab1;
+                        e = e1old;
+                        if (e < 0) {
+                            alert("Executive Allowance Value in Minus");
+                            if (flag == 0) {
+                                eold = e;
+                                $("#Old_Executive_Allowance").val(eold * 12);
+                                $("#OEAV").html(Math.round(eold * 12));
+
+                                e = 0;
+                            }
+                        }
+
+                        if (e < 0) {
+                            ta2 = ta1;
+                        }
+
+                        ta2 = ta1 + e;
+
+                        enew = y + hr + ca + total_state + pf + total_esic;
+
+
+                        ef = ctc - (enew * 12);
+
+
+                        tb2 = pf + total_esic;
+
+                        taf = (ta1 * 12) + ef;
+
+                        var pfsy = y;
+                        var total_pfsy = 0;
+                        var pfs = 0;
+                        var pfs1 = 0;
+                        if (pfsy > 15000) {
                             total_pfsy = pfsy * (12 / 100);
                             pfs = total_pfsy * 12;
                             pfs1 = pfs;
                             $("#PF").val(Math.round(pfs1));
                             $("#MPF").val(Math.round(pfs1 / 12));
-                        }
-                    }
 
-                    var taf1 = taf / 12;
-                    var es = 0;
-                    var es1 = 0;
-                    var total_es1 = 0;
-                    var es = (taf1 - ca);
-                    esic12 = es;
-                    if (esic12 < 21000) {
-                        total_es1 = es * (3.25 / 100);
-                        $("#ESIC").val(Math.round(total_es1 * 12));
-                        $("#MESIC").val(Math.round(total_es1));
-                    } else {
-                        total_es1 = 0;
-                        $("#MESIC").val(Math.round(total_es1));
-                        $("#MESIC").val(Math.round(total_es1));
-                    }
-
-                    tb2n = pfs1 + (total_es1 * 12);
-
-
-                    tafn = y + hr + ca + total_state;
-
-                    efn = 0;
-                    enewn = y + hr + ca + total_state + (pfs1 / 12) + total_es1;
-                    efn = ctc - (enewn * 12);
-
-
-                    if (eflag == 0) {
-                        taff = (tafn * 12) + efn;
-                    }
-                    if (eflag == 1) {
-                        efn = rechange_e;
-                        taff = (tafn * 12) + efn;
-                    }
-
-
-                    var pfsy1 = y;
-                    console.log("y", y);
-                    var total_pfsy1 = 0;
-                    var pfs1 = 0;
-                    var pfs11 = 0;
-                    if (pfsy1 > 15000) {
-                        total_pfsy1 = pfsy1 * (12 / 100);
-                        console.log("y>15000", total_pfsy1);
-                        pfs1 = total_pfsy1 * 12;
-                        pfs11 = pfs1;
-                        $("#PF").val(Math.round(pfs11));
-                        $("#MPF").val(Math.round(pfs11 / 12));
-
-                    } else {
-                        var taf11 = taff / 12;
-                        console.log("taf11", taf11);
-                        pfsy1 = taf11 - hr;
-                        console.log("totala-hr", pfsy1);
-                        if (pfsy1 > 15000) {
-                            pfsy1 = 1800;
-                            console.log("totala-hr>15000", pfsy1);
-                            total_pfsy1 = pfsy1 * 12;
-                            pfs1 = total_pfsy1;
-                            pfs11 = pfs1;
-                            $("#PF").val(Math.round(pfs11));
-                            $("#MPF").val(Math.round(pfs11 / 12));
                         } else {
+                            var taf1 = taf / 12;
+                            pfsy = taf1 - hr;
+                            if (pfsy > 15000) {
+                                pfsy = 1800;
+                                total_pfsy = pfsy * 12;
+                                pfs = total_pfsy;
+                                pfs1 = pfs;
+                                $("#PF").val(Math.round(pfs1));
+                                $("#MPF").val(Math.round(pfs1 / 12));
+                            } else {
+                                total_pfsy = pfsy * (12 / 100);
+                                pfs = total_pfsy * 12;
+                                pfs1 = pfs;
+                                $("#PF").val(Math.round(pfs1));
+                                $("#MPF").val(Math.round(pfs1 / 12));
+                            }
+                        }
+
+                        var taf1 = taf / 12;
+                        var es = 0;
+                        var es1 = 0;
+                        var total_es1 = 0;
+                        var es = (taf1 - ca);
+                        esic12 = es;
+                        if (esic12 < 21000) {
+                            total_es1 = es * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_es1 * 12));
+                            $("#MESIC").val(Math.round(total_es1));
+                        } else {
+                            total_es1 = 0;
+                            $("#MESIC").val(Math.round(total_es1));
+                            $("#MESIC").val(Math.round(total_es1));
+                        }
+
+                        tb2n = pfs1 + (total_es1 * 12);
+
+
+                        tafn = y + hr + ca + total_state;
+
+                        efn = 0;
+                        enewn = y + hr + ca + total_state + (pfs1 / 12) + total_es1;
+                        efn = ctc - (enewn * 12);
+
+
+                        if (eflag == 0) {
+                            taff = (tafn * 12) + efn;
+                        }
+                        if (eflag == 1) {
+                            efn = rechange_e;
+                            taff = (tafn * 12) + efn;
+                        }
+
+
+                        var pfsy1 = y;
+                        console.log("y", y);
+                        var total_pfsy1 = 0;
+                        var pfs1 = 0;
+                        var pfs11 = 0;
+                        if (pfsy1 > 15000) {
                             total_pfsy1 = pfsy1 * (12 / 100);
-                            console.log("totala-hr<15000", total_pfsy1);
+                            console.log("y>15000", total_pfsy1);
                             pfs1 = total_pfsy1 * 12;
                             pfs11 = pfs1;
                             $("#PF").val(Math.round(pfs11));
                             $("#MPF").val(Math.round(pfs11 / 12));
-                        }
-                    }
 
-                    var taf11 = taff / 12;
-                    var es1 = 0;
-                    var es11 = 0;
-                    var total_es11 = 0;
-                    var es1 = (taf11 - ca);
-                    esic121 = es1;
-                    if (es1 < 21000) {
-                        total_es11 = es1 * (3.25 / 100);
-                        $("#ESIC").val(Math.round(total_es11 * 12));
-                        $("#MESIC").val(Math.round(total_es11));
-                    } else {
-                        total_es11 = 0;
-                        $("#ESIC").val(Math.round(total_es11 * 12));
-                        $("#MESIC").val(Math.round(total_es11));
-                    }
-
-
-
-                    efn = 0;
-                    enewn = y + hr + ca + total_state + (pfs1 / 12) + total_es1;
-                    efn = ctc - (enewn * 12);
-
-
-                    if (eflag == 0) {
-                        taff = (tafn * 12) + efn;
-                    }
-                    if (eflag == 1) {
-                        efn = rechange_e;
-                        taff = (tafn * 12) + efn;
-                    }
-
-
-                    tb2n1 = pfs11 + (total_es11 * 12);
-                    Total_B = tb2n1 / 12;
-
-                    efn1 = 0;
-                    enewn1 = y + hr + ca + total_state + (pfs11 / 12) + total_es11;
-                    efn1 = ctc - (enewn1 * 12);
-                    executive_allowance = efn1 / 12;
-
-                    Total_A = (y + hr + ca + total_state + (efn1 / 12));
-                    total2 = Total_A + Total_B;
-                    ctotal = total2;
-
-
-                    var pfsy1 = y;
-                    console.log("y", y);
-                    var total_pfsy1 = 0;
-                    var pfs1 = 0;
-                    var pfs11 = 0;
-                    if (pfsy1 > 15000) {
-                        total_pfsy1 = pfsy1 * (12 / 100);
-                        console.log("y>15000", total_pfsy1);
-                        pfs1 = total_pfsy1 * 12;
-                        pfs11 = pfs1;
-                        $("#PF").val(Math.round(pfs11));
-                        $("#MPF").val(Math.round(pfs11 / 12));
-
-                    } else {
-                        var taf11 = taff / 12;
-                        console.log("taf11", taf11);
-                        pfsy1 = Total_A - hr;
-                        console.log("totala-hr", pfsy1);
-                        if (pfsy1 > 15000) {
-                            pfsy1 = 1800;
-                            console.log("totala-hr>15000", pfsy1);
-                            total_pfsy1 = pfsy1 * 12;
-                            pfs1 = total_pfsy1;
-                            pfs11 = pfs1;
-                            $("#PF").val(Math.round(pfs11));
-                            $("#MPF").val(Math.round(pfs11 / 12));
                         } else {
+                            var taf11 = taff / 12;
+                            console.log("taf11", taf11);
+                            pfsy1 = taf11 - hr;
+                            console.log("totala-hr", pfsy1);
+                            if (pfsy1 > 15000) {
+                                pfsy1 = 1800;
+                                console.log("totala-hr>15000", pfsy1);
+                                total_pfsy1 = pfsy1 * 12;
+                                pfs1 = total_pfsy1;
+                                pfs11 = pfs1;
+                                $("#PF").val(Math.round(pfs11));
+                                $("#MPF").val(Math.round(pfs11 / 12));
+                            } else {
+                                total_pfsy1 = pfsy1 * (12 / 100);
+                                console.log("totala-hr<15000", total_pfsy1);
+                                pfs1 = total_pfsy1 * 12;
+                                pfs11 = pfs1;
+                                $("#PF").val(Math.round(pfs11));
+                                $("#MPF").val(Math.round(pfs11 / 12));
+                            }
+                        }
+
+                        var taf11 = taff / 12;
+                        var es1 = 0;
+                        var es11 = 0;
+                        var total_es11 = 0;
+                        var es1 = (taf11 - ca);
+                        esic121 = es1;
+                        if (es1 < 21000) {
+                            total_es11 = es1 * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_es11 * 12));
+                            $("#MESIC").val(Math.round(total_es11));
+                        } else {
+                            total_es11 = 0;
+                            $("#ESIC").val(Math.round(total_es11 * 12));
+                            $("#MESIC").val(Math.round(total_es11));
+                        }
+
+
+
+                        efn = 0;
+                        enewn = y + hr + ca + total_state + (pfs1 / 12) + total_es1;
+                        efn = ctc - (enewn * 12);
+
+
+                        if (eflag == 0) {
+                            taff = (tafn * 12) + efn;
+                        }
+                        if (eflag == 1) {
+                            efn = rechange_e;
+                            taff = (tafn * 12) + efn;
+                        }
+
+
+                        tb2n1 = pfs11 + (total_es11 * 12);
+                        Total_B = tb2n1 / 12;
+
+                        efn1 = 0;
+                        enewn1 = y + hr + ca + total_state + (pfs11 / 12) + total_es11;
+                        efn1 = ctc - (enewn1 * 12);
+                        executive_allowance = efn1 / 12;
+
+                        Total_A = (y + hr + ca + total_state + (efn1 / 12));
+                        total2 = Total_A + Total_B;
+                        ctotal = total2;
+
+
+                        var pfsy1 = y;
+                        console.log("y", y);
+                        var total_pfsy1 = 0;
+                        var pfs1 = 0;
+                        var pfs11 = 0;
+                        if (pfsy1 > 15000) {
                             total_pfsy1 = pfsy1 * (12 / 100);
-                            console.log("totala-hr<15000", total_pfsy1);
+                            console.log("y>15000", total_pfsy1);
                             pfs1 = total_pfsy1 * 12;
                             pfs11 = pfs1;
                             $("#PF").val(Math.round(pfs11));
                             $("#MPF").val(Math.round(pfs11 / 12));
+
+                        } else {
+                            var taf11 = taff / 12;
+                            console.log("taf11", taf11);
+                            pfsy1 = Total_A - hr;
+                            console.log("totala-hr", pfsy1);
+                            if (pfsy1 > 15000) {
+                                pfsy1 = 1800;
+                                console.log("totala-hr>15000", pfsy1);
+                                total_pfsy1 = pfsy1 * 12;
+                                pfs1 = total_pfsy1;
+                                pfs11 = pfs1;
+                                $("#PF").val(Math.round(pfs11));
+                                $("#MPF").val(Math.round(pfs11 / 12));
+                            } else {
+                                total_pfsy1 = pfsy1 * (12 / 100);
+                                console.log("totala-hr<15000", total_pfsy1);
+                                pfs1 = total_pfsy1 * 12;
+                                pfs11 = pfs1;
+                                $("#PF").val(Math.round(pfs11));
+                                $("#MPF").val(Math.round(pfs11 / 12));
+                            }
                         }
+
+                        var taf11 = taff / 12;
+                        var es1 = 0;
+                        var es11 = 0;
+                        var total_es11 = 0;
+                        var es1 = (Total_A - ca);
+                        esic121 = es1;
+                        if (es1 < 21000) {
+                            total_es11 = es1 * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_es11 * 12));
+                            $("#MESIC").val(Math.round(total_es11));
+                        } else {
+                            total_es11 = 0;
+                            $("#ESIC").val(Math.round(total_es11 * 12));
+                            $("#MESIC").val(Math.round(total_es11));
+                        }
+
+
+                        tb2n1 = pfs11 + (total_es11 * 12);
+                        Total_B = tb2n1 / 12;
+
+                        efn1 = 0;
+                        enewn1 = y + hr + ca + total_state + (pfs11 / 12) + total_es11;
+                        efn12f = ctc - (enewn1 * 12);
+                        executive_allowance = efn12f / 12;
+
+                        Total_A = (y + hr + ca + total_state + (efn12f / 12));
+                        total2 = Total_A + Total_B;
+                        ctotal = total2;
+
+
+
+
+                        $("#basic").val(y * 12);
+                        $("#Mbasic").val(Math.round(y));
+
+                        $("#hra").val(hr * 12);
+                        $("#Mhra").val(Math.round(hr));
+
+                        $("#Conveyance_Allowance").val(ca * 12);
+                        $("#MConveyance_Allowance").val(Math.round(ca));
+
+                        if (y < 21000) {
+                            total_state = 0;
+                        } else {
+                            $("#Statutory_Bonus").val(total_state * 12);
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                        }
+
+
+                        $("#Total_B").val(Math.round(Total_B * 12));
+                        $("#MTotal_B").val(Math.round(Math.round(Total_B)));
+
+
+                        $("#Executive_Allowance").val(Math.round(efn12f));
+                        $("#MExecutive_Allowance").val(Math.round(efn12f / 12));
+
+                        $("#Total_A").val(Math.round(Total_A * 12));
+                        $("#MTotal_A").val(Math.round(Total_A));
+
+                        $("#LTotal").val(Math.round(total2 * 12));
+                        $("#MLTotal").val(Math.round(total2));
+
+                        $("#TOTAL").val(Math.round(ctotal * 12));
+                        $("#MTOTAL").val(Math.round(ctotal));
                     }
-
-                    var taf11 = taff / 12;
-                    var es1 = 0;
-                    var es11 = 0;
-                    var total_es11 = 0;
-                    var es1 = (Total_A - ca);
-                    esic121 = es1;
-                    if (es1 < 21000) {
-                        total_es11 = es1 * (3.25 / 100);
-                        $("#ESIC").val(Math.round(total_es11 * 12));
-                        $("#MESIC").val(Math.round(total_es11));
-                    } else {
-                        total_es11 = 0;
-                        $("#ESIC").val(Math.round(total_es11 * 12));
-                        $("#MESIC").val(Math.round(total_es11));
-                    }
-
-
-                    tb2n1 = pfs11 + (total_es11 * 12);
-                    Total_B = tb2n1 / 12;
-
-                    efn1 = 0;
-                    enewn1 = y + hr + ca + total_state + (pfs11 / 12) + total_es11;
-                    efn12f = ctc - (enewn1 * 12);
-                    executive_allowance = efn12f / 12;
-
-                    Total_A = (y + hr + ca + total_state + (efn12f / 12));
-                    total2 = Total_A + Total_B;
-                    ctotal = total2;
-
-
-
-
-                    $("#basic").val(y * 12);
-                    $("#Mbasic").val(Math.round(y));
-
-                    $("#hra").val(hr * 12);
-                    $("#Mhra").val(Math.round(hr));
-
-                    $("#Conveyance_Allowance").val(ca * 12);
-                    $("#MConveyance_Allowance").val(Math.round(ca));
-
-                    if (y < 21000) {
-                        total_state = 0;
-                    } else {
-                        $("#Statutory_Bonus").val(total_state * 12);
-                        $("#MStatutory_Bonus").val(Math.round(total_state));
-                    }
-
-
-                    $("#Total_B").val(Math.round(Total_B * 12));
-                    $("#MTotal_B").val(Math.round(Math.round(Total_B)));
-
-
-                    $("#Executive_Allowance").val(Math.round(efn12f));
-                    $("#MExecutive_Allowance").val(Math.round(efn12f / 12));
-
-                    $("#Total_A").val(Math.round(Total_A * 12));
-                    $("#MTotal_A").val(Math.round(Total_A));
-
-                    $("#LTotal").val(Math.round(total2 * 12));
-                    $("#MLTotal").val(Math.round(total2));
-
-                    $("#TOTAL").val(Math.round(ctotal * 12));
-                    $("#MTOTAL").val(Math.round(ctotal));
-
-
-                } else {
-                    $("#basic").val('0');
-                    $("#al1").css('display', 'inline-block');
                 }
-            } else {
+                if (bpflag == 1) {
+                    if (x = rechange_bp) {
+                        $("#al1").css('display', 'none');
+                        var dy = 0,
+                            dy1 = 0;
+                        dy = Math.floor((ctc * (rechange_bp / 100)) / 12);
+                        dy1 = dy * 0.01;
+                        y = parseInt(Math.floor(dy1) + "00");
+
+                        if (yflag == 0) {
+
+                            hr = y / 2;
+
+                            ca = 1600;
+
+                            if (caflag == 1) {
+                                ca = parseInt(rechange_ca);
+                            }
+
+                            if (flag == 0) {
+                                ta1 = y + hr + ca + total_state;
+                            }
+
+
+                        }
+                        if (yflag == 1) {
+                            y = rechange_y;
+                            hr = y / 2;
+
+
+                            if (flag == 0) {
+                                if (caflag == 1) {
+                                    ca = parseInt(rechange_ca);
+                                }
+                                ta1 = y + hr + ca + total_state;
+                            }
+
+
+                        }
+
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12 * 12;
+                            pf1 = pf;
+                            $("#PF").val(Math.round(pf1));
+                            $("#MPF").val(Math.round(pf1 / 12));
+
+
+                        } else {
+                            y_12 = ta1 - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12 * 12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1));
+                                $("#MPF").val(Math.round(pf1 / 12));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12 * 12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1));
+                                $("#MPF").val(Math.round(pf1 / 12));
+
+                            }
+                        }
+
+                        var e_12 = 0;
+                        var esic = 0;
+                        var total_esic = 0;
+                        var e_12 = ta1 - ca;
+                        esic = e_12;
+                        if (esic < 21000) {
+                            total_esic = e_12 * (3.25 / 100);
+                            $("#ESIC").val(total_esic * 12);
+                            $("#MESIC").val(total_esic);
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val(total_esic * 12);
+                            $("#MESIC").val(total_esic);
+                        }
+                        tb1 = pf + total_esic;
+
+                        valtab = 0;
+                        valtab1 = 0;
+                        valtab = ta1 + tb1;
+                        valtab1 = valtab;
+                        var e1old = 0;
+                        var eold = 0;
+                        e1 = ctc - valtab1;
+                        ctc3 = ctc / 12;
+                        e1old = ctc3 - valtab1;
+                        e = e1old;
+                        if (e < 0) {
+                            alert("Executive Allowance Value in Minus");
+                            if (flag == 0) {
+                                eold = e;
+                                $("#Old_Executive_Allowance").val(eold * 12);
+                                $("#OEAV").html(Math.round(eold * 12));
+
+                                e = 0;
+                            }
+                        }
+
+                        if (e < 0) {
+                            ta2 = ta1;
+                        }
+
+                        ta2 = ta1 + e;
+
+                        enew = y + hr + ca + total_state + pf + total_esic;
+
+
+                        ef = ctc - (enew * 12);
+
+
+                        tb2 = pf + total_esic;
+
+                        taf = (ta1 * 12) + ef;
+
+                        var pfsy = y;
+                        var total_pfsy = 0;
+                        var pfs = 0;
+                        var pfs1 = 0;
+                        if (pfsy > 15000) {
+                            total_pfsy = pfsy * (12 / 100);
+                            pfs = total_pfsy * 12;
+                            pfs1 = pfs;
+                            $("#PF").val(Math.round(pfs1));
+                            $("#MPF").val(Math.round(pfs1 / 12));
+
+                        } else {
+                            var taf1 = taf / 12;
+                            pfsy = taf1 - hr;
+                            if (pfsy > 15000) {
+                                pfsy = 1800;
+                                total_pfsy = pfsy * 12;
+                                pfs = total_pfsy;
+                                pfs1 = pfs;
+                                $("#PF").val(Math.round(pfs1));
+                                $("#MPF").val(Math.round(pfs1 / 12));
+                            } else {
+                                total_pfsy = pfsy * (12 / 100);
+                                pfs = total_pfsy * 12;
+                                pfs1 = pfs;
+                                $("#PF").val(Math.round(pfs1));
+                                $("#MPF").val(Math.round(pfs1 / 12));
+                            }
+                        }
+
+                        var taf1 = taf / 12;
+                        var es = 0;
+                        var es1 = 0;
+                        var total_es1 = 0;
+                        var es = (taf1 - ca);
+                        esic12 = es;
+                        if (esic12 < 21000) {
+                            total_es1 = es * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_es1 * 12));
+                            $("#MESIC").val(Math.round(total_es1));
+                        } else {
+                            total_es1 = 0;
+                            $("#MESIC").val(Math.round(total_es1));
+                            $("#MESIC").val(Math.round(total_es1));
+                        }
+
+                        tb2n = pfs1 + (total_es1 * 12);
+
+
+                        tafn = y + hr + ca + total_state;
+
+                        efn = 0;
+                        enewn = y + hr + ca + total_state + (pfs1 / 12) + total_es1;
+                        efn = ctc - (enewn * 12);
+
+
+                        if (eflag == 0) {
+                            taff = (tafn * 12) + efn;
+                        }
+                        if (eflag == 1) {
+                            efn = rechange_e;
+                            taff = (tafn * 12) + efn;
+                        }
+
+
+                        var pfsy1 = y;
+                        console.log("y", y);
+                        var total_pfsy1 = 0;
+                        var pfs1 = 0;
+                        var pfs11 = 0;
+                        if (pfsy1 > 15000) {
+                            total_pfsy1 = pfsy1 * (12 / 100);
+                            console.log("y>15000", total_pfsy1);
+                            pfs1 = total_pfsy1 * 12;
+                            pfs11 = pfs1;
+                            $("#PF").val(Math.round(pfs11));
+                            $("#MPF").val(Math.round(pfs11 / 12));
+
+                        } else {
+                            var taf11 = taff / 12;
+                            console.log("taf11", taf11);
+                            pfsy1 = taf11 - hr;
+                            console.log("totala-hr", pfsy1);
+                            if (pfsy1 > 15000) {
+                                pfsy1 = 1800;
+                                console.log("totala-hr>15000", pfsy1);
+                                total_pfsy1 = pfsy1 * 12;
+                                pfs1 = total_pfsy1;
+                                pfs11 = pfs1;
+                                $("#PF").val(Math.round(pfs11));
+                                $("#MPF").val(Math.round(pfs11 / 12));
+                            } else {
+                                total_pfsy1 = pfsy1 * (12 / 100);
+                                console.log("totala-hr<15000", total_pfsy1);
+                                pfs1 = total_pfsy1 * 12;
+                                pfs11 = pfs1;
+                                $("#PF").val(Math.round(pfs11));
+                                $("#MPF").val(Math.round(pfs11 / 12));
+                            }
+                        }
+
+                        var taf11 = taff / 12;
+                        var es1 = 0;
+                        var es11 = 0;
+                        var total_es11 = 0;
+                        var es1 = (taf11 - ca);
+                        esic121 = es1;
+                        if (es1 < 21000) {
+                            total_es11 = es1 * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_es11 * 12));
+                            $("#MESIC").val(Math.round(total_es11));
+                        } else {
+                            total_es11 = 0;
+                            $("#ESIC").val(Math.round(total_es11 * 12));
+                            $("#MESIC").val(Math.round(total_es11));
+                        }
+
+
+
+                        efn = 0;
+                        enewn = y + hr + ca + total_state + (pfs1 / 12) + total_es1;
+                        efn = ctc - (enewn * 12);
+
+
+                        if (eflag == 0) {
+                            taff = (tafn * 12) + efn;
+                        }
+                        if (eflag == 1) {
+                            efn = rechange_e;
+                            taff = (tafn * 12) + efn;
+                        }
+
+
+                        tb2n1 = pfs11 + (total_es11 * 12);
+                        Total_B = tb2n1 / 12;
+
+                        efn1 = 0;
+                        enewn1 = y + hr + ca + total_state + (pfs11 / 12) + total_es11;
+                        efn1 = ctc - (enewn1 * 12);
+                        executive_allowance = efn1 / 12;
+
+                        Total_A = (y + hr + ca + total_state + (efn1 / 12));
+                        total2 = Total_A + Total_B;
+                        ctotal = total2;
+
+
+                        var pfsy1 = y;
+                        console.log("y", y);
+                        var total_pfsy1 = 0;
+                        var pfs1 = 0;
+                        var pfs11 = 0;
+                        if (pfsy1 > 15000) {
+                            total_pfsy1 = pfsy1 * (12 / 100);
+                            console.log("y>15000", total_pfsy1);
+                            pfs1 = total_pfsy1 * 12;
+                            pfs11 = pfs1;
+                            $("#PF").val(Math.round(pfs11));
+                            $("#MPF").val(Math.round(pfs11 / 12));
+
+                        } else {
+                            var taf11 = taff / 12;
+                            console.log("taf11", taf11);
+                            pfsy1 = Total_A - hr;
+                            console.log("totala-hr", pfsy1);
+                            if (pfsy1 > 15000) {
+                                pfsy1 = 1800;
+                                console.log("totala-hr>15000", pfsy1);
+                                total_pfsy1 = pfsy1 * 12;
+                                pfs1 = total_pfsy1;
+                                pfs11 = pfs1;
+                                $("#PF").val(Math.round(pfs11));
+                                $("#MPF").val(Math.round(pfs11 / 12));
+                            } else {
+                                total_pfsy1 = pfsy1 * (12 / 100);
+                                console.log("totala-hr<15000", total_pfsy1);
+                                pfs1 = total_pfsy1 * 12;
+                                pfs11 = pfs1;
+                                $("#PF").val(Math.round(pfs11));
+                                $("#MPF").val(Math.round(pfs11 / 12));
+                            }
+                        }
+
+                        var taf11 = taff / 12;
+                        var es1 = 0;
+                        var es11 = 0;
+                        var total_es11 = 0;
+                        var es1 = (Total_A - ca);
+                        esic121 = es1;
+                        if (es1 < 21000) {
+                            total_es11 = es1 * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_es11 * 12));
+                            $("#MESIC").val(Math.round(total_es11));
+                        } else {
+                            total_es11 = 0;
+                            $("#ESIC").val(Math.round(total_es11 * 12));
+                            $("#MESIC").val(Math.round(total_es11));
+                        }
+
+
+                        tb2n1 = pfs11 + (total_es11 * 12);
+                        Total_B = tb2n1 / 12;
+
+                        efn1 = 0;
+                        enewn1 = y + hr + ca + total_state + (pfs11 / 12) + total_es11;
+                        efn12f = ctc - (enewn1 * 12);
+                        executive_allowance = efn12f / 12;
+
+                        Total_A = (y + hr + ca + total_state + (efn12f / 12));
+                        total2 = Total_A + Total_B;
+                        ctotal = total2;
+
+
+
+
+                        $("#basic").val(y * 12);
+                        $("#Mbasic").val(Math.round(y));
+
+                        $("#hra").val(hr * 12);
+                        $("#Mhra").val(Math.round(hr));
+
+                        $("#Conveyance_Allowance").val(ca * 12);
+                        $("#MConveyance_Allowance").val(Math.round(ca));
+
+                        if (y < 21000) {
+                            total_state = 0;
+                        } else {
+                            $("#Statutory_Bonus").val(total_state * 12);
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                        }
+
+
+                        $("#Total_B").val(Math.round(Total_B * 12));
+                        $("#MTotal_B").val(Math.round(Math.round(Total_B)));
+
+
+                        $("#Executive_Allowance").val(Math.round(efn12f));
+                        $("#MExecutive_Allowance").val(Math.round(efn12f / 12));
+
+                        $("#Total_A").val(Math.round(Total_A * 12));
+                        $("#MTotal_A").val(Math.round(Total_A));
+
+                        $("#LTotal").val(Math.round(total2 * 12));
+                        $("#MLTotal").val(Math.round(total2));
+
+                        $("#TOTAL").val(Math.round(ctotal * 12));
+                        $("#MTOTAL").val(Math.round(ctotal));
+
+                    }
+                }
+            } else
+            //     $("#basic").val('0');
+            //     $("#al1").css('display', 'inline-block');
+
+            {
                 alert('enter ctc first..');
             }
         });
     }
     </script>
 </head>
+<br><br>
 
 <body>
     <div class="wrapper">
@@ -671,53 +1068,28 @@
                     <!-- <div style="text-align: center;"><b>FTE</b></div> <br /> -->
                     <div class="green box">
                         <div class="row">
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <label=""><b>Reference number of offer letter</b></label>
-                                    <input type="text" class="form-control" id="Code" name="Code" placeholder="Code" />
+                                    <input type="text" class="form-control" id="Code" name="Code" placeholder="" />
                                     <br>
                             </div>
-                            <div class="col-lg-3">
+                            <div class="col-lg-6">
                                 <label=""><b>TARGETED CTC</b></label>
-                                    <input type="text" class="form-control" id="ctc" name="ctc" placeholder="CTC" />
+                                    <input type="text" class="form-control" id="ctc" name="ctc" placeholder="" />
                             </div>
 
-                            <div class="col-lg-3">
-                                <label=""><b>BASIC PERCENTAGE<small id="al1" style="display:none;"
-                                            class="badge badge-danger"> (Enter % between 5 to 50) </small></b></label>
-                                    <input type="number" class="form-control" id="basicp" name="basicp"
-                                        placeholder="basicp" />
-                            </div>
-
-
-                            <div class="col-lg-3">
-                                <label=""><b>State</b></label>
-                                    <select id="state" name="state" class="custom-select">
-                                        <option selected>Select State</option>
-                                        <?php
-                                $g_sql = "SELECT DISTINCT COL_1 FROm stat";
-                                $g_result = $link->query($g_sql);
-                                if ($g_result->num_rows > 0) {
-                                    while ($g_row = $g_result->fetch_assoc()) {
-                                        echo "<option value='" . $g_row['COL_1'] . "'>" . $g_row['COL_1'] . "</option>";
-                                    }
-                                }
-                            ?>
-                                    </select><br><br>
-
-                            </div>
                         </div>
                         <table style="width:100%">
                             <tr>
                                 <th>
                                     <label="">Name</label>
                                 </th>
-                                <th><input type="text" class="form-control" id="name" name="name" placeholder="Name" />
+                                <th><input type="text" class="form-control" id="name" name="name" placeholder="" />
                                 </th>
                                 <th>
                                     <label="">Work Location</label>
                                 </th>
-                                <th> <input type="text" class="form-control" id="aloc" name="aloc"
-                                        placeholder="Annexure Location" />
+                                <th> <input type="text" class="form-control" id="aloc" name="aloc" placeholder="" />
 
                                 </th>
                             </tr>
@@ -726,15 +1098,13 @@
                                     <label="">
                                         <label="">Address Line 1</label></label>
                                 </td>
-                                <td><input type="text" class="form-control" id="Ad1" name="Ad1"
-                                        placeholder="Address Line 1" />
+                                <td><input type="text" class="form-control" id="Ad1" name="Ad1" placeholder="" />
 
                                 </td>
                                 <td>
                                     <label="">Address Line2</label>
                                 </td>
-                                <td> <input type="text" class="form-control" id="Ad2" name="Ad2"
-                                        placeholder="Address Line 2" />
+                                <td> <input type="text" class="form-control" id="Ad2" name="Ad2" placeholder="" />
 
 
                                 </td>
@@ -743,14 +1113,13 @@
                                 <td>
                                     <label="">Address Line 3</label>
                                 </td>
-                                <td><input type="text" class="form-control" id="Ad3" name="Ad3"
-                                        placeholder="Address Line 3" />
+                                <td><input type="text" class="form-control" id="Ad3" name="Ad3" placeholder="" />
 
                                 </td>
                                 <td>
                                     <label="">City</label>
                                 </td>
-                                <td> <input type="text" class="form-control" id="City" name="City" placeholder="City" />
+                                <td> <input type="text" class="form-control" id="City" name="City" placeholder="" />
                                 </td>
                             </tr>
                             <tr>
@@ -758,13 +1127,13 @@
                                     <label="">Pincode</label>
                                 </td>
                                 <td><input type="text" class="form-control" id="Pincode" name="Pincode"
-                                        placeholder="Pincode" />
+                                        placeholder="" />
 
                                 </td>
                                 <td>
                                     <label="">Offer date</label>
                                 </td>
-                                <td> <input type="date" class="form-control" id="doj" name="doj" placeholder="DOJ" />
+                                <td> <input type="date" class="form-control" id="doj" name="doj" placeholder="" />
 
 
                                 </td>
@@ -774,7 +1143,7 @@
                                     <label="">Designation</label>
                                 </td>
                                 <td><input type="text" class="form-control" id="Position" name="Position"
-                                        placeholder="Position" />
+                                        placeholder="" />
                                 </td>
                                 <td>Grade</td>
                                 <td><input class="form-control" id="grade" name="grade" value="F00" readonly />
@@ -784,12 +1153,11 @@
                                 <td>
                                     <label="">Start Date</label>
                                 </td>
-                                <td><input type="date" class="form-control" id="Sd" name="Sd"
-                                        placeholder="Start Date" /></td>
+                                <td><input type="date" class="form-control" id="Sd" name="Sd" placeholder="" /></td>
                                 <td>
                                     <label="">End Date</label>
                                 </td>
-                                <td><input type="date" class="form-control" id="ed" name="ed" placeholder="End Date" />
+                                <td><input type="date" class="form-control" id="ed" name="ed" placeholder="" />
                                 </td>
                             </tr>
                             <tr>
@@ -797,19 +1165,44 @@
                                     <label="">
                                         <label="">Working Start Day</label></label>
                                 </td>
-                                <td> <input type="text" class="form-control" id="wsd" name="wsd"
-                                        placeholder="Working Start Day" />
+                                <td> <input type="text" class="form-control" id="wsd" name="wsd" placeholder="" />
                                 </td>
                                 <td>
                                     <label="">
                                         <label="">Working End Day</label></label>
                                 </td>
-                                <td> <input type="text" class="form-control" id="wed" name="wed"
-                                        placeholder="Working End Day" />
+                                <td> <input type="text" class="form-control" id="wed" name="wed" placeholder="" />
 
 
                                 </td>
                             </tr>
+
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                <td>
+                                    <b>
+                                        <label=""><b>STATE</b></label>
+                                    </b>
+                                </td>
+                                <td>
+                                    <b>
+                                        <select id="state" name="state" class="custom-select">
+                                            <option selected>Select State</option>
+                                            <?php
+                                $g_sql = "SELECT DISTINCT COL_1 FROm stat";
+                                $g_result = $link->query($g_sql);
+                                if ($g_result->num_rows > 0) {
+                                    while ($g_row = $g_result->fetch_assoc()) {
+                                        echo "<option value='" . $g_row['COL_1'] . "'>" . $g_row['COL_1'] . "</option>";
+                                    }
+                                }
+                            ?>
+                                        </select> </b>
+                                </td>
+                            </tr>
+
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -845,13 +1238,28 @@
                                 <td>
                                 </td>
                                 <td>
-                                    <label="">BASIC</label>
+
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label="">BASIC</label>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <label=""><b>BASIC %<small id="al1" style="display:none;"
+                                                        class="badge badge-danger"> (Enter % between 5 to 50)
+                                                    </small></b></label>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <input type="number" class="form-control" id="bp1" name="bp1"
+                                                placeholder="" />
+                                        </div>
+
+                                    </div>
                                 </td>
-                                <td><input type="text" class="form-control" id="Mbasic" name="Mbasic"
-                                        placeholder="Mbasic" />
+                                <td>
+                                    <input type="text" class="form-control" id="Mbasic" name="Mbasic" placeholder="" />
                                 </td>
-                                <td><input type="text" class="form-control" id="basic" name="basic"
-                                        placeholder="Abasic" />
+
+                                <td><input type="text" class="form-control" id="basic" name="basic" placeholder="" />
 
                                 </td>
                             </tr>
@@ -861,10 +1269,10 @@
                                 <td>
                                     <label="">HRA</label>
                                 </td>
-                                <td><input type="text" class="form-control" id="Mhra" name="Mhra" placeholder="Mhra" />
+                                <td><input type="text" class="form-control" id="Mhra" name="Mhra" placeholder="" />
 
                                 </td>
-                                <td><input type="text" class="form-control" id="hra" name="hra" placeholder="Ahra" />
+                                <td><input type="text" class="form-control" id="hra" name="hra" placeholder="" />
 
 
                                 </td>
@@ -876,11 +1284,11 @@
                                     <label="">STATUTORY BONUS</label>
                                 </td>
                                 <td><input type="text" class="form-control" id="MStatutory_Bonus"
-                                        name="MStatutory_Bonus" placeholder="MStatutory_Bonus" />
+                                        name="MStatutory_Bonus" placeholder="" />
 
                                 </td>
                                 <td><input type="text" class="form-control" id="Statutory_Bonus" name="Statutory_Bonus"
-                                        placeholder="AStatutory_Bonus" />
+                                        placeholder="" />
 
                                 </td>
                             </tr>
@@ -891,10 +1299,10 @@
                                     <label="">CONVEYANCE ALLOWANCE</label>
                                 </td>
                                 <td><input type="text" class="form-control" id="MConveyance_Allowance"
-                                        name="MConveyance_Allowance" placeholder="MConveyance_Allowance" />
+                                        name="MConveyance_Allowance" placeholder="" />
                                 </td>
                                 <td><input type="text" class="form-control" id="Conveyance_Allowance"
-                                        name="Conveyance_Allowance" placeholder="AConveyance_Allowance" />
+                                        name="Conveyance_Allowance" placeholder="" />
                                 </td>
                             </tr>
                             <tr>
@@ -904,11 +1312,11 @@
                                     <label="">EXECUTIVE ALLOWANCE</label>
                                 </td>
                                 <td><input type="text" class="form-control" id="MExecutive_Allowance"
-                                        name="MExecutive_Allowance" placeholder="MExecutive_Allowance" />
+                                        name="MExecutive_Allowance" placeholder="" />
 
                                 </td>
                                 <td><input type="text" class="form-control" id="Executive_Allowance"
-                                        name="Executive_Allowance" placeholder="AExecutive_Allowance" />
+                                        name="Executive_Allowance" placeholder="" />
 
                                 </td>
                             </tr>
@@ -921,10 +1329,10 @@
                                     </b>
                                 </td>
                                 <td><input type="text" class="form-control" id="MTotal_A" name="MTotal_A"
-                                        placeholder="MTotal_A" />
+                                        placeholder="" />
                                 </td>
                                 <td><input type="text" class="form-control" id="Total_A" name="Total_A"
-                                        placeholder="ATotal_A" />
+                                        placeholder="" />
 
 
                                 </td>
@@ -947,10 +1355,10 @@
                                 <td>
                                     <label=""> Employer Contribution to Provident Fund</label>
                                 </td>
-                                <td><input type="text" class="form-control" id="MPF" name="MPF" placeholder="MPF" />
+                                <td><input type="text" class="form-control" id="MPF" name="MPF" placeholder="" />
 
                                 </td>
-                                <td><input type="text" class="form-control" id="PF" name="PF" placeholder="APF" />
+                                <td><input type="text" class="form-control" id="PF" name="PF" placeholder="" />
                                 </td>
                             </tr>
                             <tr>
@@ -959,13 +1367,11 @@
                                 <td>
                                     <label=""> ESIC</label>
                                 </td>
-                                <td> <input type="text" class="form-control" id="MESIC" name="MESIC"
-                                        placeholder="MESIC" />
+                                <td> <input type="text" class="form-control" id="MESIC" name="MESIC" placeholder="" />
 
 
                                 </td>
-                                <td> <input type="text" class="form-control" id="ESIC" name="ESIC"
-                                        placeholder="AESIC" />
+                                <td> <input type="text" class="form-control" id="ESIC" name="ESIC" placeholder="" />
 
                                 </td>
                             </tr>
@@ -978,13 +1384,13 @@
                                     </b>
                                 </td>
                                 <td> <input type="text" class="form-control" id="MTotal_B" name="MTotal_B"
-                                        placeholder="MTotal_B" />
+                                        placeholder="" />
 
 
 
                                 </td>
                                 <td> <input type="text" class="form-control" id="Total_B" name="Total_B"
-                                        placeholder="ATotal_B" />
+                                        placeholder="" />
 
 
                                 </td>
@@ -1000,14 +1406,13 @@
                                 </td>
                                 <td>
                                     <input type="text" class="form-control" id="MLTotal" name="MLTotal"
-                                        placeholder="MTotal A+B" />
+                                        placeholder="" />
 
 
 
 
                                 </td>
-                                <td> <input type="text" class="form-control" id="LTotal" name="LTotal"
-                                        placeholder="ATotal A+B" />
+                                <td> <input type="text" class="form-control" id="LTotal" name="LTotal" placeholder="" />
 
 
 
@@ -1022,15 +1427,13 @@
 
                                     </b>
                                 </td>
-                                <td> <input type="text" class="form-control" id="MTOTAL" name="MTOTAL"
-                                        placeholder=" M COST TO COMPANY (PART I+ PART II" />
+                                <td> <input type="text" class="form-control" id="MTOTAL" name="MTOTAL" placeholder="" />
 
 
 
 
                                 </td>
-                                <td> <input type="text" class="form-control" id="TOTAL" name="TOTAL"
-                                        placeholder=" A COST TO COMPANY (PART I+ PART II" />
+                                <td> <input type="text" class="form-control" id="TOTAL" name="TOTAL" placeholder="" />
 
 
 

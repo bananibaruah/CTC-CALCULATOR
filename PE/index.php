@@ -580,12 +580,12 @@
                         esic = Total_A - ra - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val(total_esic * 12);
-                            $("#MESIC").val(total_esic);
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
                         } else {
                             total_esic = 0;
-                            $("#ESIC").val(total_esic * 12);
-                            $("#MESIC").val(total_esic);
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
                         }
 
                         //executive_allowance
@@ -796,12 +796,12 @@
                         esic = Total_A - ra - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val(total_esic * 12);
-                            $("#MESIC").val(total_esic);
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
                         } else {
                             total_esic = 0;
-                            $("#ESIC").val(total_esic * 12);
-                            $("#MESIC").val(total_esic);
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
                         }
 
                         //Executive Allowance
