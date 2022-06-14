@@ -75,8 +75,72 @@ $aloc = $_POST['aloc'];
 $Code = $_POST['Code'];
 $chkPassPort = $_POST['chkPassPort'];
 
-$ins_sql = "INSERT INTO fte_ol(Code, Name, Address1, Address2, Address3, City, Pincode, State, Start_Date, End_Date, DOJ,Position,CTC,Basic_Per, Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,EXECUTIVE_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,TOTAL, J_Bonus) 
-            Values('$Code', '$name', '$Ad1', '$Ad2', '$Ad3', '$City', '$Pincode', '$state', '$Sd', '$ed', '$doj', '$Position', '$ctc', '$basicp', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$Executive_Allowance','$Total_A', '$PF', '$ESIC', '$Total_B', '$TOTAL', '$jbamount')";
+$ins_sql = "INSERT INTO olt
+(
+Employee_Name,
+Address_Line_1,
+Address_Line_2,
+Address_Line_3,
+City_,
+Pin_Code,
+DOJ,
+Offered_CTC,
+Basic,
+HRA,
+CONVEYANCE_ALLOWANCE,
+STATUTORY_BONUS,
+LTA,
+EXECUTIVE_ALLOWANCE,
+FOOD_ALLOWANCE,
+MOBILE_REIMBURSEMENT,
+ATTIRE_ALLOWANCE,
+VEHICLE_REIMBURSEMENT,
+RETENTION_ALLOWANCE,
+TOTAL_A,
+PF,
+ESIC,
+Gratuity,
+TOTAL_B,
+TOTAL_AB,
+VARIABLE_PAY,
+STRB,
+RB,
+TOTAL_II,
+TOTAL,
+JB
+) 
+Values
+(
+'$name',
+'$Ad1',
+'$Ad2',
+'$Ad3',
+'$City',
+'$Pincode',
+'$doj',
+'$ctc',
+'$basic',
+'$hra',
+'$Conveyance_Allowance',
+'$Statutory_Bonus',
+'$lta',
+'$Executive_Allowance',
+'$Food_Allowance',
+'$m_c_r',
+'$Attire_Allowance',
+'$vr',
+'$Retention_Allowance',
+'$Total_A',
+'$PF',
+'$ESIC',
+'$gratuity',
+'$Total_B',
+'$LTOTAL',
+'$Variable_Pay',
+'$Total_II',
+'$TOTAL',
+'$jbamount'
+)";
 
 $link->query($ins_sql);
 

@@ -1,6 +1,10 @@
 <?php
 require_once("config.php");
 require_once("TCPDF/tcpdf.php");
+if($_GET["id"]=="")
+{
+
+
 $name = $_POST["name"];
 $Sd = $_POST["Sd"];
 $ed = $_POST["ed"];
@@ -74,13 +78,155 @@ $TOTAL1 = round($TOTAL / 12);
 
 $Code = $_POST['Code'];
 
-$ins_sql = "INSERT INTO olt (Code, Name, State,DOJ,Position,CTC,Basic,HRA,STATUTORY_BONUS,CONVEYANCE_ALLOWANCE,LTA,EXECUTIVE_ALLOWANCE,FOOD_ALLOWANCE,MOBILE_REIMBURSEMENT,
-            ATTIRE_ALLOWANCE,VEHICLE_REIMBURSEMENT,RETENTION_ALLOWANCE,TOTAL_A,PF,ESIC,TOTAL_B,VARIABLE_PAY,TOTAL_AB,TOTAL) 
-            Values('$Code', '$name', '$state', '$doj', '$Position', '$ctc', '$basic', '$hra',$Statutory_Bonus,'$Conveyance_Allowance','$lta','$Executive_Allowance',
-            '$Food_Allowance','$m_c_r', '$Attire_Allowance', '$vr', '$driver_reimbursement', '$Retention_Allowance', '$Total_A', '$PF', '$ESIC', '$gratuity', '$Total_B', 
-            '$LTOTAL', $Variable_Pay', '$Total_II', '$TOTAL')";
-
+$ins_sql = "INSERT INTO olt
+(
+Employee_Name,
+Address_Line_1,
+Address_Line_2,
+Address_Line_3,
+City_,
+Pin_Code,
+DOJ,
+Offered_CTC,
+Basic,
+HRA,
+CONVEYANCE_ALLOWANCE,
+STATUTORY_BONUS,
+LTA,
+EXECUTIVE_ALLOWANCE,
+FOOD_ALLOWANCE,
+MOBILE_REIMBURSEMENT,
+ATTIRE_ALLOWANCE,
+VEHICLE_REIMBURSEMENT,
+RETENTION_ALLOWANCE,
+TOTAL_A,
+PF,
+ESIC,
+Gratuity,
+TOTAL_B,
+TOTAL_AB,
+VARIABLE_PAY,
+TOTAL_II,
+TOTAL
+) 
+Values
+(
+'$name',
+'$Ad1',
+'$Ad2',
+'$Ad3',
+'$City',
+'$Pincode',
+'$doj',
+'$ctc',
+'$basic',
+'$hra',
+'$Conveyance_Allowance',
+'$Statutory_Bonus',
+'$lta',
+'$Executive_Allowance',
+'$Food_Allowance',
+'$m_c_r',
+'$Attire_Allowance',
+'$vr',
+'$Retention_Allowance',
+'$Total_A',
+'$PF',
+'$ESIC',
+'$gratuity',
+'$Total_B',
+'$LTOTAL',
+'$Variable_Pay',
+'$Total_II',
+'$TOTAL'
+)";
+//print_r($ins_sql);
 $link->query($ins_sql);
+$sql_sel = "SELECT MAX(olt_Id) AS olt_Id FROM olt";
+$sql_result = $link->query($sql_sel);
+$sql_result -> num_rows > 0 ;
+$sql_row = $sql_result -> fetch_assoc();
+$iq = $sql_row["olt_Id"];
+header('location: create_tcpdf.php?id='.$iq);
+}
+else
+{
+$sql = "SELECT * FROM olt WHERE olt_Id = ".$_GET["id"]."";
+$result = $link->query($sql);
+$result -> num_rows > 0;
+$row = $result -> fetch_assoc();
+$name = $row["Employee_Name"];
+$Sd = $row["Sd"];
+$ed = $row["ed"];
+$doj = $row["DOJ"];
+$Ad1 = $row["Address_Line_1"];
+$Ad2 = $row["Address_Line_2"];
+$Ad3 = $row["Address_Line_3"];
+$Position = $row["Position"];
+$Pincode = $row["Pin_Code"];
+$City = $row["City_"];
+$vp = $row["vp"];
+
+$state = $row["state"];
+$grade = $row["grade"];
+
+$ctc = $row["Offered_CTC"];
+
+$basic = $row["Basic"];
+$hra = $row["HRA"];
+$basic1 = round($basic / 12);
+$hra1 = round($hra / 12);
+$Statutory_Bonus = $row['STATUTORY_BONUS'];
+$Statutory_Bonus1 = round($Statutory_Bonus / 12);
+$Conveyance_Allowance = $row['CONVEYANCE_ALLOWANCE'];
+$Conveyance_Allowance1 = round($Conveyance_Allowance / 12);
+$Executive_Allowance = $row['EXECUTIVE_ALLOWANCE'];
+$Executive_Allowance1 = round($Executive_Allowance / 12);
+$lta = $row['LTA'];
+$lta1 = round($lta / 12);
+$Food_Allowance = $row['FOOD_ALLOWANCE'];
+$Food_Allowance1 = round($Food_Allowance / 12);
+$m_c_r = $row['MOBILE_REIMBURSEMENT'];
+$m_c_r1 = round($m_c_r / 12);
+$Attire_Allowance = $row['ATTIRE_ALLOWANCE'];
+$Attire_Allowance1 = round($Attire_Allowance / 12);
+$vr = $row['VEHICLE_REIMBURSEMENT'];
+$vr1 = round($vr / 12);
+$driver_reimbursement = $row['driver_reimbursement'];
+$driver_reimbursement1 = round($driver_reimbursement / 12);
+$Retention_Allowance = $row['RETENTION_ALLOWANCE'];
+$Retention_Allowance1 = round($Retention_Allowance / 12);
+
+$Total_A = $row['TOTAL_A'];
+$Total_A1 = round($Total_A / 12);
+$PF = $row['PF'];
+$PF1 = round($PF / 12);
+$ESIC = $row['ESIC'];
+$ESIC1 = round($ESIC / 12);
+$gratuity = $row['Gratuity'];
+$Gratuity1 = round($gratuity / 12);
+
+$Total_B = $row['TOTAL_B'];
+$Total_B1 = round($Total_B / 12);
+
+$LTOTAL = $row['TOTAL_AB'];
+$LTOTAL1 = round($LTOTAL / 12);
+$Variable_Pay = $row['VARIABLE_PAY'];
+$Variable_Pay1 = round($Variable_Pay / 12);
+
+$STRB = $row['STRB'];
+$STRB1 = round($STRB / 12);
+
+$Incentive_Bonus = $row['Incentive_Bonus'];
+$Incentive_Bonus1 = round($Incentive_Bonus / 12);
+
+$Total_II = $row['TOTAL_II'];
+$Total_II1 = round($Total_II / 12);
+
+$TOTAL = $row['TOTAL'];
+$TOTAL1 = round($TOTAL / 12);
+
+$Code = $row['Code'];
 
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
@@ -752,5 +898,5 @@ EOD;
 $pdf->writeHTML($html, true, false, true, false, '');
 ob_end_clean();
 $pdf->Output('index.pdf');
-
+}
 ?>
