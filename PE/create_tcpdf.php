@@ -16,6 +16,14 @@ $Position = $_POST["Position"];
 $Pincode = $_POST["Pincode"];
 $City = $_POST["City"];
 $vp = $_POST["vp"];
+$wsd = $row["wsd"];
+$wed = $row["wed"];
+
+$jbamount = $_POST["jbamount"];
+$PL = $_POST["PL"];
+$BL = $_POST["BL"];
+$note = $_POST["Note"];
+$AO = $_POST["AO"];
 
 $state = $_POST["state"];
 $grade = $_POST["grade"];
@@ -77,6 +85,8 @@ $TOTAL = $_POST['TOTAL'];
 $TOTAL1 = round($TOTAL / 12);
 
 $Code = $_POST['Code'];
+
+
 
 $ins_sql = "INSERT INTO olt
 (
@@ -166,10 +176,20 @@ $doj = $row["DOJ"];
 $Ad1 = $row["Address_Line_1"];
 $Ad2 = $row["Address_Line_2"];
 $Ad3 = $row["Address_Line_3"];
-$Position = $row["Position"];
+$Position = $_POST["Position"];
 $Pincode = $row["Pin_Code"];
 $City = $row["City_"];
 $vp = $row["vp"];
+
+$wsd = $row["wsd"];
+$wed = $row["wed"];
+
+
+$jbamount = $_POST["jbamount"];
+$PL = $_POST["PL"];
+$BL = $_POST["BL"];
+$note = $_POST["Note"];
+$AO = $_POST["AO"];
 
 $state = $row["state"];
 $grade = $row["grade"];
@@ -215,13 +235,13 @@ $Total_B1 = round($Total_B / 12);
 
 $LTOTAL = $row['TOTAL_AB'];
 $LTOTAL1 = round($LTOTAL / 12);
-$Variable_Pay = $row['VARIABLE_PAY'];
+$Variable_Pay = $_POST['VARIABLE_PAY'];
 $Variable_Pay1 = round($Variable_Pay / 12);
 
-$STRB = $row['STRB'];
+$STRB = $_POST['STRB'];
 $STRB1 = round($STRB / 12);
 
-$Incentive_Bonus = $row['Incentive_Bonus'];
+$Incentive_Bonus = $_POST['Incentive_Bonus'];
 $Incentive_Bonus1 = round($Incentive_Bonus / 12);
 
 $Total_II = $row['TOTAL_II'];
@@ -231,6 +251,7 @@ $TOTAL = $row['TOTAL'];
 $TOTAL1 = round($TOTAL / 12);
 
 $Code = $row['Code'];
+
 
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
@@ -421,16 +442,16 @@ $html .= '
 <b><u>OFFER DETAILS</u></b><br>
 
 
-<br>$name<br><br><br>
+<br>'. $name .'<br><br><br>
 <b>Place of Work:</b><br><br>
 The initial place of work for carrying out your assignment shall be as given below: <br><br>
-<b>Posting Location:</b> $City  <br>
-<b>Base Location:</b> $City <br>
-<b>Area of Operation:</b> NA<br>
-<b>Note: NA <br></b><br>
+<b>Posting Location:</b> '.$PL.'  <br>
+<b>Base Location:</b> '.$BL.' <br>
+<b>Area of Operation:</b> '.$AO.'<br>
+<b>Note: '.$Note.' <br></b><br>
 
 
-Your working days will be <b>Monday to Friday</b>.<br><br>
+Your working days will be <b>'.$wsd.' to '.$wed.'</b>.<br><br>
 
 <b>Remuneration:</b><br><br>';
 if ($chkPassPort == "no") 
@@ -490,7 +511,7 @@ Background Verification:The Company reserves the right to carry out reference ve
 
 $html .= <<<EOD
 <br><br>
-<br>$name<br><br>
+<br> $name <br><br><br>
 <b>Notice Period / Termination:</b><br><br>
 
 
@@ -535,8 +556,7 @@ f.	Salary in all the above cases refers to Basic Salary.  <br><br>
 EOD;
 
 
-$html .= '
-$name<br>
+$html .= ''. $name .'<br><br>
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;

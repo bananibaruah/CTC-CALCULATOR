@@ -983,6 +983,7 @@
 
                             </th>
                         </tr>
+
                         <tr>
                             <td>
                                 <label="">
@@ -999,6 +1000,7 @@
 
                             </td>
                         </tr>
+
                         <tr>
                             <td>
                                 <label="">Address Line 3</label>
@@ -1012,6 +1014,32 @@
                             <td> <input type="text" class="form-control" id="City" name="City" placeholder="" />
                             </td>
                         </tr>
+
+                        <tr>
+                            <td>
+                                <label="">Base Location</label>
+                            </td>
+                            <td><input type="text" class="form-control" id="BL" name="BL" placeholder="" />
+                            </td>
+                            <td>
+                                <label="">Posting Location</label>
+                            </td>
+                            <td><input type="text" class="form-control" id="PL" name="PL" placeholder="" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label="">Area of Operation</label>
+                            </td>
+                            <td><input type="text" class="form-control" id="AO" name="AP" placeholder="" />
+                            </td>
+                            <td>
+                                <label="">Note</label>
+                            </td>
+                            <td><input type="text" class="form-control" id="Note" name="Note" placeholder="" />
+                            </td>
+                        </tr>
+
                         <tr>
                             <td>
                                 <label="">Pincode</label>
@@ -1069,8 +1097,10 @@
 
                         <tr>
                             <td>
+                                <label=""><b>DOJ</b></label>
                             </td>
                             <td>
+                                <input type="date" class="form-control" id="dojtype" name="dojtype" placeholder="" />
                             <td>
                                 <b>
                                     <label=""><b>STATE</b></label>
@@ -1742,8 +1772,6 @@
                                         onclick="ShowHideDiv()" />
                                     No
                                 </label>
-
-
                             </td>
 
                             <td>
