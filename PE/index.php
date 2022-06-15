@@ -1705,6 +1705,62 @@
 
                             </td>
                         </tr>
+
+                        <tr>
+                            <td>
+                                <script type="text/javascript">
+                                function ShowHideDiv() {
+                                    var chkYes =
+                                        document
+                                        .getElementById(
+                                            "chkYes"
+                                        );
+                                    var jbamount =
+                                        document
+                                        .getElementById(
+                                            "jbamount"
+                                        );
+                                    jbamount
+                                        .style
+                                        .display =
+                                        chkYes
+                                        .checked ?
+                                        "block" :
+                                        "none";
+                                }
+                                </script>
+
+                                <span>Joining
+                                    Bonus</span>
+                                <label for="chkYes">
+                                    <input type="radio" id="chkYes" name="chkPassPort" value="yes"
+                                        onclick="ShowHideDiv()" />
+                                    Yes
+                                </label>
+                                <label for="chkNo">
+                                    <input type="radio" id="chkNo" name="chkPassPort" value="no"
+                                        onclick="ShowHideDiv()" />
+                                    No
+                                </label>
+
+
+                            </td>
+
+                            <td>
+
+                                <div id="jbamount" style="display: none">
+                                    <input type="text" name="jbamount" id="jbamount" />
+                                </div>
+
+                            </td>
+
+                            <td></td>
+
+                            <td></td>
+
+                        </tr>
+
+
                     </table>
                     <br><br>
                     <input type="submit" class="btn btn-primary" />
