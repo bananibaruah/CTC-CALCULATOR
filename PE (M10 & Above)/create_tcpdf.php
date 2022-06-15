@@ -147,6 +147,10 @@ $sql_result = $link->query($sql_sel);
 $sql_result -> num_rows > 0 ;
 $sql_row = $sql_result -> fetch_assoc();
 $iq = $sql_row["olt_Id"];
+if($iq == "" )
+{
+    $iq = 0;
+}
 header('location: create_tcpdf.php?id='.$iq);
 }
 else

@@ -627,8 +627,10 @@
                         $("#Conveyance_Allowance").val(ca * 12);
                         $("#MConveyance_Allowance").val(Math.round(ca));
 
-                        if (y < 21000) {
+                        if (y > 21000) {
                             total_state = 0;
+                            $("#Statutory_Bonus").val(total_state * 12);
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
                         } else {
                             $("#Statutory_Bonus").val(total_state * 12);
                             $("#MStatutory_Bonus").val(Math.round(total_state));
@@ -1000,8 +1002,10 @@
                         $("#Conveyance_Allowance").val(ca * 12);
                         $("#MConveyance_Allowance").val(Math.round(ca));
 
-                        if (y < 21000) {
+                        if (y > 21000) {
                             total_state = 0;
+                            $("#Statutory_Bonus").val(total_state * 12);
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
                         } else {
                             $("#Statutory_Bonus").val(total_state * 12);
                             $("#MStatutory_Bonus").val(Math.round(total_state));
