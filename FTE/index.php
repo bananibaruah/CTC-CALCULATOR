@@ -762,8 +762,8 @@
                         $("#MTotal_B").val(Math.round(Math.round(Total_B)));
 
 
-                        $("#Executive_Allowance").val(Math.round(executive_allowance * 12));
-                        $("#MExecutive_Allowance").val(Math.round(executive_allowance));
+                        $("#Executive_Allowance").val(Math.round(executive_allowance));
+                        $("#MExecutive_Allowance").val(Math.round(executive_allowance / 12));
 
                         $("#Total_A").val(Math.round(Total_A * 12));
                         $("#MTotal_A").val(Math.round(Total_A));
