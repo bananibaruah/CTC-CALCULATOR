@@ -5,6 +5,7 @@ $name = $_POST["name"];
 $Sd = $_POST["Sd"];
 $ed = $_POST["ed"];
 $doj = $_POST["doj"];
+$dojtype = $_POST["dojtype"];
 $Ad1 = $_POST["Ad1"];
 $Ad2 = $_POST["Ad2"];
 $Ad3 = $_POST["Ad3"];
@@ -156,6 +157,7 @@ $pdf->SetAutoPageBreak(TRUE, 30);
 $doj1 = date("F d, Y", strtotime($doj));
 $Sd1 = date("F d, Y", strtotime($Sd));
 $ed1 = date("F d, Y", strtotime($ed));
+$dojtype1 = date("F d, Y", strtotime($dojtype));
 
 function CurrencyFormat($number)
 {
@@ -457,7 +459,7 @@ $html .= '<br>' . $name . '<br><br><br>
     </tr>
 	<tr>
         <td><b>&nbsp; &nbsp; &nbsp;w.e.f</b></td>
-        <td><b>&nbsp; &nbsp; &nbsp;' . $Sd1 . '</b></td>
+        <td><b>&nbsp; &nbsp; &nbsp;' . $dojtype1 . '</b></td>
 		<td style="text-align:center"><b>Grade</b></td>
 		<td style="text-align:center"><b>' . $grade . '</b></td>
     </tr>
