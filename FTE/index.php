@@ -383,52 +383,14 @@
                             e = rechange_e;
                             executive_allowance = e;
                             Total_A = y + hr + ca + total_state + e;
-                            if (flag == 1) {
-                                var ct = 0,
-                                    ct1 = 0;
-                                ct = parseInt(mra);
-                                ra = Math.floor(ct / 12);
-                                var e = 0;
-                                e = y + hr + ca + total_state;
-                                executive_allowance = (Total_A - e);
 
-
-                            }
                         }
 
                         if (eflag == 0) {
                             var e = 0;
-                            e = y + hr + ca + total_state;
-                            executive_allowance = (Total_A - e);
-
-                            if (flag == 1) {
-                                var ct = 0,
-                                    ct1 = 0;
-                                ct = parseInt(mra);
-                                ra = Math.floor(ct / 12);
-                                var e = 0;
-                                e = y + hr + ca + total_state;
-                                executive_allowance = (Total_A - e);
-
-
-                            }
+                            e = y + hr + ca + total_state + pf1 + total_esic;
+                            executive_allowance = (ctc / 12) - e;
                         }
-
-                        if (flag == 1) {
-                            var ct = 0,
-                                ct1 = 0;
-                            ct = parseInt(mra);
-                            ra = Math.floor(ct / 12);
-                            var e = 0;
-                            e = y + hr + ca + total_state;
-                            executive_allowance = (Total_A - e);
-
-                            if (eflag == 1) {
-                                e = rechange_e;
-                                executive_allowance = e;
-                            }
-                        }
-
 
 
                         //PF
@@ -478,6 +440,20 @@
                             $("#MESIC").val(Math.round(total_esic));
                         }
 
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            executive_allowance = e;
+                            Total_A = y + hr + ca + total_state + e;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            e = y + hr + ca + total_state + pf1 + total_esic;
+                            executive_allowance = (ctc / 12) - e;
+                        }
 
 
                         //Total_B
@@ -613,7 +589,7 @@
                         //ESIC
                         esic = 0;
                         total_esic = 0;
-                        esic = Total_A - ra - ca;
+                        esic = Total_A - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
                             $("#ESIC").val(Math.round(total_esic * 12));
@@ -631,51 +607,16 @@
                             e = rechange_e;
                             executive_allowance = e;
                             Total_A = y + hr + ca + total_state + e;
-                            if (flag == 1) {
-                                var ct = 0,
-                                    ct1 = 0;
-                                ct = parseInt(mra);
-                                ra = Math.floor(ct / 12);
-                                var e = 0;
-                                e = y + hr + ca + total_state;
-                                executive_allowance = (Total_A - e);
-
-
-                            }
                         }
 
                         if (eflag == 0) {
                             var e = 0;
-                            e = y + hr + ca + total_state;
-                            executive_allowance = (Total_A - e);
+                            e = y + hr + ca + total_state + pf1 + total_esic;
+                            console.log("Executive Allowances", e);
+                            executive_allowance = (ctc / 12) - e;
 
-                            if (flag == 1) {
-                                var ct = 0,
-                                    ct1 = 0;
-                                ct = parseInt(mra);
-                                ra = Math.floor(ct / 12);
-                                var e = 0;
-                                e = y + hr + ca + total_state;
-                                executive_allowance = (Total_A - e);
-
-
-                            }
                         }
 
-                        if (flag == 1) {
-                            var ct = 0,
-                                ct1 = 0;
-                            ct = parseInt(mra);
-                            ra = Math.floor(ct / 12);
-                            var e = 0;
-                            e = y + hr + ca + total_state;
-                            executive_allowance = (Total_A - e);
-
-                            if (eflag == 1) {
-                                e = rechange_e;
-                                executive_allowance = e;
-                            }
-                        }
 
 
 
@@ -724,6 +665,21 @@
                             total_esic = 0;
                             $("#ESIC").val(Math.round(total_esic * 12));
                             $("#MESIC").val(Math.round(total_esic));
+                        }
+
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            executive_allowance = e;
+                            Total_A = y + hr + ca + total_state + e;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            e = y + hr + ca + total_state + pf1 + total_esic;
+                            executive_allowance = (ctc / 12) - e;
                         }
 
 
