@@ -8,7 +8,8 @@ if($_GET["id"]=="")
 $name = $_POST["name"];
 $Sd = $_POST["Sd"];
 $ed = $_POST["ed"];
-$doj = $_POST["doj"];
+$DOJ = $_POST["DOJ"];
+$offer_date = $_POST["offer_date"];
 $Ad1 = $_POST["Ad1"];
 $Ad2 = $_POST["Ad2"];
 $Ad3 = $_POST["Ad3"];
@@ -18,6 +19,11 @@ $City = $_POST["City"];
 $vp = $_POST["vp"];
 $Posting_Location = $_POST["Posting_Location"];
 $Base_Location = $_POST["Base_Location"];
+$Area_of_Operation = $_POST["Area_of_Operation"];
+$Note = $_POST["Note"];
+$Working_EDay= $_POST["Working_EDay"];
+$Working_SDay= $_POST["Working_SDay"];
+$jbamount = $_POST["jbamount"];
 
 $state = $_POST["state"];
 $grade = $_POST["grade"];
@@ -56,7 +62,7 @@ $PF1 = round($PF / 12);
 $ESIC = $_POST['ESIC'];
 $ESIC1 = round($ESIC / 12);
 $gratuity = $_POST['gratuity'];
-$Gratuity1 = round($gratuity / 12);
+$gratuity1 = round($gratuity / 12);
 
 $Total_B = $_POST['Total_B'];
 $Total_B1 = round($Total_B / 12);
@@ -86,12 +92,20 @@ Employee_Name,
 Address_Line_1,
 Address_Line_2,
 Address_Line_3,
-City_,
+City,
 Pin_Code,
 Position,
 Posting_Location,
 Base_Location,
+Area_of_Operation,
+Note,
+Working_EDay,
+Working_SDay,
+jbamount,
+vp,
 DOJ,
+grade,
+offer_date,
 Offered_CTC,
 Basic,
 HRA,
@@ -110,9 +124,10 @@ ESIC,
 Gratuity,
 TOTAL_B,
 TOTAL_AB,
-VARIABLE_PAY,
+Variable_Pay,
 TOTAL_II,
-TOTAL
+TOTAL,
+Code
 ) 
 Values
 (
@@ -125,7 +140,15 @@ Values
 '$Position',
 '$Posting_Location',
 '$Base_Location',
-'$doj',
+'$Area_of_Operation',
+'$Note',
+'$Working_EDay',
+'$Working_SDay',
+'$jbamount',
+'$offer_date',
+'$vp',
+'$DOJ',
+'$grade',
 '$ctc',
 '$basic',
 '$hra',
@@ -146,7 +169,8 @@ Values
 '$LTOTAL',
 '$Variable_Pay',
 '$Total_II',
-'$TOTAL'
+'$TOTAL',
+'$Code'
 )";
 //print_r($ins_sql);
 $link->query($ins_sql);
@@ -170,16 +194,22 @@ $row = $result -> fetch_assoc();
 $name = $row["Employee_Name"];
 $Sd = $row["Sd"];
 $ed = $row["ed"];
-$doj = $row["DOJ"];
+$DOJ = $row["DOJ"];
 $Ad1 = $row["Address_Line_1"];
 $Ad2 = $row["Address_Line_2"];
 $Ad3 = $row["Address_Line_3"];
 $Position = $row["Position"];
 $Pincode = $row["Pin_Code"];
-$City = $row["City_"];
+$City = $row["City"];
 $vp = $row["vp"];
 $Posting_Location = $row["Posting_Location"];
 $Base_Location = $row["Base_Location"];
+$Area_of_Operation = $row["Area_of_Operation"];
+$Note = $row["Note"];
+$Working_EDay= $row["Working_EDay"];
+$Working_SDay= $row["Working_SDay"];
+$jbamount = $row["jbamount"];
+$offer_date = $row["offer_date"];
 
 $state = $row["state"];
 $grade = $row["grade"];
@@ -225,7 +255,7 @@ $Total_B1 = round($Total_B / 12);
 
 $LTOTAL = $row['TOTAL_AB'];
 $LTOTAL1 = round($LTOTAL / 12);
-$Variable_Pay = $row['VARIABLE_PAY'];
+$Variable_Pay = $row['Variable_Pay'];
 $Variable_Pay1 = round($Variable_Pay / 12);
 
 $STRB = $row['STRB'];
@@ -252,10 +282,10 @@ $pdf->SetFont('times', '', 10.8);
 $pdf->SetMargins(10, 10, 15, true);
 $pdf->AddPage();
 $pdf->SetAutoPageBreak(TRUE, 30);
-$doj1 = date("F d, Y", strtotime($doj));
+$DOJ1 = date("F d, Y", strtotime($DOJ));
 $Sd1 = date("F d, Y", strtotime($Sd));
 $ed1 = date("F d, Y", strtotime($ed));
-$dojtype1 = date("F d, Y", strtotime($dojtype));
+$offer_date1 = date("F d, Y", strtotime($offer_date));
 
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF
@@ -365,18 +395,18 @@ $html .= <<<EOD
 <b>OFFER LETTER </b>
 
 <b>
-<br><br>$doj1
+<br><br>$DOJ1
 <h3>$Code</h3><br><br>
 $name <br>
 $Ad1 ,<br>
 $Ad2 ,<br>
-$City  $Pincode <br><br>
+$City , $Pincode <br><br>
 Dear $name , <br><br>
 </b>
 Further to our discussions we are pleased to offer you the role of "<b>$Position</b>". The detailed terms and conditions of your offer have been set out in Annexures I and II and are enclosed herewith.<br><br>
 Please take the time to read and understand the offer details. Should you have any queries on the terms please contact your Talent Acquisition representative. <br><br>
 You are requested to give us your e-mail confirmation of having accepted the terms and conditions of our offer letter within 2 days of our e-mail, followed by sending us a duly signed copy of the same in token of your acceptance of the said offer letter no later than 10 days from the date of issue of this letter, failing which this offer stands withdrawn. <br><br>
-You are required to report for duty on <b>$doj1</b> not later than 9.30 a.m.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>       																							         
+You are required to report for duty on <b>$DOJ1</b> not later than 9.30 a.m.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>       																							         
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.<br><br>
 <b>$name</b> we look forward to you joining NSEIT for a mutually rewarding association.<br><br>
 Yours sincerely,<br>
@@ -386,7 +416,7 @@ Head – HR<br><br>
 Encl:-</b><br>
 &nbsp;&nbsp;&nbsp;1.	Offer details<br>
 &nbsp;&nbsp;&nbsp;2.	Annexure I and II.<br><br>
-We request you to return all the documents attached duly signed and join us on or before <b>$doj1</b>.<br><br><br><brr>
+We request you to return all the documents attached duly signed and join us on or before <b>$DOJ1</b>.<br><br><br><br>
 <b><u>Signature & Date</u></b>
 <P style="page-break-before: always">
 EOD;
@@ -398,29 +428,29 @@ $html .= <<<EOD
 <b>OFFER LETTER OOFICE COPY</b>
 
 <b>
-<br><br>$doj1
+<br><br>$DOJ1
 <h3>$Code</h3><br><br>
 $name <br>
 $Ad1 ,<br>
 $Ad2 ,<br>
-$City  $Pincode <br><br>
+$City , $Pincode <br><br>
 
 Dear $name , <br><br>
 </b>
 Further to our discussions we are pleased to offer you the role of <b>$Position</b>. The detailed terms and conditions of your offer have been set out in Annexures I and II and are enclosed herewith.<br><br>
 Please take the time to read and understand the offer details. Should you have any queries on the terms please contact your Talent Acquisition representative. <br><br>
 You are requested to give us your e-mail confirmation of having accepted the terms and conditions of our offer letter within 2 days of our e-mail, followed by sending us a duly signed copy of the same in token of your acceptance of the said offer letter no later than 10 days from the date of issue of this letter, failing which this offer stands withdrawn. <br><br>
-You are required to report for duty on <b>$doj1</b> not later than 9.30 a.m.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>       																							         
+You are required to report for duty on <b>$DOJ1</b> not later than 9.30 a.m.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>       																							         
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.<br><br>
 <b>$name</b> we look forward to you joining NSEIT for a mutually rewarding association.<br><br>
 Yours sincerely,<br>
 <img src="Sig.png" style="height:60px , width:30px"><br>
 <b>Tina Mathew<br>
-Head – HR<br><br>
+Head – HR<br><br>s
 Encl:-</b><br>
 &nbsp;&nbsp;&nbsp;1.	Offer details<br>
 &nbsp;&nbsp;&nbsp;2.	Annexure I and II.<br><br>
-We request you to return all the documents attached duly signed and join us on or before <b>$doj1</b>.<br><br><br><brr>
+We request you to return all the documents attached duly signed and join us on or before <b>$DOJ1</b>.<br><br><br><brr>
 <b><u>Signature & Date</u></b>
 <P style="page-break-before: always">
 EOD;
@@ -438,13 +468,14 @@ $html .= '
 The initial place of work for carrying out your assignment shall be as given below: <br><br>
 <b>Posting Location:</b> '.$Posting_Location.'  <br>
 <b>Base Location:</b> '.$Base_Location.' <br>
-<b>Area of Operation:</b> '.$AO.'<br>
-<b>Note: '.$Note.' <br></b><br>
+<b>Area of Operation:</b> '.$Area_of_Operation.'<br>
+<b>Note:</b> '.$Note.' <br><br>
 
 
-Your working days will be <b>'.$wsd.' to '.$wed.'</b>.<br><br>
+Your working days will be <b>'.$Working_SDay.' to '.$Working_EDay.'</b>.<br><br>
 
 <b>Remuneration:</b><br><br>';
+
 if ($chkPassPort == "no") 
 {
     $html .= 'Your salary and allowances will be as per the details attached to this letter and marked as Annexure I.';
@@ -455,14 +486,13 @@ if ($chkPassPort == "no")
 if ($chkPassPort == "yes") 
 {
     $html .= 'Your salary and allowances will be as per the details attached to this letter and marked as Annexure I.<br>In addition to the compensation package detailed in Annexure I, you will be eligible to receive a total amount of
-    <b>' . $jbamount . '</b> as a part of a Joining Bonus only if you join the company on or before <b>' . $Sd1 . '</b>
+    <b>' . $jbamount . '</b> as a part of a Joining Bonus only if you join the company on or before <b>' . $Working_SDay . '</b>
     (TDS would be deducted as applicable on the said amount.) In the event that you cease to be in the employment of 
     the company within 12 months of your joining date, you shall pay back the entire amount paid to you as a Joining Bonus. 
     Further, the said amount is due and payable to you as a joining bonus shall be paid to you at the time and along with 
     the salary payable to you at the end of the second month from the month in which you have joined the services of the company.
     <br><br>';
 }
-
 $html .= '
 
 <b>Probation:</b><br><br>
@@ -571,11 +601,11 @@ $html .= ''. $name .'<br><br>
         <td><b>Designation</b></td>
         <td><b>' . $Position . '</b></td>
         <td><b>Grade</b></td>
-		<td><b>' . $grade . '</b></td>
+		<td><b>'.$grade.'</b></td>
     </tr>
 	<tr>
         <td><b>wef</b></td>
-        <td><b>' . $Sd . '</b></td>
+        <td><b>' . $offer_date1. '</b></td>
 		<td><b>All Figures in INR</b></td>
 		<td><b></b></td>
     </tr>

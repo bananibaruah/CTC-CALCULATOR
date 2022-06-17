@@ -1033,7 +1033,8 @@
                             <td>
                                 <label="">Area of Operation</label>
                             </td>
-                            <td><input type="text" class="form-control" id="AO" name="AP" placeholder="" />
+                            <td><input type="text" class="form-control" id="Area_of_Operation" name="Area_of_Operation"
+                                    placeholder="" />
                             </td>
                             <td>
                                 <label="">Note</label>
@@ -1052,7 +1053,8 @@
                             <td>
                                 <label="">Offer date</label>
                             </td>
-                            <td> <input type="date" class="form-control" id="doj" name="doj" placeholder="" />
+                            <td> <input type="date" class="form-control" id="offer_date" name="offer_date"
+                                    placeholder="" />
 
 
                             </td>
@@ -1085,13 +1087,16 @@
                                 <label="">
                                     <label="">Working Start Day</label></label>
                             </td>
-                            <td> <input type="text" class="form-control" id="wsd" name="wsd" placeholder="" />
+                            <td> <input type="text" class="form-control" id="Working_SDay" name="Working_SDay"
+                                    placeholder="" />
                             </td>
+
                             <td>
                                 <label="">
                                     <label="">Working End Day</label></label>
                             </td>
-                            <td> <input type="text" class="form-control" id="wed" name="wed" placeholder="" />
+                            <td> <input type="text" class="form-control" id="Working_EDay" name="Working_EDay"
+                                    placeholder="" />
 
 
                             </td>
@@ -1102,7 +1107,7 @@
                                 <label=""><b>DOJ</b></label>
                             </td>
                             <td>
-                                <input type="date" class="form-control" id="dojtype" name="dojtype" placeholder="" />
+                                <input type="date" class="form-control" id="DOJ" name="DOJ" placeholder="" />
                             <td>
                                 <b>
                                     <label=""><b>STATE</b></label>
@@ -1600,14 +1605,14 @@
                                     var chkYes =
                                         document
                                         .getElementById(
-                                            "chkYes"
+                                            "comp1Yes"
                                         );
-                                    var jbamount =
+                                    var STRB =
                                         document
                                         .getElementById(
-                                            "jbamount"
+                                            "STRB"
                                         );
-                                    jbamount
+                                    STRB
                                         .style
                                         .display =
                                         chkYes
@@ -1674,14 +1679,14 @@
                                     var chkYes =
                                         document
                                         .getElementById(
-                                            "chkYes"
+                                            "comp2Yes"
                                         );
-                                    var jbamount =
+                                    var Incentive_Bonus =
                                         document
                                         .getElementById(
-                                            "jbamount"
+                                            "Incentive_Bonus"
                                         );
-                                    jbamount
+                                    Incentive_Bonus
                                         .style
                                         .display =
                                         chkYes
@@ -1777,7 +1782,6 @@
                             </td>
 
                             <td>
-
                                 <div id="jbamount" style="display: none">
                                     <input type="text" name="jbamount" id="jbamount" />
                                 </div>
