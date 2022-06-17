@@ -1019,12 +1019,14 @@
                             <td>
                                 <label="">Base Location</label>
                             </td>
-                            <td><input type="text" class="form-control" id="BL" name="BL" placeholder="" />
+                            <td><input type="text" class="form-control" id="Base_Location" name="Base_Location"
+                                    placeholder="" />
                             </td>
                             <td>
                                 <label="">Posting Location</label>
                             </td>
-                            <td><input type="text" class="form-control" id="PL" name="PL" placeholder="" />
+                            <td><input type="text" class="form-control" id="Posting_Location" name="Posting_Location"
+                                    placeholder="" />
                             </td>
                         </tr>
                         <tr>

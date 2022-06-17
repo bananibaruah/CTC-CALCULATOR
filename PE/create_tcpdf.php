@@ -16,14 +16,8 @@ $Position = $_POST["Position"];
 $Pincode = $_POST["Pincode"];
 $City = $_POST["City"];
 $vp = $_POST["vp"];
-$wsd = $row["wsd"];
-$wed = $row["wed"];
-
-$jbamount = $_POST["jbamount"];
-$PL = $_POST["PL"];
-$BL = $_POST["BL"];
-$note = $_POST["Note"];
-$AO = $_POST["AO"];
+$Posting_Location = $_POST["Posting_Location"];
+$Base_Location = $_POST["Base_Location"];
 
 $state = $_POST["state"];
 $grade = $_POST["grade"];
@@ -86,8 +80,6 @@ $TOTAL1 = round($TOTAL / 12);
 
 $Code = $_POST['Code'];
 
-
-
 $ins_sql = "INSERT INTO olt
 (
 Employee_Name,
@@ -96,6 +88,9 @@ Address_Line_2,
 Address_Line_3,
 City_,
 Pin_Code,
+Position,
+Posting_Location,
+Base_Location,
 DOJ,
 Offered_CTC,
 Basic,
@@ -127,6 +122,9 @@ Values
 '$Ad3',
 '$City',
 '$Pincode',
+'$Position',
+'$Posting_Location',
+'$Base_Location',
 '$doj',
 '$ctc',
 '$basic',
@@ -176,20 +174,12 @@ $doj = $row["DOJ"];
 $Ad1 = $row["Address_Line_1"];
 $Ad2 = $row["Address_Line_2"];
 $Ad3 = $row["Address_Line_3"];
-$Position = $_POST["Position"];
+$Position = $row["Position"];
 $Pincode = $row["Pin_Code"];
 $City = $row["City_"];
 $vp = $row["vp"];
-
-$wsd = $row["wsd"];
-$wed = $row["wed"];
-
-
-$jbamount = $_POST["jbamount"];
-$PL = $_POST["PL"];
-$BL = $_POST["BL"];
-$note = $_POST["Note"];
-$AO = $_POST["AO"];
+$Posting_Location = $row["Posting_Location"];
+$Base_Location = $row["Base_Location"];
 
 $state = $row["state"];
 $grade = $row["grade"];
@@ -235,13 +225,13 @@ $Total_B1 = round($Total_B / 12);
 
 $LTOTAL = $row['TOTAL_AB'];
 $LTOTAL1 = round($LTOTAL / 12);
-$Variable_Pay = $_POST['VARIABLE_PAY'];
+$Variable_Pay = $row['VARIABLE_PAY'];
 $Variable_Pay1 = round($Variable_Pay / 12);
 
-$STRB = $_POST['STRB'];
+$STRB = $row['STRB'];
 $STRB1 = round($STRB / 12);
 
-$Incentive_Bonus = $_POST['Incentive_Bonus'];
+$Incentive_Bonus = $row['Incentive_Bonus'];
 $Incentive_Bonus1 = round($Incentive_Bonus / 12);
 
 $Total_II = $row['TOTAL_II'];
@@ -265,6 +255,7 @@ $pdf->SetAutoPageBreak(TRUE, 30);
 $doj1 = date("F d, Y", strtotime($doj));
 $Sd1 = date("F d, Y", strtotime($Sd));
 $ed1 = date("F d, Y", strtotime($ed));
+$dojtype1 = date("F d, Y", strtotime($dojtype));
 
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF
@@ -445,8 +436,8 @@ $html .= '
 <br>'. $name .'<br><br><br>
 <b>Place of Work:</b><br><br>
 The initial place of work for carrying out your assignment shall be as given below: <br><br>
-<b>Posting Location:</b> '.$PL.'  <br>
-<b>Base Location:</b> '.$BL.' <br>
+<b>Posting Location:</b> '.$Posting_Location.'  <br>
+<b>Base Location:</b> '.$Base_Location.' <br>
 <b>Area of Operation:</b> '.$AO.'<br>
 <b>Note: '.$Note.' <br></b><br>
 
