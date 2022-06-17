@@ -472,7 +472,7 @@ $html .= '<br>' . $name . '<br><br><br>
     <tr>
         <td><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;PART I</b></td>
         <td><b>&nbsp; &nbsp; &nbsp;Fixed Components</b></td>
-       <td style="text-align:center" colspan="2">All Figures in INR</td>
+       <td style="text-align:center" colspan="2"><b>All Figures in INR</b></td>
     </tr>
     <tr>
         <td><b>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;A</b></td>
