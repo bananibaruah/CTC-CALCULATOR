@@ -389,7 +389,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                             Total_A = y + hr + ca + total_state + e;
                         }
 
@@ -398,7 +398,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = True_Gross - (y + hr + ca + total_state);
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
 
                         }
 
@@ -410,7 +410,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                             Total_A = y + hr + ca + total_state + e;
 
                         }
@@ -420,7 +420,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Second_Total_Gross - (y + hr + ca + total_state);
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
 
                         }
 
@@ -444,7 +444,7 @@
                         if (eflag == 1) {
                             e = rechange_e;
                             Total_A4 = 0;
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                             Total_A = y + hr + ca + total_state + e;
                             Total_A4 = Total_A;
 
@@ -455,7 +455,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Final_True_Gross - (y + hr + ca + total_state);
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
 
                         }
 
@@ -545,8 +545,8 @@
                         $("#MTotal_B").val(Math.round(Math.round(Total_B)));
 
 
-                        $("#Executive_Allowance").val(Math.round(executive_allowance * 12));
-                        $("#MExecutive_Allowance").val(Math.round(executive_allowance));
+                        $("#Executive_Allowance").val(executive_allowance * 12);
+                        $("#MExecutive_Allowance").val(executive_allowance);
 
                         $("#Total_A").val(Math.round(Total_A * 12));
                         $("#MTotal_A").val(Math.round(Total_A));
@@ -668,7 +668,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                             Total_A = y + hr + ca + total_state + e;
                             console.log("Total_A5: " + Total_A);
                         }
@@ -678,7 +678,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = True_Gross - (y + hr + ca + total_state);
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                         }
 
                         Second_Total_Gross = 0;
@@ -688,7 +688,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                             Total_A = y + hr + ca + total_state + e;
                             console.log("Total_A6 = " + Total_A);
 
@@ -699,7 +699,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Second_Total_Gross - (y + hr + ca + total_state);
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                         }
 
                         //ESIC
@@ -725,7 +725,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                             Total_A = y + hr + ca + total_state + e;
                             console.log("Total_A8 = " + Total_A);
 
@@ -736,7 +736,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Final_True_Gross - (y + hr + ca + total_state);
-                            executive_allowance = e;
+                            executive_allowance = Math.round(e);
                         }
 
                         //ESIC
@@ -825,8 +825,8 @@
                         $("#MTotal_B").val(Math.round(Math.round(Total_B)));
 
 
-                        $("#Executive_Allowance").val(Math.round(executive_allowance * 12));
-                        $("#MExecutive_Allowance").val(Math.round(executive_allowance));
+                        $("#Executive_Allowance").val(executive_allowance * 12);
+                        $("#MExecutive_Allowance").val(executive_allowance);
 
                         $("#Total_A").val(Math.round(Total_A * 12));
                         $("#MTotal_A").val(Math.round(Total_A));
