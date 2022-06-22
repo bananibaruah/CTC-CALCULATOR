@@ -391,8 +391,6 @@
                             e = rechange_e;
                             executive_allowance = e;
                             Total_A = y + hr + ca + total_state + e;
-                            console.log("Total_A1: " + Total_A);
-
                         }
 
                         if (eflag == 0) {
@@ -414,7 +412,6 @@
                             e = rechange_e;
                             executive_allowance = e;
                             Total_A = y + hr + ca + total_state + e;
-                            console.log("Total_A2", Total_A);
 
                         }
 
@@ -440,7 +437,6 @@
                         Final_True_Gross = 0;
                         Final_True_Gross = gross - pf1 - total_esic;
                         Total_A = Final_True_Gross;
-                        console.log("Total_A3", Total_A);
 
 
                         //executive_allowance
@@ -451,7 +447,6 @@
                             executive_allowance = e;
                             Total_A = y + hr + ca + total_state + e;
                             Total_A4 = Total_A;
-                            console.log("Total_A4", Total_A);
 
                         }
 
@@ -460,6 +455,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Final_True_Gross - (y + hr + ca + total_state);
+                            executive_allowance = e;
 
                         }
 
