@@ -748,6 +748,41 @@
                         }
 
 
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val(Math.round(pf1 * 12));
+                            $("#MPF").val(Math.round(pf1));
+
+
+                        } else {
+                            y_12 = Total_A - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            }
+                        }
+
+
+
 
 
                         //Total_B
