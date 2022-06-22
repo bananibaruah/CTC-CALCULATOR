@@ -283,10 +283,17 @@
                     if (x = 40) {
                         $("#al1").css('display', 'none');
                         var dy = 0,
-                            dy1 = 0;
+                            dy1 = 0,
+                            dy2 = 0;
                         dy = Math.floor((ctc * (x / 100)) / 12);
                         dy1 = dy * 0.01;
-                        y = parseInt(Math.floor(dy1) + "00");
+                        dy2 = parseInt(Math.floor(dy1) + "00");
+                        if (dy2 < 10000) {
+                            y = 10000;
+                        } else {
+                            y = parseInt(Math.floor(dy1) + "00");
+                        }
+
 
                         if (yflag == 0) {
 
@@ -358,14 +365,15 @@
                         }
 
 
-                        Total_A = gross - pf1;
+                        True_Gross = 0;
+                        True_Gross = gross - pf1;
 
 
 
                         //ESIC
                         esic = 0;
                         total_esic = 0;
-                        esic = Total_A - ra - ca;
+                        esic = True_Gross - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
                             $("#ESIC").val(Math.round(total_esic * 12));
@@ -388,57 +396,14 @@
 
                         if (eflag == 0) {
                             var e = 0;
-                            e = y + hr + ca + total_state + pf1 + total_esic;
-                            executive_allowance = (ctc / 12) - e;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = True_Gross - (y + hr + ca + total_state);
+                            executive_allowance = e;
                         }
 
-
-                        //PF
-                        var y_12 = y;
-                        var total_y_12 = 0;
-                        var pf = 0;
-                        var pf1 = 0;
-                        if (y_12 > 15000) {
-                            total_y_12 = y_12 * (12 / 100);
-                            pf = total_y_12;
-                            pf1 = pf;
-                            $("#PF").val(Math.round(pf1 * 12));
-                            $("#MPF").val(Math.round(pf1));
-
-
-                        } else {
-                            y_12 = Total_A - hr;
-                            if (y_12 > 15000) {
-                                y_12 = 1800;
-                                total_y_12 = y_12;
-                                pf = total_y_12;
-                                pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
-
-                            } else {
-                                total_y_12 = y_12 * (12 / 100);
-                                pf = total_y_12;
-                                pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
-
-                            }
-                        }
-
-                        //ESIC
-                        esic = 0;
-                        total_esic = 0;
-                        esic = Total_A - ra - ca;
-                        if (esic < 21000) {
-                            total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
-                        } else {
-                            total_esic = 0;
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
-                        }
+                        Second_Total_Gross = 0;
+                        Second_Total_Gross = gross - pf1 - total_esic;
 
                         //executive_allowance
 
@@ -451,9 +416,62 @@
 
                         if (eflag == 0) {
                             var e = 0;
-                            e = y + hr + ca + total_state + pf1 + total_esic;
-                            executive_allowance = (ctc / 12) - e;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = Second_Total_Gross - (y + hr + ca + total_state);
+                            executive_allowance = e;
                         }
+
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        esic = Second_Total_Gross - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
+                        }
+
+                        Final_True_Gross = 0;
+                        Final_True_Gross = gross - pf1 - total_esic;
+                        Total_A = Final_True_Gross;
+
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            executive_allowance = e;
+                            Total_A = y + hr + ca + total_state + e;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = Final_True_Gross - (y + hr + ca + total_state);
+                            executive_allowance = e;
+                        }
+
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        esic = Final_True_Gross - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
+                        }
+
+
 
 
                         //Total_B
@@ -507,10 +525,17 @@
                     if (x = rechange_bp) {
                         $("#al1").css('display', 'none');
                         var dy = 0,
-                            dy1 = 0;
-                        dy = Math.floor((ctc * (rechange_bp / 100)) / 12);
+                            dy1 = 0,
+                            dy2 = 0;
+                        dy = Math.floor((ctc * (x / 100)) / 12);
                         dy1 = dy * 0.01;
-                        y = parseInt(Math.floor(dy1) + "00");
+                        dy2 = parseInt(Math.floor(dy1) + "00");
+                        if (dy2 < 10000) {
+                            y = 10000;
+                        } else {
+                            y = parseInt(Math.floor(dy1) + "00");
+                        }
+
 
                         if (yflag == 0) {
 
@@ -582,14 +607,15 @@
                         }
 
 
-                        Total_A = gross - pf1;
+                        True_Gross = 0;
+                        True_Gross = gross - pf1;
 
 
 
                         //ESIC
                         esic = 0;
                         total_esic = 0;
-                        esic = Total_A - ca;
+                        esic = True_Gross - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
                             $("#ESIC").val(Math.round(total_esic * 12));
@@ -607,65 +633,19 @@
                             e = rechange_e;
                             executive_allowance = e;
                             Total_A = y + hr + ca + total_state + e;
+
                         }
 
                         if (eflag == 0) {
                             var e = 0;
-                            e = y + hr + ca + total_state + pf1 + total_esic;
-                            console.log("Executive Allowances", e);
-                            executive_allowance = (ctc / 12) - e;
-
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = True_Gross - (y + hr + ca + total_state);
+                            executive_allowance = e;
                         }
 
-
-
-
-                        //PF
-                        var y_12 = y;
-                        var total_y_12 = 0;
-                        var pf = 0;
-                        var pf1 = 0;
-                        if (y_12 > 15000) {
-                            total_y_12 = y_12 * (12 / 100);
-                            pf = total_y_12;
-                            pf1 = pf;
-                            $("#PF").val(Math.round(pf1 * 12));
-                            $("#MPF").val(Math.round(pf1));
-
-
-                        } else {
-                            y_12 = Total_A - hr;
-                            if (y_12 > 15000) {
-                                y_12 = 1800;
-                                total_y_12 = y_12;
-                                pf = total_y_12;
-                                pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
-
-                            } else {
-                                total_y_12 = y_12 * (12 / 100);
-                                pf = total_y_12;
-                                pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
-
-                            }
-                        }
-
-                        //ESIC
-                        esic = 0;
-                        total_esic = 0;
-                        esic = Total_A - ra - ca;
-                        if (esic < 21000) {
-                            total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
-                        } else {
-                            total_esic = 0;
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
-                        }
+                        Second_Total_Gross = 0;
+                        Second_Total_Gross = gross - pf1 - total_esic;
 
                         //executive_allowance
 
@@ -678,9 +658,61 @@
 
                         if (eflag == 0) {
                             var e = 0;
-                            e = y + hr + ca + total_state + pf1 + total_esic;
-                            executive_allowance = (ctc / 12) - e;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = Second_Total_Gross - (y + hr + ca + total_state);
+                            executive_allowance = e;
                         }
+
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        esic = Second_Total_Gross - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
+                        }
+
+                        Final_True_Gross = 0;
+                        Final_True_Gross = gross - pf1 - total_esic;
+                        Total_A = Final_True_Gross;
+
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            executive_allowance = e;
+                            Total_A = y + hr + ca + total_state + e;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = Final_True_Gross - (y + hr + ca + total_state);
+                            executive_allowance = e;
+                        }
+
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        esic = Final_True_Gross - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val(Math.round(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
+                        }
+
 
 
 
@@ -718,8 +750,8 @@
                         $("#MTotal_B").val(Math.round(Math.round(Total_B)));
 
 
-                        $("#Executive_Allowance").val(Math.round(executive_allowance));
-                        $("#MExecutive_Allowance").val(Math.round(executive_allowance / 12));
+                        $("#Executive_Allowance").val(Math.round(executive_allowance * 12));
+                        $("#MExecutive_Allowance").val(Math.round(executive_allowance));
 
                         $("#Total_A").val(Math.round(Total_A * 12));
                         $("#MTotal_A").val(Math.round(Total_A));
