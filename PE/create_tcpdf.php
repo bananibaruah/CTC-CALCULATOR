@@ -493,6 +493,7 @@ if ($chkPassPort == "yes")
     the salary payable to you at the end of the second month from the month in which you have joined the services of the company.
     <br><br>';
 }
+
 $html .= '
 
 <b>Probation:</b><br><br>

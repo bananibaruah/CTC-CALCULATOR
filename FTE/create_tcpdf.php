@@ -40,12 +40,17 @@ $ESIC = $_POST['ESIC'];
 $ESIC1 = round($ESIC / 12);
 $Total_B = $_POST['Total_B'];
 $Total_B1 = round($Total_B / 12);
-$LTOTAL = $_POST['LTotal'];
-$LTOTAL1 = round($LTOTAL / 12);
+$LTotal = $_POST['LTotal'];
+$LTotal1 = round($LTotal / 12);
 $TOTAL = $_POST['TOTAL'];
 $TOTAL1 = round($TOTAL / 12);
 $Code = $_POST['Code'];
 $Area_of_Operation = $_POST['Area_of_Operation'];
+$chkPassPort=$_POST['chkPassPort'];
+$chkYes =$_POST['chkYes'];
+$chkNo =$_POST['chkNo'];
+$yes= $_POST['yes'];
+$no= $_POST['no'];
 
 
 $ins_sql = "INSERT INTO olt
@@ -77,7 +82,7 @@ Total_A,
 PF,
 ESIC,
 Total_B,
-LTOTAL,
+LTotal,
 TOTAL,
 Code,
 Area_of_Operation
@@ -111,7 +116,7 @@ Values
 '$PF',
 '$ESIC',
 '$Total_B',
-'$LTOTAL',
+'$LTotal',
 '$TOTAL',
 '$Code',
 '$Area_of_Operation'
@@ -173,12 +178,17 @@ $ESIC =$row['ESIC'];
 $ESIC1 = round($ESIC / 12);
 $Total_B =$row['Total_B'];
 $Total_B1 = round($Total_B / 12);
-$LTOTAL =$row['LTotal'];
-$LTOTAL1 = round($LTOTAL / 12);
+$LTotal =$row['LTotal'];
+$LTotal1 = round($LTotal / 12);
 $TOTAL =$row['TOTAL'];
 $TOTAL1 = round($TOTAL / 12);
 $Code =$row['Code'];
 $Area_of_Operation= $row['Area_of_Operation'];
+$chkPassPort=$row['chkPassPort'];
+$chkYes =$row['chkYes'];
+$chkNo =$row['chkNo'];
+$yes= $row['yes'];
+$no= $row['no'];
 
 
 
@@ -395,6 +405,7 @@ You will be on probation for a period of 3 months from your date of joining.<br>
 
 
 <b>3.	Remuneration:</b><br>';
+
 if ($chkPassPort == "no") 
 {
     $html .= 'Your salary and allowances will be as per the details attached to this letter and marked as Annexure I.';
@@ -405,7 +416,7 @@ if ($chkPassPort == "no")
 if ($chkPassPort == "yes") 
 {
     $html .= 'Your salary and allowances will be as per the details attached to this letter and marked as Annexure I.<br>In addition to the compensation package detailed in Annexure I, you will be eligible to receive a total amount of
-    <b>' . $jbamount . '</b> as a part of a Joining Bonus only if you join the company on or before <b>' . $Sd1 . '</b>
+    <b>' . $jbamount . '</b> as a part of a Joining Bonus only if you join the company on or before <b>' . $wsd . '</b>
     (TDS would be deducted as applicable on the said amount.) In the event that you cease to be in the employment of 
     the company within 12 months of your joining date, you shall pay back the entire amount paid to you as a Joining Bonus. 
     Further, the said amount is due and payable to you as a joining bonus shall be paid to you at the time and along with 
@@ -583,8 +594,8 @@ $html .= '<tr>
     <tr>
         <td><b></b></td>
         <td><b>&nbsp; &nbsp; &nbsp;Total of PART I (A+B)</b>  </td>
-		<td style="text-align:right"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $TOTAL1) . '</b></td>
-		<td style="text-align:right"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTOTAL) . '</b></td>
+		<td style="text-align:right"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTotal1) . '</b></td>
+		<td style="text-align:right"><b>' . preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,", $LTotal) . '</b></td>
     </tr>  
    
     <tr>
