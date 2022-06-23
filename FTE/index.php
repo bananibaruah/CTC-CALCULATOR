@@ -934,6 +934,7 @@
                                 <td> <input type="text" class="form-control" id="City" name="City" placeholder="" />
                                 </td>
                             </tr>
+
                             <tr>
                                 <td>
                                     <label="">Pincode</label>

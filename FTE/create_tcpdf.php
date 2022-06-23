@@ -1,80 +1,52 @@
 <?php
 require_once("config.php");
 require_once("TCPDF/tcpdf.php");
+if($_GET["id"]=="")
+{
 $name = $_POST["name"];
-$Sd = $_POST["Sd"];
-$ed = $_POST["ed"];
-$doj = $_POST["doj"];
-$dojtype = $_POST["dojtype"];
 $Ad1 = $_POST["Ad1"];
 $Ad2 = $_POST["Ad2"];
 $Ad3 = $_POST["Ad3"];
-$jbamount = $_POST["jbamount"];
-$Position = $_POST["Position"];
-$Pincode = $_POST["Pincode"];
 $City = $_POST["City"];
-$vp = $_POST["vp"];
-
+$Pincode = $_POST["Pincode"];
 $state = $_POST["state"];
 $grade = $_POST["grade"];
-
+$doj = $_POST["doj"];
+$Position = $_POST["Position"];
+$Sd = $_POST["Sd"];
+$ed = $_POST["ed"];
+$wsd = $_POST['wsd'];
+$wed = $_POST['wed'];
+$jbamount = $_POST["jbamount"];
+$aloc = $_POST["aloc"];
+$dojtype = $_POST["dojtype"];
 $ctc = $_POST["ctc"];
-
 $basic = $_POST["basic"];
 $basicp = $_POST['basicp'];
-$hra = $_POST["hra"];
 $basic1 = round($basic / 12);
+$hra = $_POST["hra"];
 $hra1 = round($hra / 12);
-$Statutory_Bonus = $_POST['Statutory_Bonus'];
-$Statutory_Bonus1 = round($Statutory_Bonus / 12);
 $Conveyance_Allowance = $_POST['Conveyance_Allowance'];
 $Conveyance_Allowance1 = round($Conveyance_Allowance / 12);
+$Statutory_Bonus = $_POST['Statutory_Bonus'];
+$Statutory_Bonus1 = round($Statutory_Bonus / 12);
 $Executive_Allowance = $_POST['Executive_Allowance'];
 $Executive_Allowance1 = round($Executive_Allowance / 12);
-$lta = $_POST['lta'];
-$lta1 = round($lta / 12);
-$Food_Allowance = $_POST['Food_Allowance'];
-$Food_Allowance1 = round($Food_Allowance / 12);
-$m_c_r = $_POST['m_c_r'];
-$m_c_r1 = round($m_c_r / 12);
-$Attire_Allowance = $_POST['Attire_Allowance'];
-$Attire_Allowance1 = round($Attire_Allowance / 12);
-$vr = $_POST['vr'];
-$vr1 = round($vr / 12);
-$driver_reimbursement = $_POST['driver_reimbursement'];
-$driver_reimbursement1 = round($driver_reimbursement / 12);
-$Retention_Allowance = $_POST['Retention_Allowance'];
-$Retention_Allowance1 = round($Retention_Allowance / 12);
-
 $Total_A = $_POST['Total_A'];
 $Total_A1 = round($Total_A / 12);
 $PF = $_POST['PF'];
 $PF1 = round($PF / 12);
 $ESIC = $_POST['ESIC'];
 $ESIC1 = round($ESIC / 12);
-$gratuity = $_POST['gratuity'];
-$gratuity1 = round($gratuity / 12);
-
 $Total_B = $_POST['Total_B'];
 $Total_B1 = round($Total_B / 12);
-
 $LTOTAL = $_POST['LTotal'];
 $LTOTAL1 = round($LTOTAL / 12);
-$Variable_Pay = $_POST['Variable_Pay'];
-$Variable_Pay1 = round($Variable_Pay / 12);
-$Total_II = $_POST['Total_II'];
-$Total_II1 = round($Total_II / 12);
-
 $TOTAL = $_POST['TOTAL'];
 $TOTAL1 = round($TOTAL / 12);
-
-$wsd = $_POST['wsd'];
-$wed = $_POST['wed'];
-
-$aloc = $_POST['aloc'];
-
 $Code = $_POST['Code'];
-$chkPassPort = $_POST['chkPassPort'];
+$Area_of_Operation = $_POST['Area_of_Operation'];
+
 
 $ins_sql = "INSERT INTO olt
 (
@@ -82,33 +54,33 @@ Employee_Name,
 Address_Line_1,
 Address_Line_2,
 Address_Line_3,
-City_,
+City,
 Pin_Code,
-DOJ,
-Offered_CTC,
-Basic,
-HRA,
-CONVEYANCE_ALLOWANCE,
-STATUTORY_BONUS,
-LTA,
-EXECUTIVE_ALLOWANCE,
-FOOD_ALLOWANCE,
-MOBILE_REIMBURSEMENT,
-ATTIRE_ALLOWANCE,
-VEHICLE_REIMBURSEMENT,
-RETENTION_ALLOWANCE,
-TOTAL_A,
+state,
+grade,
+doj,
+Position,
+Sd,
+ed,
+wsd,
+wed,
+jbamount,
+aloc,
+dojtype,
+ctc,
+basic,
+hra,
+Conveyance_Allowance,
+Statutory_Bonus,
+Executive_Allowance,
+Total_A,
 PF,
 ESIC,
-Gratuity,
-TOTAL_B,
-TOTAL_AB,
-VARIABLE_PAY,
-STRB,
-RB,
-TOTAL_II,
+Total_B,
+LTOTAL,
 TOTAL,
-JB
+Code,
+Area_of_Operation
 ) 
 Values
 (
@@ -118,32 +90,97 @@ Values
 '$Ad3',
 '$City',
 '$Pincode',
+'$state',
+'$grade',
 '$doj',
+'$Position',
+'$Sd',
+'$ed',
+'$wsd',
+'$wed',
+'$jbamount',
+'$aloc',
+'$dojtype',
 '$ctc',
 '$basic',
 '$hra',
 '$Conveyance_Allowance',
 '$Statutory_Bonus',
-'$lta',
 '$Executive_Allowance',
-'$Food_Allowance',
-'$m_c_r',
-'$Attire_Allowance',
-'$vr',
-'$Retention_Allowance',
 '$Total_A',
 '$PF',
 '$ESIC',
-'$gratuity',
 '$Total_B',
 '$LTOTAL',
-'$Variable_Pay',
-'$Total_II',
 '$TOTAL',
-'$jbamount'
+'$Code',
+'$Area_of_Operation'
 )";
 
+//print_r($ins_sql);
 $link->query($ins_sql);
+$sql_sel = "SELECT MAX(olt_Id) AS olt_Id FROM olt";
+$sql_result = $link->query($sql_sel);
+$sql_result -> num_rows > 0 ;
+$sql_row = $sql_result -> fetch_assoc();
+$iq = $sql_row["olt_Id"];
+if($iq == "" )
+{
+    $iq = 0;
+}
+header('location: create_tcpdf.php?id='.$iq);
+}
+else
+{
+$sql = "SELECT * FROM olt WHERE olt_Id = ".$_GET["id"]."";
+$result = $link->query($sql);
+$result -> num_rows > 0;
+$row = $result -> fetch_assoc();
+$name =$row["Employee_Name"];
+$Ad1 =$row["Address_Line_1"];
+$Ad2 =$row["Address_Line_2"];
+$Ad3 =$row["Address_Line_3"];
+$City =$row["City"];
+$Pincode =$row["Pincode"];
+$state =$row["state"];
+$grade =$row["grade"];
+$doj =$row["doj"];
+$Position =$row["Position"];
+$Sd =$row["Sd"];
+$ed =$row["ed"];
+$wsd =$row['wsd'];
+$wed =$row['wed'];
+$jbamount =$row["jbamount"];
+$aloc = $row["aloc"];
+$dojtype =$row["dojtype"];
+$ctc =$row["ctc"];
+$basic =$row["basic"];
+$basicp =$row['basicp'];
+$basic1 = round($basic / 12);
+$hra =$row["hra"];
+$hra1 = round($hra / 12);
+$Conveyance_Allowance =$row['Conveyance_Allowance'];
+$Conveyance_Allowance1 = round($Conveyance_Allowance / 12);
+$Statutory_Bonus =$row['Statutory_Bonus'];
+$Statutory_Bonus1 = round($Statutory_Bonus / 12);
+$Executive_Allowance =$row['Executive_Allowance'];
+$Executive_Allowance1 = round($Executive_Allowance / 12);
+$Total_A =$row['Total_A'];
+$Total_A1 = round($Total_A / 12);
+$PF =$row['PF'];
+$PF1 = round($PF / 12);
+$ESIC =$row['ESIC'];
+$ESIC1 = round($ESIC / 12);
+$Total_B =$row['Total_B'];
+$Total_B1 = round($Total_B / 12);
+$LTOTAL =$row['LTotal'];
+$LTOTAL1 = round($LTOTAL / 12);
+$TOTAL =$row['TOTAL'];
+$TOTAL1 = round($TOTAL / 12);
+$Code =$row['Code'];
+$Area_of_Operation= $row['Area_of_Operation'];
+
+
 
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
@@ -159,17 +196,6 @@ $Sd1 = date("F d, Y", strtotime($Sd));
 $ed1 = date("F d, Y", strtotime($ed));
 $dojtype1 = date("F d, Y", strtotime($dojtype));
 
-function CurrencyFormat($number)
-{
-    $decimalplaces = 2;
-    $decimalcharacter = '.';
-    $thousandseparater = ',';
-    $lakhseparater = ',';
-
-    return number_format($number, $decimalplaces, $decimalcharacter, $thousandseparater, $lakhseparater);
-}
-
-// echo $doj1;
 
 // Extend the TCPDF class to create custom Header and Footer
 class MYPDF extends TCPDF
@@ -674,5 +700,5 @@ $html .= '
 $pdf->writeHTML($html, true, false, true, false, '');
 ob_end_clean();
 $pdf->Output('index.pdf');
-
+}
 ?>
