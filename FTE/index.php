@@ -1314,10 +1314,13 @@
                         <br><br>
                         <div class="row">
                             <div class="col-lg-6"><input type="submit" name="submit" value="Export to PDF"></div>
+                            <!-- <div class="col-lg-6"><a href="http://localhost/CTC-CALCULATOR/OLT/view.php"
+                                    class="btn btn-primary ml-2">View Records to Fill Other Details</a> -->
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </form>
     <br>
 

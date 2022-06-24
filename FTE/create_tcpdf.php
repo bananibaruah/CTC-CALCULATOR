@@ -3,23 +3,24 @@ require_once("config.php");
 require_once("TCPDF/tcpdf.php");
 if($_GET["id"]=="")
 {
+$Code = $_POST["Code"];
 $name = $_POST["name"];
 $Ad1 = $_POST["Ad1"];
 $Ad2 = $_POST["Ad2"];
 $Ad3 = $_POST["Ad3"];
-$City = $_POST["City"];
-$Pincode = $_POST["Pincode"];
 $state = $_POST["state"];
+$Pincode = $_POST["Pincode"];
+$City = $_POST["City"];
 $grade = $_POST["grade"];
-$doj = $_POST["doj"];
-$Position = $_POST["Position"];
 $Sd = $_POST["Sd"];
 $ed = $_POST["ed"];
+$doj = $_POST["doj"];
+$dojtype = $_POST["dojtype"];
+$Position = $_POST["Position"];
 $wsd = $_POST['wsd'];
 $wed = $_POST['wed'];
-$jbamount = $_POST["jbamount"];
 $aloc = $_POST["aloc"];
-$dojtype = $_POST["dojtype"];
+$jbamount = $_POST["jbamount"];
 $ctc = $_POST["ctc"];
 $basic = $_POST["basic"];
 $basicp = $_POST['basicp'];
@@ -44,34 +45,29 @@ $LTotal = $_POST['LTotal'];
 $LTotal1 = round($LTotal / 12);
 $TOTAL = $_POST['TOTAL'];
 $TOTAL1 = round($TOTAL / 12);
-$Code = $_POST['Code'];
-$Area_of_Operation = $_POST['Area_of_Operation'];
 $chkPassPort=$_POST['chkPassPort'];
-$chkYes =$_POST['chkYes'];
-$chkNo =$_POST['chkNo'];
-$yes= $_POST['yes'];
-$no= $_POST['no'];
 
 
 $ins_sql = "INSERT INTO olt
 (
+Ref_No_of_Offer_Letter,
 Employee_Name,
 Address_Line_1,
 Address_Line_2,
 Address_Line_3,
-City,
-Pin_Code,
 state,
+Pin_Code,
+City,
 grade,
-doj,
-Position,
 Sd,
 ed,
-wsd,
-wed,
-jbamount,
-aloc,
+doj,
 dojtype,
+Position,
+wed,
+wsd,
+aloc,
+jbamount,
 ctc,
 basic,
 hra,
@@ -83,29 +79,28 @@ PF,
 ESIC,
 Total_B,
 LTotal,
-TOTAL,
-Code,
-Area_of_Operation
+TOTAL
 ) 
 Values
 (
+'$Code',
 '$name',
 '$Ad1',
 '$Ad2',
 '$Ad3',
-'$City',
-'$Pincode',
 '$state',
+'$Pincode',
+'$City',
 '$grade',
-'$doj',
-'$Position',
 '$Sd',
 '$ed',
+'$doj',
+'$dojtype',
+'$Position',
 '$wsd',
 '$wed',
-'$jbamount',
 '$aloc',
-'$dojtype',
+'$jbamount',
 '$ctc',
 '$basic',
 '$hra',
@@ -117,9 +112,7 @@ Values
 '$ESIC',
 '$Total_B',
 '$LTotal',
-'$TOTAL',
-'$Code',
-'$Area_of_Operation'
+'$TOTAL'
 )";
 
 //print_r($ins_sql);
@@ -141,23 +134,25 @@ $sql = "SELECT * FROM olt WHERE olt_Id = ".$_GET["id"]."";
 $result = $link->query($sql);
 $result -> num_rows > 0;
 $row = $result -> fetch_assoc();
+
+$Code = $row["Ref_No_of_Offer_Letter"];
 $name =$row["Employee_Name"];
 $Ad1 =$row["Address_Line_1"];
 $Ad2 =$row["Address_Line_2"];
 $Ad3 =$row["Address_Line_3"];
-$City =$row["City"];
-$Pincode =$row["Pincode"];
 $state =$row["state"];
+$Pincode =$row["Pincode"];
+$City =$row["City"];
 $grade =$row["grade"];
-$doj =$row["doj"];
-$Position =$row["Position"];
 $Sd =$row["Sd"];
 $ed =$row["ed"];
+$doj =$row["doj"];
+$dojtype =$row["dojtype"];
+$Position =$row["Position"];
 $wsd =$row['wsd'];
 $wed =$row['wed'];
-$jbamount =$row["jbamount"];
 $aloc = $row["aloc"];
-$dojtype =$row["dojtype"];
+$jbamount =$row["jbamount"];
 $ctc =$row["ctc"];
 $basic =$row["basic"];
 $basicp =$row['basicp'];
@@ -182,13 +177,14 @@ $LTotal =$row['LTotal'];
 $LTotal1 = round($LTotal / 12);
 $TOTAL =$row['TOTAL'];
 $TOTAL1 = round($TOTAL / 12);
-$Code =$row['Code'];
-$Area_of_Operation= $row['Area_of_Operation'];
-$chkPassPort=$row['chkPassPort'];
-$chkYes =$row['chkYes'];
-$chkNo =$row['chkNo'];
-$yes= $row['yes'];
-$no= $row['no'];
+if($jbamount != "")
+{
+$chkPassPort="yes";
+}
+else
+{
+    $chkPassPort="no";
+}
 
 
 
