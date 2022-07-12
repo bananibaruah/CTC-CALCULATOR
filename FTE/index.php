@@ -67,6 +67,7 @@
     rechange_e = 0, rechange_y = 0;
     caflag = 0, rechange_ca = 0;
     rechange_bp = 0, bpflag = 0;
+    EXEALL = 0;
 
 
 
@@ -98,7 +99,7 @@
                                 dy1 = dy * 0.01;
                                 y = parseInt(Math.floor(dy1) + "00");
                                 if (y < 21000) {
-                                    sbb = Math.round(y * (20 / 100));
+                                    sbb = (y * (20 / 100));
 
                                     if (sbb > state_val) {
                                         total_state = (sbb);
@@ -149,7 +150,7 @@
 
                         $('#driver_reimbursement').val(str[5] * 12);
 
-                        total_grade = Math.round(parseInt(str[0]) +
+                        total_grade = (parseInt(str[0]) +
                             parseInt(str[1]) +
                             parseInt(str[2]) +
                             parseInt(str[3]) +
@@ -197,7 +198,7 @@
         $("#oldctc").on("change", function() {
             oc1 = $("#oldctc").val();
             var ctc = $("#ctc").val();
-            hike = Math.round((ctc / oc1 - 1) * 100);
+            hike = ((ctc / oc1 - 1) * 100);
             old_check = (oc1 * 1.8);
             if (hike >= 81) {
                 var dra = 0,
@@ -223,7 +224,7 @@
                 y = parseInt(Math.floor(dy1) + "00");
                 bpflag = 1;
                 $('#basic').val(y);
-                $("#Mbasic").val(Math.round(y / 12));
+                $("#Mbasic").val((y / 12));
 
 
             } else {
@@ -341,8 +342,8 @@
                             total_y_12 = y_12 * (12 / 100);
                             pf = total_y_12;
                             pf1 = pf;
-                            $("#PF").val(Math.round(pf1 * 12));
-                            $("#MPF").val(Math.round(pf1));
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").val((pf1));
 
 
                         } else {
@@ -352,15 +353,15 @@
                                 total_y_12 = y_12;
                                 pf = total_y_12;
                                 pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
 
                             } else {
                                 total_y_12 = y_12 * (12 / 100);
                                 pf = total_y_12;
                                 pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
 
                             }
                         }
@@ -378,8 +379,8 @@
                         esic = True_Gross - ca;
 
                         total_esic = esic * (3.25 / 100);
-                        $("#ESIC").val(Math.round(total_esic * 12));
-                        $("#MESIC").val(Math.round(total_esic));
+                        $("#ESIC").val((total_esic * 12));
+                        $("#MESIC").val((total_esic));
 
 
 
@@ -389,7 +390,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                             Total_A = y + hr + ca + total_state + e;
                         }
 
@@ -398,7 +399,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = True_Gross - (y + hr + ca + total_state);
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
 
                         }
 
@@ -410,7 +411,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                             Total_A = y + hr + ca + total_state + e;
 
                         }
@@ -420,7 +421,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Second_Total_Gross - (y + hr + ca + total_state);
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
 
                         }
 
@@ -429,8 +430,8 @@
                         total_esic = 0;
                         esic = Second_Total_Gross - ca;
                         total_esic = esic * (3.25 / 100);
-                        $("#ESIC").val(Math.round(total_esic * 12));
-                        $("#MESIC").val(Math.round(total_esic));
+                        $("#ESIC").val((total_esic * 12));
+                        $("#MESIC").val((total_esic));
 
 
 
@@ -444,7 +445,7 @@
                         if (eflag == 1) {
                             e = rechange_e;
                             Total_A4 = 0;
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                             Total_A = y + hr + ca + total_state + e;
                             Total_A4 = Total_A;
 
@@ -455,7 +456,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Final_True_Gross - (y + hr + ca + total_state);
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
 
                         }
 
@@ -467,13 +468,13 @@
                         esic = Total_A4 - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
 
                         } else {
                             total_esic = 0;
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
 
                         }
 
@@ -486,8 +487,8 @@
                             total_y_12 = y_12 * (12 / 100);
                             pf = total_y_12;
                             pf1 = pf;
-                            $("#PF").val(Math.round(pf1 * 12));
-                            $("#MPF").val(Math.round(pf1));
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").val((pf1));
 
 
                         } else {
@@ -497,18 +498,206 @@
                                 total_y_12 = y_12;
                                 pf = total_y_12;
                                 pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
 
                             } else {
                                 total_y_12 = y_12 * (12 / 100);
                                 pf = total_y_12;
                                 pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
 
                             }
                         }
+
+                        True_Gross_1st = 0;
+                        True_Gross_1st = (ctc / 12) - pf1 - total_esic;
+                        Total_A = True_Gross_1st;
+
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        Total_A5 = 0;
+                        Total_A5 = Total_A;
+                        esic = Total_A5 - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
+
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
+
+                        }
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").val((pf1));
+
+
+                        } else {
+                            y_12 = Total_A - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            }
+                        }
+
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            Total_A5 = 0;
+                            executive_allowance = (e);
+                            Total_A = y + hr + ca + total_state + e;
+                            Total_A5 = Total_A;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = True_Gross_1st - (y + hr + ca + total_state);
+                            executive_allowance = (e);
+
+                        }
+
+                        True_Gross_2nd = 0;
+                        True_Gross_2nd = ((ctc / 12) - pf1 - total_esic);
+                        Total_A = True_Gross_2nd;
+
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        Total_A6 = 0;
+                        Total_A6 = Total_A;
+                        esic = Total_A6 - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val(((total_esic)));
+
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
+
+                        }
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").va((pf1));
+
+
+                        } else {
+                            y_12 = Total_A - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            }
+                        }
+
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            Total_A5 = 0;
+                            executive_allowance = (e);
+                            Total_A = y + hr + ca + total_state + e;
+                            Total_A5 = Total_A;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = (True_Gross_2nd - (y + hr + ca + total_state));
+                            executive_allowance = (e);
+                        }
+
+                        //TOTAL_A
+                        Total_A = y + hr + ca + total_state + executive_allowance;
+                        Total_A7 = 0;
+                        Total_A7 = Total_A;
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").val((pf1));
+
+
+                        } else {
+                            y_12 = Total_A7 - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            }
+                        }
+
 
 
                         //Total_B
@@ -523,39 +712,39 @@
 
 
                         $("#basic").val(y * 12);
-                        $("#Mbasic").val(Math.round(y));
+                        $("#Mbasic").val((y));
 
                         $("#hra").val(hr * 12);
-                        $("#Mhra").val(Math.round(hr));
+                        $("#Mhra").val((hr));
 
-                        $("#Conveyance_Allowance").val(ca * 12);
-                        $("#MConveyance_Allowance").val(Math.round(ca));
+                        $("#Conveyance_Allowance").val((ca * 12));
+                        $("#MConveyance_Allowance").val((ca));
 
                         if (y > 21000) {
                             total_state = 0;
-                            $("#Statutory_Bonus").val(total_state * 12);
-                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                            $("#Statutory_Bonus").val((total_state * 12));
+                            $("#MStatutory_Bonus").val((total_state));
                         } else {
-                            $("#Statutory_Bonus").val(total_state * 12);
-                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                            $("#Statutory_Bonus").val((total_state * 12));
+                            $("#MStatutory_Bonus").val((total_state));
                         }
 
 
-                        $("#Total_B").val(Math.round(Total_B * 12));
-                        $("#MTotal_B").val(Math.round(Math.round(Total_B)));
+                        $("#Total_B").val((Total_B * 12));
+                        $("#MTotal_B").val(((Total_B)));
 
 
-                        $("#Executive_Allowance").val(executive_allowance * 12);
-                        $("#MExecutive_Allowance").val(executive_allowance);
+                        $("#Executive_Allowance").val((executive_allowance * 12));
+                        $("#MExecutive_Allowance").val((executive_allowance));
 
-                        $("#Total_A").val(Math.round(Total_A * 12));
-                        $("#MTotal_A").val(Math.round(Total_A));
+                        $("#Total_A").val((Total_A * 12));
+                        $("#MTotal_A").val((Total_A));
 
-                        $("#LTotal").val(Math.round(total2 * 12));
-                        $("#MLTotal").val(Math.round(total2));
+                        $("#LTotal").val((total2 * 12));
+                        $("#MLTotal").val((total2));
 
-                        $("#TOTAL").val(Math.round(ctotal * 12));
-                        $("#MTOTAL").val(Math.round(ctotal));
+                        $("#TOTAL").val((ctotal * 12));
+                        $("#MTOTAL").val((ctotal));
                     }
                 }
                 if (bpflag == 1) {
@@ -619,8 +808,8 @@
                             total_y_12 = y_12 * (12 / 100);
                             pf = total_y_12;
                             pf1 = pf;
-                            $("#PF").val(Math.round(pf1 * 12));
-                            $("#MPF").val(Math.round(pf1));
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").val((pf1));
 
 
                         } else {
@@ -630,15 +819,15 @@
                                 total_y_12 = y_12;
                                 pf = total_y_12;
                                 pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
 
                             } else {
                                 total_y_12 = y_12 * (12 / 100);
                                 pf = total_y_12;
                                 pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
 
                             }
                         }
@@ -655,12 +844,12 @@
                         esic = True_Gross - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
                         } else {
                             total_esic = 0;
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
                         }
 
 
@@ -668,7 +857,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                             Total_A = y + hr + ca + total_state + e;
                             console.log("Total_A5: " + Total_A);
                         }
@@ -678,7 +867,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = True_Gross - (y + hr + ca + total_state);
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                         }
 
                         Second_Total_Gross = 0;
@@ -688,7 +877,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                             Total_A = y + hr + ca + total_state + e;
                             console.log("Total_A6 = " + Total_A);
 
@@ -699,7 +888,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Second_Total_Gross - (y + hr + ca + total_state);
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                         }
 
                         //ESIC
@@ -708,12 +897,12 @@
                         esic = Second_Total_Gross - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
                         } else {
                             total_esic = 0;
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
                         }
 
                         Final_True_Gross = 0;
@@ -725,7 +914,7 @@
 
                         if (eflag == 1) {
                             e = rechange_e;
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                             Total_A = y + hr + ca + total_state + e;
                             console.log("Total_A8 = " + Total_A);
 
@@ -736,7 +925,7 @@
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
                             e = Final_True_Gross - (y + hr + ca + total_state);
-                            executive_allowance = Math.round(e);
+                            executive_allowance = (e);
                         }
 
                         //ESIC
@@ -745,12 +934,12 @@
                         esic = Final_True_Gross - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
                         } else {
                             total_esic = 0;
-                            $("#ESIC").val(Math.round(total_esic * 12));
-                            $("#MESIC").val(Math.round(total_esic));
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
                         }
 
 
@@ -763,8 +952,8 @@
                             total_y_12 = y_12 * (12 / 100);
                             pf = total_y_12;
                             pf1 = pf;
-                            $("#PF").val(Math.round(pf1 * 12));
-                            $("#MPF").val(Math.round(pf1));
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").val((pf1));
 
 
                         } else {
@@ -774,20 +963,206 @@
                                 total_y_12 = y_12;
                                 pf = total_y_12;
                                 pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
 
                             } else {
                                 total_y_12 = y_12 * (12 / 100);
                                 pf = total_y_12;
                                 pf1 = pf;
-                                $("#PF").val(Math.round(pf1 * 12));
-                                $("#MPF").val(Math.round(pf1));
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
 
                             }
                         }
 
+                        True_Gross_1st = 0;
+                        True_Gross_1st = (ctc / 12) - pf1 - total_esic;
+                        Total_A = True_Gross_1st;
 
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        Total_A5 = 0;
+                        Total_A5 = Total_A;
+                        esic = Total_A5 - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
+
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
+
+                        }
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").val((pf1));
+
+
+                        } else {
+                            y_12 = Total_A - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            }
+                        }
+
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            Total_A5 = 0;
+                            executive_allowance = (e);
+                            Total_A = y + hr + ca + total_state + e;
+                            Total_A5 = Total_A;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = True_Gross_1st - (y + hr + ca + total_state);
+                            executive_allowance = (e);
+
+                        }
+
+
+                        True_Gross_2nd = 0;
+                        True_Gross_2nd = (ctc / 12) - pf1 - total_esic;
+                        Total_A = True_Gross_2nd;
+
+                        //ESIC
+                        esic = 0;
+                        total_esic = 0;
+                        Total_A6 = 0;
+                        Total_A6 = Total_A;
+                        esic = Total_A6 - ca;
+                        if (esic < 21000) {
+                            total_esic = esic * (3.25 / 100);
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val(((total_esic)));
+
+                        } else {
+                            total_esic = 0;
+                            $("#ESIC").val((total_esic * 12));
+                            $("#MESIC").val((total_esic));
+
+                        }
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").va((pf1));
+
+
+                        } else {
+                            y_12 = Total_A - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            }
+                        }
+
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            Total_A5 = 0;
+                            executive_allowance = (e);
+                            Total_A = y + hr + ca + total_state + e;
+                            Total_A5 = Total_A;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = True_Gross_2nd - (y + hr + ca + total_state);
+                            executive_allowance = (e);
+                        }
+
+                        //TOTAL_A
+                        Total_A = y + hr + ca + total_state + executive_allowance;
+                        Total_A7 = 0;
+                        Total_A7 = Total_A;
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val((pf1 * 12));
+                            $("#MPF").val((pf1));
+
+
+                        } else {
+                            y_12 = Total_A7 - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val((pf1 * 12));
+                                $("#MPF").val((pf1));
+
+                            }
+                        }
 
 
 
@@ -803,39 +1178,50 @@
 
 
                         $("#basic").val(y * 12);
-                        $("#Mbasic").val(Math.round(y));
+                        $("#Mbasic").val((y));
 
                         $("#hra").val(hr * 12);
-                        $("#Mhra").val(Math.round(hr));
+                        $("#Mhra").val((hr));
 
-                        $("#Conveyance_Allowance").val(ca * 12);
-                        $("#MConveyance_Allowance").val(Math.round(ca));
+                        $("#Conveyance_Allowance").val((ca * 12));
+                        $("#MConveyance_Allowance").val((ca));
 
                         if (y > 21000) {
                             total_state = 0;
-                            $("#Statutory_Bonus").val(total_state * 12);
-                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                            $("#Statutory_Bonus").val((total_state * 12));
+                            $("#MStatutory_Bonus").val((total_state));
                         } else {
-                            $("#Statutory_Bonus").val(total_state * 12);
-                            $("#MStatutory_Bonus").val(Math.round(total_state));
+                            $("#Statutory_Bonus").val((total_state * 12));
+                            $("#MStatutory_Bonus").val((total_state));
                         }
 
 
-                        $("#Total_B").val(Math.round(Total_B * 12));
-                        $("#MTotal_B").val(Math.round(Math.round(Total_B)));
+                        $("#Total_B").val((Total_B * 12));
+                        $("#MTotal_B").val(((Total_B)));
 
 
-                        $("#Executive_Allowance").val(executive_allowance * 12);
-                        $("#MExecutive_Allowance").val(executive_allowance);
 
-                        $("#Total_A").val(Math.round(Total_A * 12));
-                        $("#MTotal_A").val(Math.round(Total_A));
+                        // var ey = 0,
+                        //     ey1 = 0,
+                        //     ey2 = 0;
+                        // ey = Math.floor(executive_allowance * 12);
+                        // ey1 = ey * 0.02;
+                        // ey2 = parseInt(Math.floor(ey1) + "00");
+                        // EXEALL = parseInt(Math.floor(ey1) + "00");
 
-                        $("#LTotal").val(Math.round(total2 * 12));
-                        $("#MLTotal").val(Math.round(total2));
+                        $("#Executive_Allowance").val((executive_allowance * 12));
+                        $("#MExecutive_Allowance").val((executive_allowance));
 
-                        $("#TOTAL").val(Math.round(ctotal * 12));
-                        $("#MTOTAL").val(Math.round(ctotal));
+                        $("#Total_A").val((Total_A * 12));
+                        $("#MTotal_A").val((Total_A));
+
+                        $("#LTotal").val((total2 * 12));
+                        $("#MLTotal").val((total2));
+
+                        $("#TOTAL").val((ctotal * 12));
+                        $("#MTOTAL").val((ctotal));
+
+
                     }
                 }
             } else
