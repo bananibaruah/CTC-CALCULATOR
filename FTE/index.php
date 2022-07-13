@@ -762,19 +762,27 @@
 
                             }
                         }
-                        IHA1 = 0;
-                        IHA3 = 0;
-                        IHA4 = 0;
-                        IHA1 = Total_A;
-                        console.log("Total_A: " + IHA1);
-                        IHA2 = 200;
-                        console.log("IHA2: " + IHA2);
-                        IHA3 = pf1;
-                        console.log("IHA3: " + IHA3);
-                        IHA4 = (Total_A * 0.0075);
-                        console.log("IHA4: " + IHA4);
-                        IHA = ((IHA1 - IHA2) - IHA3) - IHA4;
-                        console.log("IHA: " + IHA);
+
+                        //Inhand Calculation
+
+                        if (total_esic == 0) {
+                            IHA1 = 0;
+                            IHA3 = 0;
+                            IHA4 = 0;
+                            IHA1 = Total_A;
+                            IHA2 = 200;
+                            IHA3 = pf1;
+                            IHA = ((IHA1 - IHA2) - IHA3);
+                        } else {
+                            IHA1 = 0;
+                            IHA3 = 0;
+                            IHA4 = 0;
+                            IHA1 = Total_A;
+                            IHA2 = 200;
+                            IHA3 = pf1;
+                            IHA4 = (Total_A * 0.0075);
+                            IHA = ((IHA1 - IHA2) - IHA3) - IHA4;
+                        }
                         //Total_B
                         Total_B = pf1 + total_esic;
 
@@ -1299,19 +1307,27 @@
                             }
                         }
 
-                        IHA1 = 0;
-                        IHA3 = 0;
-                        IHA4 = 0;
-                        IHA1 = Total_A;
-                        console.log("Total_A: " + IHA1);
-                        IHA2 = 200;
-                        console.log("IHA2: " + IHA2);
-                        IHA3 = pf1;
-                        console.log("IHA3: " + IHA3);
-                        IHA4 = (Total_A * 0.0075);
-                        console.log("IHA4: " + IHA4);
-                        IHA = ((IHA1 - IHA2) - IHA3) - IHA4;
-                        console.log("IHA: " + IHA);
+                        //In hand calculation
+
+                        if (total_esic == 0) {
+                            IHA1 = 0;
+                            IHA3 = 0;
+                            IHA4 = 0;
+                            IHA1 = Total_A;
+                            IHA2 = 200;
+                            IHA3 = pf1;
+                            IHA = ((IHA1 - IHA2) - IHA3);
+                        } else {
+                            IHA1 = 0;
+                            IHA3 = 0;
+                            IHA4 = 0;
+                            IHA1 = Total_A;
+                            IHA2 = 200;
+                            IHA3 = pf1;
+                            IHA4 = (Total_A * 0.0075);
+                            IHA = ((IHA1 - IHA2) - IHA3) - IHA4;
+                        }
+
                         //Total_B
                         Total_B = pf1 + total_esic;
 
