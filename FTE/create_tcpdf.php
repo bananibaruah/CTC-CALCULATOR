@@ -1,7 +1,8 @@
 <?php
 require_once("config.php");
 require_once("TCPDF/tcpdf.php");
-if($_GET["id"]=="")
+$id = $_GET["id"];
+if($id=="")
 {
 $Code = $_POST["Code"];
 $name = $_POST["name"];
@@ -23,7 +24,6 @@ $aloc = $_POST["aloc"];
 $jbamount = $_POST["jbamount"];
 $ctc = $_POST["ctc"];
 $basic = $_POST["basic"];
-$basicp = $_POST['basicp'];
 $basic1 = round($basic / 12);
 $hra = $_POST["hra"];
 $hra1 = round($hra / 12);
@@ -56,7 +56,7 @@ Address_Line_1,
 Address_Line_2,
 Address_Line_3,
 state,
-Pin_Code,
+Pincode,
 City,
 grade,
 Sd,
@@ -155,7 +155,6 @@ $aloc = $row["aloc"];
 $jbamount =$row["jbamount"];
 $ctc =$row["ctc"];
 $basic =$row["basic"];
-$basicp =$row['basicp'];
 $basic1 = round($basic / 12);
 $hra =$row["hra"];
 $hra1 = round($hra / 12);
@@ -250,60 +249,68 @@ class MYPDF extends TCPDF
 
 // create new PDF document
 $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-// set document information
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('');
-$pdf->SetTitle('OFFER LETTER');
-$pdf->SetSubject('OFFER LETTER');
-$pdf->SetKeywords('TCPDF, PDF');
-
-// set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
-
-// set header and footer fonts
-$pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-$pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
-
-// set default monospaced font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+$pdf->setHeaderData();
+$pdf->setPrintHeader(true);
+$pdf->setPrintFooter(false);
+$pdf->setFontSubsetting(true);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
-// set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
-// set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-// set some language-dependent strings (optional)
-if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-    require_once(dirname(__FILE__) . '/lang/eng.php');
-    $pdf->setLanguageArray($l);
-}
-
-// ---------------------------------------------------------
-
-// set font
 $pdf->SetFont('times', '', 10.5);
-
-// add a page
+$pdf->SetMargins(15, 38, 10, true);
 $pdf->AddPage();
+$pdf->SetAutoPageBreak(TRUE,15);
+// $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-// set some text to print
-$txt = <<<EOD
-EOD;
+// // set document information
+// $pdf->SetCreator(PDF_CREATOR);
+// $pdf->SetAuthor('');
+// $pdf->SetTitle('OFFER LETTER');
+// $pdf->SetSubject('OFFER LETTER');
+// $pdf->SetKeywords('TCPDF, PDF');
 
-// print a block of text using Write()
-$pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
+// // set default header data
+// $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 
-// ---------------------------------------------------------
+// // set header and footer fonts
+// $pdf->setHeaderFont(array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+// $pdf->setFooterFont(array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-//Close and output PDF document
-$html .= <<<EOD
+// // set default monospaced font
+// $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+// // set margins
+// $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+// $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+// $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+// // set auto page breaks
+// $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+// // set image scale factor
+// $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+// // set some language-dependent strings (optional)
+// // if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
+// //     require_once(dirname(__FILE__) . '/lang/eng.php');
+// //     $pdf->setLanguageArray($l);
+// // }
+
+// // ---------------------------------------------------------
+
+// // set font
+// $pdf->SetFont('times', '', 10.5);
+
+// // add a page
+// $pdf->AddPage();
+
+// // set some text to print
+
+
+// // ---------------------------------------------------------
+
+// //Close and output PDF document
+
+$html .= "
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -311,7 +318,7 @@ $html .= <<<EOD
 <b>OFFER LETTER </b>
 
 <b>
-<br>$doj1<br>
+<br>".$doj1."<br>
 $Code<br><br>
 $name <br>
 $Ad1 ,<br>
@@ -330,25 +337,21 @@ You are required to report for duty on <b>$Sd1</b> not later than <b>9.30 a.m</b
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.
 Wishing you the very best for your assignment with us.<br><br>
 Yours sincerely,<br>
-<img src="Sig.png" style="height:60px , width:30px"><br>
+<img src='Sig.png' style='height:60px;width:30px'><br>
 <b>Tina Mathew<br>
 Head – HR<br><br>
 Encl:-</b><br>
 &nbsp;&nbsp;&nbsp;1.	Offer details<br>
 &nbsp;&nbsp;&nbsp;2.	Annexure I and II.<br><br>
 <i><u><b>Signature & Date</b></u></i><br>
+";
 
-
-
-EOD;
-
-$html .= <<<EOD
+$html .= "<br><br><br><br><br>
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
 <b>OFFER LETTER OFFICE COPY </b>
-
 <b>
 <br><br>$doj1<br>
 $Code<br><br>
@@ -369,17 +372,17 @@ You are required to report for duty on <b>$Sd1</b> not later than <b>9.30 a.m</b
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.
 Wishing you the very best for your assignment with us.<br><br>
 Yours sincerely,<br>
-<img src="Sig.png" style="height:60px , width:30px"><br>
+<img src='Sig.png' style='height:60px;width:30px'><br>
 <b>Tina Mathew<br>
 Head – HR<br><br>
 Encl:-</b><br>
 &nbsp;&nbsp;&nbsp;1.	Offer details<br>
 &nbsp;&nbsp;&nbsp;2.	Annexure I and II.<br><br>
 <i><b><u>Signature & Date</u></b></i>
-EOD;
+";
 
 $html .= '
-<br><br><br>' . $name . '<br><br><br>
+<br><br><br><br><br><br>' . $name . '<br>
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -463,7 +466,7 @@ The Company reserves the right to carry out reference verifications or backgroun
 
 
 
-$html .= '<br>' . $name . '<br><br><br>
+$html .= '<br>' . $name . '<br>
 
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -637,8 +640,7 @@ $html .= '<tr>
 ';
 
 $html .= '
-<br><br><br><br><br><br><br><br><br><br>' . $name . '<br>
-<br><br>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
+<br><br><br><br><br><br><br><br><br><br>' . $name . '<br>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
