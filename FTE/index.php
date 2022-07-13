@@ -68,6 +68,7 @@
     caflag = 0, rechange_ca = 0;
     rechange_bp = 0, bpflag = 0;
     EXEALL = 0;
+    IHA = 0;
 
 
 
@@ -761,6 +762,19 @@
 
                             }
                         }
+                        IHA1 = 0;
+                        IHA3 = 0;
+                        IHA4 = 0;
+                        IHA1 = Total_A;
+                        console.log("Total_A: " + IHA1);
+                        IHA2 = 200;
+                        console.log("IHA2: " + IHA2);
+                        IHA3 = pf1;
+                        console.log("IHA3: " + IHA3);
+                        IHA4 = (Total_A * 0.0075);
+                        console.log("IHA4: " + IHA4);
+                        IHA = ((IHA1 - IHA2) - IHA3) - IHA4;
+                        console.log("IHA: " + IHA);
                         //Total_B
                         Total_B = pf1 + total_esic;
 
@@ -806,6 +820,8 @@
 
                         $("#TOTAL").val(Math.ceil(ctotal * 12));
                         $("#MTOTAL").val(Math.round(ctotal));
+
+                        $("#IHA").val(Math.round(IHA));
                     }
                 }
                 if (bpflag == 1) {
@@ -1282,6 +1298,20 @@
 
                             }
                         }
+
+                        IHA1 = 0;
+                        IHA3 = 0;
+                        IHA4 = 0;
+                        IHA1 = Total_A;
+                        console.log("Total_A: " + IHA1);
+                        IHA2 = 200;
+                        console.log("IHA2: " + IHA2);
+                        IHA3 = pf1;
+                        console.log("IHA3: " + IHA3);
+                        IHA4 = (Total_A * 0.0075);
+                        console.log("IHA4: " + IHA4);
+                        IHA = ((IHA1 - IHA2) - IHA3) - IHA4;
+                        console.log("IHA: " + IHA);
                         //Total_B
                         Total_B = pf1 + total_esic;
 
@@ -1327,6 +1357,8 @@
 
                         $("#TOTAL").val(Math.ceil(ctotal * 12));
                         $("#MTOTAL").val(Math.round(ctotal));
+
+                        $("#IHA").val(Math.round(IHA));
 
 
                     }
@@ -1798,9 +1830,13 @@
 
                                 </td>
 
-                                <td></td>
+                                <td>
+                                    <label><b>IN HAND AMOUNT (Monthly)</b> </label>
+                                </td>
 
-                                <td></td>
+                                <td>
+                                    <input type="text" class="form-control" id="IHA" name="IHA" readonly />
+                                </td>
 
                             </tr>
                         </table>
