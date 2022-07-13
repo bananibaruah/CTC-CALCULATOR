@@ -598,13 +598,13 @@
                         esic = Total_A6 - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val((total_esic * 12));
-                            $("#MESIC").val(((total_esic)));
+                            $("#ESIC").val(Math.ceil(total_esic * 12));
+                            $("#MESIC").val((Math.round(total_esic)));
 
                         } else {
                             total_esic = 0;
-                            $("#ESIC").val((total_esic * 12));
-                            $("#MESIC").val((total_esic));
+                            $("#ESIC").val(Math.ceil(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
 
                         }
 
@@ -698,8 +698,64 @@
                             }
                         }
 
+                        True_Gross_3rd = 0;
+                        True_Gross_3rd = ((ctc / 12) - pf1 - total_esic);
+                        Total_A = Math.round(True_Gross_3rd);
+                        Total_A9 = 0;
+                        Total_A9 = Total_A;
 
 
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            Total_A5 = 0;
+                            executive_allowance = Math.round(e);
+                            Total_A = y + hr + ca + total_state + e;
+                            Total_A5 = Total_A;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = (True_Gross_3rd - (y + hr + ca + total_state));
+                            executive_allowance = Math.round(e);
+                        }
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val(Math.round(pf1 * 12));
+                            $("#MPF").val(Math.round(pf1));
+
+
+                        } else {
+                            y_12 = Total_A9 - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            }
+                        }
                         //Total_B
                         Total_B = pf1 + total_esic;
 
@@ -711,40 +767,40 @@
 
 
 
-                        $("#basic").val(y * 12);
-                        $("#Mbasic").val((y));
+                        $("#basic").val(Math.round(y * 12));
+                        $("#Mbasic").val(Math.round(y));
 
-                        $("#hra").val(hr * 12);
-                        $("#Mhra").val((hr));
+                        $("#hra").val(Math.round(hr * 12));
+                        $("#Mhra").val(Math.round(hr));
 
-                        $("#Conveyance_Allowance").val((ca * 12));
-                        $("#MConveyance_Allowance").val((ca));
+                        $("#Conveyance_Allowance").val(Math.round(ca * 12));
+                        $("#MConveyance_Allowance").val(Math.round(ca));
 
                         if (y > 21000) {
                             total_state = 0;
-                            $("#Statutory_Bonus").val((total_state * 12));
-                            $("#MStatutory_Bonus").val((total_state));
+                            $("#Statutory_Bonus").val(Math.round(total_state * 12));
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
                         } else {
-                            $("#Statutory_Bonus").val((total_state * 12));
-                            $("#MStatutory_Bonus").val((total_state));
+                            $("#Statutory_Bonus").val(Math.round(total_state * 12));
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
                         }
 
 
-                        $("#Total_B").val((Total_B * 12));
-                        $("#MTotal_B").val(((Total_B)));
+                        $("#Total_B").val(Math.ceil(Total_B * 12));
+                        $("#MTotal_B").val((Math.round(Total_B)));
 
 
                         $("#Executive_Allowance").val((executive_allowance * 12));
                         $("#MExecutive_Allowance").val((executive_allowance));
 
-                        $("#Total_A").val((Total_A * 12));
-                        $("#MTotal_A").val((Total_A));
+                        $("#Total_A").val(Math.ceil(Total_A * 12));
+                        $("#MTotal_A").val(Math.round(Total_A));
 
-                        $("#LTotal").val((total2 * 12));
-                        $("#MLTotal").val((total2));
+                        $("#LTotal").val(Math.ceil(total2 * 12));
+                        $("#MLTotal").val(Math.round(total2));
 
-                        $("#TOTAL").val((ctotal * 12));
-                        $("#MTOTAL").val((ctotal));
+                        $("#TOTAL").val(Math.ceil(ctotal * 12));
+                        $("#MTOTAL").val(Math.round(ctotal));
                     }
                 }
                 if (bpflag == 1) {
@@ -1051,9 +1107,8 @@
 
                         }
 
-
                         True_Gross_2nd = 0;
-                        True_Gross_2nd = (ctc / 12) - pf1 - total_esic;
+                        True_Gross_2nd = ((ctc / 12) - pf1 - total_esic);
                         Total_A = True_Gross_2nd;
 
                         //ESIC
@@ -1064,13 +1119,13 @@
                         esic = Total_A6 - ca;
                         if (esic < 21000) {
                             total_esic = esic * (3.25 / 100);
-                            $("#ESIC").val((total_esic * 12));
-                            $("#MESIC").val(((total_esic)));
+                            $("#ESIC").val(Math.ceil(total_esic * 12));
+                            $("#MESIC").val((Math.round(total_esic)));
 
                         } else {
                             total_esic = 0;
-                            $("#ESIC").val((total_esic * 12));
-                            $("#MESIC").val((total_esic));
+                            $("#ESIC").val(Math.ceil(total_esic * 12));
+                            $("#MESIC").val(Math.round(total_esic));
 
                         }
 
@@ -1122,7 +1177,7 @@
                             var e = 0;
                             // e = y + hr + ca + total_state + pf1 + total_esic;
                             // executive_allowance = (ctc / 12) - e;
-                            e = True_Gross_2nd - (y + hr + ca + total_state);
+                            e = (True_Gross_2nd - (y + hr + ca + total_state));
                             executive_allowance = (e);
                         }
 
@@ -1164,8 +1219,64 @@
                             }
                         }
 
+                        True_Gross_3rd = 0;
+                        True_Gross_3rd = ((ctc / 12) - pf1 - total_esic);
+                        Total_A = Math.round(True_Gross_3rd);
+                        Total_A9 = 0;
+                        Total_A9 = Total_A;
 
 
+                        //executive_allowance
+
+                        if (eflag == 1) {
+                            e = rechange_e;
+                            Total_A5 = 0;
+                            executive_allowance = Math.round(e);
+                            Total_A = y + hr + ca + total_state + e;
+                            Total_A5 = Total_A;
+
+                        }
+
+                        if (eflag == 0) {
+                            var e = 0;
+                            // e = y + hr + ca + total_state + pf1 + total_esic;
+                            // executive_allowance = (ctc / 12) - e;
+                            e = (True_Gross_3rd - (y + hr + ca + total_state));
+                            executive_allowance = Math.round(e);
+                        }
+
+                        //PF
+                        var y_12 = y;
+                        var total_y_12 = 0;
+                        var pf = 0;
+                        var pf1 = 0;
+                        if (y_12 > 15000) {
+                            total_y_12 = y_12 * (12 / 100);
+                            pf = total_y_12;
+                            pf1 = pf;
+                            $("#PF").val(Math.round(pf1 * 12));
+                            $("#MPF").val(Math.round(pf1));
+
+
+                        } else {
+                            y_12 = Total_A9 - hr;
+                            if (y_12 > 15000) {
+                                y_12 = 1800;
+                                total_y_12 = y_12;
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            } else {
+                                total_y_12 = y_12 * (12 / 100);
+                                pf = total_y_12;
+                                pf1 = pf;
+                                $("#PF").val(Math.round(pf1 * 12));
+                                $("#MPF").val(Math.round(pf1));
+
+                            }
+                        }
                         //Total_B
                         Total_B = pf1 + total_esic;
 
@@ -1177,49 +1288,40 @@
 
 
 
-                        $("#basic").val(y * 12);
-                        $("#Mbasic").val((y));
+                        $("#basic").val(Math.round(y * 12));
+                        $("#Mbasic").val(Math.round(y));
 
-                        $("#hra").val(hr * 12);
-                        $("#Mhra").val((hr));
+                        $("#hra").val(Math.round(hr * 12));
+                        $("#Mhra").val(Math.round(hr));
 
-                        $("#Conveyance_Allowance").val((ca * 12));
-                        $("#MConveyance_Allowance").val((ca));
+                        $("#Conveyance_Allowance").val(Math.round(ca * 12));
+                        $("#MConveyance_Allowance").val(Math.round(ca));
 
                         if (y > 21000) {
                             total_state = 0;
-                            $("#Statutory_Bonus").val((total_state * 12));
-                            $("#MStatutory_Bonus").val((total_state));
+                            $("#Statutory_Bonus").val(Math.round(total_state * 12));
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
                         } else {
-                            $("#Statutory_Bonus").val((total_state * 12));
-                            $("#MStatutory_Bonus").val((total_state));
+                            $("#Statutory_Bonus").val(Math.round(total_state * 12));
+                            $("#MStatutory_Bonus").val(Math.round(total_state));
                         }
 
 
-                        $("#Total_B").val((Total_B * 12));
-                        $("#MTotal_B").val(((Total_B)));
+                        $("#Total_B").val(Math.ceil(Total_B * 12));
+                        $("#MTotal_B").val((Math.round(Total_B)));
 
-
-
-                        // var ey = 0,
-                        //     ey1 = 0,
-                        //     ey2 = 0;
-                        // ey = Math.floor(executive_allowance * 12);
-                        // ey1 = ey * 0.02;
-                        // ey2 = parseInt(Math.floor(ey1) + "00");
-                        // EXEALL = parseInt(Math.floor(ey1) + "00");
 
                         $("#Executive_Allowance").val((executive_allowance * 12));
                         $("#MExecutive_Allowance").val((executive_allowance));
 
-                        $("#Total_A").val((Total_A * 12));
-                        $("#MTotal_A").val((Total_A));
+                        $("#Total_A").val(Math.ceil(Total_A * 12));
+                        $("#MTotal_A").val(Math.round(Total_A));
 
-                        $("#LTotal").val((total2 * 12));
-                        $("#MLTotal").val((total2));
+                        $("#LTotal").val(Math.ceil(total2 * 12));
+                        $("#MLTotal").val(Math.round(total2));
 
-                        $("#TOTAL").val((ctotal * 12));
-                        $("#MTOTAL").val((ctotal));
+                        $("#TOTAL").val(Math.ceil(ctotal * 12));
+                        $("#MTOTAL").val(Math.round(ctotal));
 
 
                     }
