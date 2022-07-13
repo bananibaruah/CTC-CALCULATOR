@@ -73,11 +73,11 @@
 
     $(document).ready(function() {
 
-        // $("#Retention_Allowance").on("keyup", function() {
-        //     mra = $("#Retention_Allowance").val();
-        //     flag = 1;
-        //     basic_pay_ch();
-        // });
+        $("#Retention_Allowance").on("keyup", function() {
+            mra = $("#Retention_Allowance").val();
+            flag = 1;
+            basic_pay_ch();
+        });
         if (y < 21000) {
             $("#state").on("change", function() {
                 var state = $("#state").val();
@@ -100,13 +100,17 @@
                                 y = parseInt(Math.floor(dy1) + "00");
                                 if (y < 21000) {
                                     sbb = (y * (20 / 100));
+                                    console.log("y = " + y);
+                                    console.log("sbb = " + sbb);
 
                                     if (sbb > state_val) {
-                                        total_state = (sbb);
+                                        total_state = Math.round(sbb);
+                                        console.log("total_state1 = " + total_state);
                                         $('#Statutory_Bonus').val(total_state * 12);
                                         $('#MStatutory_Bonus').val(total_state);
                                     } else {
                                         total_state = state_val;
+                                        console.log("total_state2 = " + total_state);
                                         $('#Statutory_Bonus').val(total_state * 12);
                                         $('#MStatutory_Bonus').val(total_state);
                                     }
@@ -120,6 +124,7 @@
                 } else {
 
                 }
+                basic_pay_ch();
             });
 
         } else {
@@ -294,7 +299,7 @@
                         } else {
                             y = parseInt(Math.floor(dy1) + "00");
                         }
-
+                        console.log(y);
 
                         if (yflag == 0) {
 
