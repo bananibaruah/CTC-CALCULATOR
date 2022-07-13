@@ -618,7 +618,7 @@
                             pf = total_y_12;
                             pf1 = pf;
                             $("#PF").val((pf1 * 12));
-                            $("#MPF").va((pf1));
+                            $("#MPF").val((pf1));
 
 
                         } else {
