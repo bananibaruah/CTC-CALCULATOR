@@ -343,7 +343,6 @@ $html .= '<tr>
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>Initials</b>
-<P style="page-break-before: always"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 ';
 
 

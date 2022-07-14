@@ -336,7 +336,7 @@ Encl:-</b><br>
 <i><u><b>Signature & Date</b></u></i><br>
 ";
 
-$html .= "<br><br>
+$html .= "<br>
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -368,7 +368,7 @@ $html.="<br>
 Head – HR<br><br>
 Encl:-</b><br>
 &nbsp;&nbsp;&nbsp;1.	Offer details<br>
-&nbsp;&nbsp;&nbsp;2.	Annexure I and II.<br><br>
+&nbsp;&nbsp;&nbsp;2.	Annexure I and II.<br>
 <i><b><u>Signature & Date</u></b></i>
 ";
 
