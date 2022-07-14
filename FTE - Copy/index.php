@@ -1414,7 +1414,7 @@
     }
     </style>
 
-    <form method="post" action="preview_pdf.php">
+    <form method="post" action="create_tcpdf.php">
         <div class="container">
             <div class="card" style=background-color:#BFD7ED>
                 <div class="card-body">
@@ -1858,9 +1858,7 @@
                         </table>
                         <br><br>
                         <div class="row">
-                            <div class="col-lg-6"><input type="submit" name="preview_data" value="Preview PDF">
-                                <input type="submit" name="sumibt_data" value="Create PDF File">
-                            </div>
+                            <div class="col-lg-6"><input type="submit" name="submit" value="Export to PDF"></div>
                             <!-- <div class="col-lg-6"><a href="http://localhost/CTC-CALCULATOR/OLT/view.php"
                                     class="btn btn-primary ml-2">View Records to Fill Other Details</a> -->
                         </div>
@@ -1874,4 +1872,3 @@
     <body>
 
 </html>
-<?php require("preview_pdf.php"); ?>

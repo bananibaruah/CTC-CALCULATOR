@@ -185,6 +185,17 @@ else
     $chkPassPort="no";
 }
 
+
+
+$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+$pdf->SetCreator(PDF_CREATOR);
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
+$pdf->setFontSubsetting(true);
+$pdf->SetFont('times', '', 10.8);
+$pdf->SetMargins(10, 10, 15, true);
+$pdf->AddPage();
+$pdf->SetAutoPageBreak(TRUE, 30);
 $doj1 = date("F d, Y", strtotime($doj));
 $Sd1 = date("F d, Y", strtotime($Sd));
 $ed1 = date("F d, Y", strtotime($ed));
@@ -299,7 +310,7 @@ $pdf->SetAutoPageBreak(TRUE,15);
 
 // //Close and output PDF document
 
-$html = "
+$html .= "
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -326,8 +337,9 @@ You are required to report for duty on <b>$Sd1</b> not later than <b>9.30 a.m</b
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.
 Wishing you the very best for your assignment with us.<br><br>
 Yours sincerely,<br>";
-$html .= '<img src="Sig.png" style="height:60px;width:50px" />';
-$html .= "<br>
+$html .="
+<img src='Sig.png' style='height:60px;width:30px'><br>";
+$html .="
 <b>Tina Mathew<br>
 Head – HR<br><br>
 Encl:-</b><br>
@@ -361,9 +373,8 @@ As a token of your understanding and acceptance of the terms and conditions you 
 You are required to report for duty on <b>$Sd1</b> not later than <b>9.30 a.m</b>.  If you do not join by this date then this offer would automatically stand withdrawn, unless the date of joining is revised and is communicated to you in writing.<br><br>
 Note: This offer made to you is on the basis of the details declared by you in the Employment Application Form (EAF). In case of any discrepancies found in the EAF the said offer will stand null and void with immediate effect.
 Wishing you the very best for your assignment with us.<br><br>
-Yours sincerely,<br>";
-$html .= '<img src="Sig.png" style="height:60px;width:50px" />';
-$html.="<br>
+Yours sincerely,<br>
+<img src='Sig.png' style='height:60px;width:30px'><br>
 <b>Tina Mathew<br>
 Head – HR<br><br>
 Encl:-</b><br>
