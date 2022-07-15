@@ -311,16 +311,9 @@ $html = "
 $Code<br><br>
 $name <br>
 $Ad1 ,<br>
-$Ad2 ,<br>";
-if($Ad3==0){
-$html =",$City  $Pincode <br><br>";
-}
-else{
-$html ="$Ad3 ,<br>
-,$City  $Pincode <br><br>";
-}
-
-$html ="
+$Ad2 ,<br>
+$Ad3 <br>
+$City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
 We are pleased to offer you employment in our organization NSEIT ltd as “<b>$Position</b>” for a fixed period of employment (Contract) on the following terms and conditions.<br><br>
@@ -354,16 +347,9 @@ $html .= "<br>
 $Code<br><br>
 $name <br>
 $Ad1 ,<br>
-$Ad2 ,<br>";
-if($Ad3==0){
-$html =",$City  $Pincode <br><br>";
-}
-else{
-$html ="$Ad3 ,<br>
-,$City  $Pincode <br><br>";
-}
-
-$html ="
+$Ad2 ,<br>
+$Ad3 <br>
+$City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
 We are pleased to offer you employment in our organization NSEIT ltd as “<b>$Position</b>” for a fixed period of employment (Contract) on the following terms and conditions.<br><br>
