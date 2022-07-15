@@ -385,7 +385,7 @@ $html .= '
 
 You are on a fixed term employment from <b>' . $Sd1 . '</b> to <b>' . $ed1 . '</b>.<br><br>
 
-Your working days will be <b>' . $wsd . '</b> to <b>' . $wed . '</b>.<br><br>
+Your working days will be <b>' . $wed . '</b> to <b>' . $wsd . '</b>.<br><br>
 
 
 <b>2.	Probation:</b><br>
