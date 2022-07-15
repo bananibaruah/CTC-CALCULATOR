@@ -312,7 +312,7 @@ $Code<br><br>
 $name <br>
 $Ad1 ,<br>
 $Ad2 ,<br>
-$Ad3 <br>
+$Ad3 ,<br>
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
@@ -348,7 +348,7 @@ $Code<br><br>
 $name <br>
 $Ad1 ,<br>
 $Ad2 ,<br>
-$Ad3 <br>
+$Ad3 ,<br>
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
