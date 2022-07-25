@@ -84,8 +84,7 @@ ini_set('log_errors', 'Off');
                         style="float: right;">
                         Home
                     </button>
-                    <button class="GFG"
-                        onclick="window.location.href = '/CTC-CALCULATOR/FTESA/index.php';"
+                    <button class="GFG" onclick="window.location.href = '/CTC-CALCULATOR/FTESA/index.php';"
                         style="float: right;">
                         SAMPLE ANNEXURE
                     </button>
@@ -118,7 +117,7 @@ ini_set('log_errors', 'Off');
                                 <th> Edit </th>
                                 <td><b>Sr. No.</b></td>
                                 <td><b>Offer Status</b></td>
-                                <td><b>Current Status</b></td>
+                                <td><b>Joining Status </b></td>
                                 <td><b>Department</b></td>
                                 <td><b>Business Unit</b></td>
                                 <td><b>New Department</b></td>
@@ -216,7 +215,7 @@ if ($result = mysqli_query($link, $sql)) {
             echo "</td>";
 echo"<td>".$row['olt_Id']."</td>";
 echo"<td>".$row['Offer_Status']."</td>";
-echo"<td>".$row['Current_Status']."</td>";
+echo"<td>".$row['Joining_Status']."</td>";
 echo"<td>".$row['Old_Department']."</td>";
 echo"<td>".$row['Business_Unit']."</td>";
 echo"<td>".$row['New_Department']."</td>";
@@ -250,8 +249,8 @@ echo"<td>".$row['Pincode']."</td>";
 echo"<td>".$row['Working_Days']."</td>";
 echo"<td>".$row['Skills']."</td>";
 echo"<td>".$row['Skills_Category']."</td>";
-echo"<td>".$row['Education']."</td>";
-echo"<td>".$row['Rel_Exp_in_yrs']."</td>";
+echo"<td>".$row['Highest_Qualification']."</td>";
+echo"<td>".$row['Total_Exp_in_yrs']."</td>";
 echo"<td>".$row['Name_of_Authorized_Signatory']."</td>";
 echo"<td>".$row['Designation_of_Authorized_Signatory']."</td>";
 echo"<td>".$row['Base_Location']."</td>";
@@ -268,8 +267,8 @@ echo"<td>".$row['Source_Name']."</td>";
 echo"<td>".$row['Client_Name']."</td>";
 echo"<td>".$row['Relocation_Allowance_Clause']."</td>";
 echo"<td>".$row['Old_CTC_']."</td>";
-echo"<td>".$row['MG']."</td>";
-echo"<td>".$row['AG']."</td>";
+echo"<td>".$row['Total_A']."</td>";
+echo"<td>".$row['Total_B']."</td>";
 echo"<td>".$row['ctc']."</td>";
 echo"<td>".$row['Adjusted_ctc']."</td>";
 echo"<td>".$row['ESIC']."</td>";
