@@ -2,133 +2,7 @@
 require_once("config.php");
 require_once("TCPDF/tcpdf.php");
 $id = $_GET["id"];
-if($id=="")
-{
-$Code = $_POST["Code"];
-$name = $_POST["name"];
-$Ad1 = $_POST["Ad1"];
-$Ad2 = $_POST["Ad2"];
-$Ad3 = $_POST["Ad3"];
-$state = $_POST["state"];
-$Pincode = $_POST["Pincode"];
-$City = $_POST["City"];
-$grade = $_POST["grade"];
-$Sd = $_POST["Sd"];
-$ed = $_POST["ed"];
-$doj = $_POST["doj"];
-$dojtype = $_POST["dojtype"];
-$Position = $_POST["Position"];
-$wsd = $_POST['wsd'];
-$wed = $_POST['wed'];
-$aloc = $_POST["aloc"];
-$jbamount = $_POST["jbamount"];
-$ctc = $_POST["ctc"];
-$basic = $_POST["basic"];
-$basic1 = round($basic / 12);
-$hra = $_POST["hra"];
-$hra1 = round($hra / 12);
-$Conveyance_Allowance = $_POST['Conveyance_Allowance'];
-$Conveyance_Allowance1 = round($Conveyance_Allowance / 12);
-$Statutory_Bonus = $_POST['Statutory_Bonus'];
-$Statutory_Bonus1 = round($Statutory_Bonus / 12);
-$Executive_Allowance = $_POST['Executive_Allowance'];
-$Executive_Allowance1 = round($Executive_Allowance / 12);
-$Total_A = $_POST['Total_A'];
-$Total_A1 = round($Total_A / 12);
-$PF = $_POST['PF'];
-$PF1 = round($PF / 12);
-$ESIC = $_POST['ESIC'];
-$ESIC1 = round($ESIC / 12);
-$Total_B = $_POST['Total_B'];
-$Total_B1 = round($Total_B / 12);
-$LTotal = $_POST['LTotal'];
-$LTotal1 = round($LTotal / 12);
-$TOTAL = $_POST['TOTAL'];
-$TOTAL1 = round($TOTAL / 12);
-$chkPassPort=$_POST['chkPassPort'];
-
-
-$ins_sql = "INSERT INTO olt
-(
-Ref_No_of_Offer_Letter,
-Employee_Name,
-Address_Line_1,
-Address_Line_2,
-Address_Line_3,
-state,
-Pincode,
-City,
-grade,
-Sd,
-ed,
-doj,
-dojtype,
-Position,
-wed,
-wsd,
-aloc,
-jbamount,
-ctc,
-basic,
-hra,
-Conveyance_Allowance,
-Statutory_Bonus,
-Executive_Allowance,
-Total_A,
-PF,
-ESIC,
-Total_B,
-LTotal,
-TOTAL
-) 
-Values
-(
-'$Code',
-'$name',
-'$Ad1',
-'$Ad2',
-'$Ad3',
-'$state',
-'$Pincode',
-'$City',
-'$grade',
-'$Sd',
-'$ed',
-'$doj',
-'$dojtype',
-'$Position',
-'$wsd',
-'$wed',
-'$aloc',
-'$jbamount',
-'$ctc',
-'$basic',
-'$hra',
-'$Conveyance_Allowance',
-'$Statutory_Bonus',
-'$Executive_Allowance',
-'$Total_A',
-'$PF',
-'$ESIC',
-'$Total_B',
-'$LTotal',
-'$TOTAL'
-)";
-
-//print_r($ins_sql);
-$link->query($ins_sql);
-$sql_sel = "SELECT MAX(olt_Id) AS olt_Id FROM olt";
-$sql_result = $link->query($sql_sel);
-$sql_result -> num_rows > 0 ;
-$sql_row = $sql_result -> fetch_assoc();
-$iq = $sql_row["olt_Id"];
-if($iq == "" )
-{
-    $iq = 0;
-}
-header('location: create_tcpdf.php?id='.$iq);
-}
-else
+if($id != "")
 {
 $sql = "SELECT * FROM olt WHERE olt_Id = ".$_GET["id"]."";
 $result = $link->query($sql);
@@ -311,8 +185,12 @@ $html = "
 $Code<br><br>
 $name <br>
 $Ad1 ,<br>
-$Ad2 ,<br>
-$Ad3 ,<br>
+$Ad2 ,<br>";
+if($Ad3 != "")
+{
+$html .="$Ad3 ,<br>";
+}
+$html .="
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
@@ -336,7 +214,7 @@ Encl:-</b><br>
 <i><u><b>Signature & Date</b></u></i><br>
 ";
 
-$html .= "<br>
+$html .= "<br><br>
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -347,8 +225,12 @@ $html .= "<br>
 $Code<br><br>
 $name <br>
 $Ad1 ,<br>
-$Ad2 ,<br>
-$Ad3 ,<br>
+$Ad2 ,<br>";
+if($Ad3 != "")
+{
+$html .="$Ad3 ,<br>";
+}
+$html .="
 $City  $Pincode <br><br>
 Dear $name , <br><br>
 </b>
@@ -699,6 +581,6 @@ $html .= '
 
 $pdf->writeHTML($html, true, false, true, false, '');
 ob_end_clean();
-$pdf->Output('index.pdf');
+$pdf->Output("FTEofferletter_NSEIT_".$name.'.pdf');
 }
 ?>

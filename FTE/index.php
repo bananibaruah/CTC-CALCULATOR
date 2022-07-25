@@ -1,4 +1,20 @@
 <?php require_once('config.php');
+$position = base64_decode(base64_decode($_GET["aa"]));
+$name = base64_decode(base64_decode($_GET["j"]));
+
+$Ref_No_of_Offer_Letter = base64_decode(base64_decode($_GET["s"]));
+$Offer_Date = base64_decode(base64_decode($_GET["u"]));
+$Sd = base64_decode(base64_decode($_GET["w"]));
+$endd = base64_decode(base64_decode($_GET["z"]));
+
+$Address_Line_1=base64_decode(base64_decode($_GET["bb"]));
+$Address_Line_2=base64_decode(base64_decode($_GET["cc"]));
+$Address_Line_3=base64_decode(base64_decode($_GET["dd"]));
+
+$City = base64_decode(base64_decode($_GET["ee"]));
+$Pincode = base64_decode(base64_decode($_GET["ff"]));
+
+$olt_id = $_GET["ol"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -1395,9 +1411,12 @@
 <body>
     <div class="wrapper">
         <div class="container-fluid"><br>
-            <a href="index.php"><img src="..\images\nselogo.png" height="70px" width="110px"></a>
-            <a href="https://hr.nseit.com/CTC-CALCULATOR" class="btn btn-primary ml-3" style="float: right;">Home</a>
-            <a href="../logout.php" class="btn btn-danger ml-3" style="float: right;">Sign Out of Your Account</a>
+            <a href="http://localhost/CTC-CALCULATOR/index.php"><img src="..\images\nselogo.png" height="70px"
+                    width="110px"></a>
+            <a href="http://localhost/CTC-CALCULATOR/index.php" class="btn btn-primary ml-3" style="float: right;">ADD
+                NEW ENTRY</a>
+            <a href="/CTC-CALCULATOR/view.php" class="btn btn-danger ml-3" style="float: right;">VIEW
+                RECORDS</a>
             <h5><b>
                     <center>
                         <font color="#0056b3">FTE CALCULATOR</font>
@@ -1422,12 +1441,14 @@
                     <div class="green box">
                         <div class="row">
                             <div class="col-lg-6">
-                                <label=""><b>Reference number of offer letter</b></label>
-                                    <input type="text" class="form-control" id="Code" name="Code" placeholder="" />
+                                <label=""><b>Reference number of offer letter </b></label>
+                                    <input type="text" class="form-control" id="Code" name="Code" placeholder=""
+                                        value="<?php echo $Ref_No_of_Offer_Letter; ?>" />
                                     <br>
                             </div>
                             <div class="col-lg-6">
                                 <label=""><b>TARGETED CTC</b></label>
+                                    <input type="hidden" id="olt_id" name="olt_id" value="<?php echo $olt_id ?>" />
                                     <input type="text" class="form-control" id="ctc" name="ctc" placeholder="" />
                             </div>
 
@@ -1437,7 +1458,8 @@
                                 <th>
                                     <label="">Name</label>
                                 </th>
-                                <th><input type="text" class="form-control" id="name" name="name" placeholder="" />
+                                <th><input type="text" class="form-control" id="name" name="name"
+                                        value="<?php echo $name; ?>" placeholder="" />
                                 </th>
                                 <th>
                                     <label="">Work Location</label>
@@ -1451,13 +1473,15 @@
                                     <label="">
                                         <label="">Address Line 1</label></label>
                                 </td>
-                                <td><input type="text" class="form-control" id="Ad1" name="Ad1" placeholder="" />
+                                <td><input type="text" class="form-control" id="Ad1" name="Ad1" placeholder=""
+                                        value="<?php echo $Address_Line_1; ?>" />
 
                                 </td>
                                 <td>
                                     <label="">Address Line2</label>
                                 </td>
-                                <td> <input type="text" class="form-control" id="Ad2" name="Ad2" placeholder="" />
+                                <td> <input type="text" class="form-control" id="Ad2" name="Ad2" placeholder=""
+                                        value="<?php echo $Address_Line_2; ?>" />
 
 
                                 </td>
@@ -1466,13 +1490,15 @@
                                 <td>
                                     <label="">Address Line 3</label>
                                 </td>
-                                <td><input type="text" class="form-control" id="Ad3" name="Ad3" placeholder="" />
+                                <td><input type="text" class="form-control" id="Ad3" name="Ad3" placeholder=""
+                                        value="<?php echo $Address_Line_3; ?>" />
 
                                 </td>
                                 <td>
                                     <label="">City</label>
                                 </td>
-                                <td> <input type="text" class="form-control" id="City" name="City" placeholder="" />
+                                <td> <input type="text" class="form-control" id="City" name="City" placeholder=""
+                                        value="<?php echo $City; ?>" />
                                 </td>
                             </tr>
 
@@ -1480,14 +1506,15 @@
                                 <td>
                                     <label="">Pincode</label>
                                 </td>
-                                <td><input type="text" class="form-control" id="Pincode" name="Pincode"
-                                        placeholder="" />
+                                <td><input type="text" class="form-control" id="Pincode" name="Pincode" placeholder=""
+                                        value="<?php echo $Pincode; ?>" />
 
                                 </td>
                                 <td>
                                     <label="">Offer date</label>
                                 </td>
-                                <td> <input type="date" class="form-control" id="doj" name="doj" placeholder="" />
+                                <td> <input type="date" class="form-control" id="doj" name="doj" placeholder=""
+                                        value="<?php echo $Offer_Date; ?>" />
 
 
                                 </td>
@@ -1496,8 +1523,8 @@
                                 <td>
                                     <label="">Designation</label>
                                 </td>
-                                <td><input type="text" class="form-control" id="Position" name="Position"
-                                        placeholder="" />
+                                <td><input type="text" class="form-control" id="Position" name="Position" placeholder=""
+                                        value="<?php echo $position; ?>" />
                                 </td>
                                 <td>Grade</td>
                                 <td><input class="form-control" id="grade" name="grade" value="F00" readonly />
@@ -1507,11 +1534,13 @@
                                 <td>
                                     <label="">Start Date</label>
                                 </td>
-                                <td><input type="date" class="form-control" id="Sd" name="Sd" placeholder="" /></td>
+                                <td><input type="date" class="form-control" id="Sd" name="Sd" placeholder=""
+                                        value="<?php echo $Sd; ?>" /></td>
                                 <td>
                                     <label="">End Date</label>
                                 </td>
-                                <td><input type="date" class="form-control" id="ed" name="ed" placeholder="" />
+                                <td><input type="date" class="form-control" id="ed" name="ed" placeholder=""
+                                        value="<?php echo $endd; ?>" />
                                 </td>
                             </tr>
                             <tr>
