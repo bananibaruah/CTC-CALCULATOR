@@ -58,6 +58,46 @@
                     background-color: #dddddd;
                 }
                 </style>
+
+
+<script>
+
+
+function revealdateod() {
+
+
+        var myElement = document.getElementById("od").value;
+        document.getElementById("odt").value = new Date(myElement).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"}) ;
+
+
+
+}
+
+
+function revealdatecsd() {
+
+
+var myElement2= document.getElementById("csd").value;
+document.getElementById("csdt").value = new Date(myElement2).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"}) ;
+
+
+
+
+}
+
+function revealdateced() {
+
+
+var myElement = document.getElementById("ced").value;
+document.getElementById("cedt").value = new Date(myElement).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"}) ;
+
+
+
+}
+
+
+
+</script>
                 </head>
 
                 <body>
@@ -145,12 +185,12 @@
                         </tr>
                         <tr>
                             <td><label>Offer Date</label><input type="date" name="Offer_Date" value=""
-                                    class="form-control"><br /></td>
+                                 id="od"   class="form-control"><br /></td>
                             <td><label>Offer Date (in text)</label><input type="text" name="Offer_Dt_Text" value=""
+                                  onfocus="revealdateod()" id="odt" class="form-control"><br /></td>
+                            <td><label>Contract Start Date</label><input type="date" name="Sd" id="csd" value="" 
                                     class="form-control"><br /></td>
-                            <td><label>Contract Start Date</label><input type="date" name="Sd" value=""
-                                    class="form-control"><br /></td>
-                            <td><label>Contract Start Date(in text)</label><input type="text" name="C_Sd_txt" value=""
+                            <td><label>Contract Start Date(in text)</label><input type="text" id="csdt" onfocus="revealdatecsd()" name="C_Sd_txt" value=""
                                     class="form-control"><br /></td>
 
                         </tr>
@@ -159,11 +199,11 @@
 
 
                         <tr>
-                            <td><label>Contract End Date</label><input type="date" name="ed" value=""
+                            <td><label>Contract End Date</label><input type="date" name="ed" value="" id="ced"
                                     class="form-control"><br /></td>
                             <td><label>Contract End Date(in text)</label><input type="text" name="C_Ed_txt" value=""
-                                    class="form-control"><br /></td>
-                            <td><label>Designation</label><input type="text" name="Position" value=""
+                                    id="cedt" onfocus="revealdateced()" class="form-control"><br /></td>
+                            <td><label>Designation</label><input type="text" name="Position" value="" 
                                     class="form-control"><br /></td>
                             <td><label>Address Line 1</label><input type="text" name="Address_Line_1" value=""
                                     class="form-control"><br /></td>
