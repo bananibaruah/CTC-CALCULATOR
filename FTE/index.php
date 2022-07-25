@@ -1411,9 +1411,9 @@ $olt_id = $_GET["ol"];
 <body>
     <div class="wrapper">
         <div class="container-fluid"><br>
-            <a href="http://localhost/CTC-CALCULATOR/index.php"><img src="..\images\nselogo.png" height="70px"
+            <a href="/CTC-CALCULATOR/index.php"><img src="..\images\nselogo.png" height="70px"
                     width="110px"></a>
-            <a href="http://localhost/CTC-CALCULATOR/index.php" class="btn btn-primary ml-3" style="float: right;">ADD
+            <a href="/CTC-CALCULATOR/index.php" class="btn btn-primary ml-3" style="float: right;">ADD
                 NEW ENTRY</a>
             <a href="/CTC-CALCULATOR/view.php" class="btn btn-danger ml-3" style="float: right;">VIEW
                 RECORDS</a>
@@ -1890,7 +1890,7 @@ $olt_id = $_GET["ol"];
                             <div class="col-lg-6"><input type="submit" name="preview_data" value="Preview PDF">
                                 <input type="submit" name="sumibt_data" value="Create PDF File">
                             </div>
-                            <!-- <div class="col-lg-6"><a href="http://localhost/CTC-CALCULATOR/OLT/view.php"
+                            <!-- <div class="col-lg-6"><a href="/CTC-CALCULATOR/OLT/view.php"
                                     class="btn btn-primary ml-2">View Records to Fill Other Details</a> -->
                         </div>
                     </div>

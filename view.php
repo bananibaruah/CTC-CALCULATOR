@@ -80,12 +80,12 @@ ini_set('log_errors', 'Off');
                     <!-- <button class="GFG" onclick="window.location.href = 'exportdt.php';" style="float: right;">
                         Export
                     </button> -->
-                    <button class="GFG" onclick="window.location.href = 'http://localhost/CTC-CALCULATOR/index.php';"
+                    <button class="GFG" onclick="window.location.href = '/CTC-CALCULATOR/index.php';"
                         style="float: right;">
                         Home
                     </button>
                     <button class="GFG"
-                        onclick="window.location.href = 'http://localhost/CTC-CALCULATOR/FTESA/index.php';"
+                        onclick="window.location.href = '/CTC-CALCULATOR/FTESA/index.php';"
                         style="float: right;">
                         SAMPLE ANNEXURE
                     </button>

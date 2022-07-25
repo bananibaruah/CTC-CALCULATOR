@@ -30,7 +30,7 @@
                     <!-- <a href="https://hr.nseit.com/jarvis/welcome.php" class="btn btn-primary ml-2">Home</a> -->
                     <a href="view.php" class="btn btn-primary ml-2">View
                         Records</a>
-                    <a href="http://localhost/CTC-CALCULATORN/FTESA/index.php" class="btn btn-primary ml-2">SAMPLE
+                    <a href="/CTC-CALCULATOR/FTESA/index.php" class="btn btn-primary ml-2">SAMPLE
                         ANNEXURE</a>
 
 

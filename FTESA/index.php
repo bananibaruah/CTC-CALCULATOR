@@ -1396,9 +1396,8 @@
     <div class="wrapper">
         <div class="container-fluid"><br>
             <a href="index.php"><img src="..\images\nselogo.png" height="70px" width="110px"></a>
-            <a href="http://localhost/CTC-CALCULATOR/index.php" class="btn btn-primary ml-3"
-                style="float: right;">OL-TRACKER</a>
-            <a href="http://localhost/CTC-CALCULATOR/view.php" class="btn btn-primary ml-3" style="float: right;">View
+            <a href="/CTC-CALCULATOR/index.php" class="btn btn-primary ml-3" style="float: right;">OL-TRACKER</a>
+            <a href="/CTC-CALCULATOR/view.php" class="btn btn-primary ml-3" style="float: right;">View
                 Records</a>
             <h5><b>
                     <center>
@@ -1863,7 +1862,7 @@
                             <div class="col-lg-6"><input type="submit" name="preview_data" value="Preview PDF">
                                 <!-- <input type="submit" name="sumibt_data" value="Create PDF File"> -->
                             </div>
-                            <!-- <div class="col-lg-6"><a href="http://localhost/CTC-CALCULATOR/OLT/view.php"
+                            <!-- <div class="col-lg-6"><a href="/CTC-CALCULATOR/OLT/view.php"
                                     class="btn btn-primary ml-2">View Records to Fill Other Details</a> -->
                         </div>
                     </div>
