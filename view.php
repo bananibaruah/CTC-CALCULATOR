@@ -124,7 +124,7 @@ ini_set('log_errors', 'Off');
                                 <td><b>Role</b></td>
                                 <td><b>Emp Code</b></td>
                                 <td><b>Type of Hire</b></td>
-                                <td><b>Title</b></td>
+                                <!-- <td><b>Title</b></td> -->
                                 <td><b>Employee Name</b></td>
                                 <td><b>Contact Details</b></td>
                                 <td><b>Email Id</b></td>
@@ -159,7 +159,7 @@ ini_set('log_errors', 'Off');
                                 <td><b>Posting Location</b></td>
                                 <td><b>Area of operation</b></td>
                                 <td><b>Requirement Type</b></td>
-                                <td><b>Replaced Emp Namekale</b></td>
+                                <td><b>Replaced Emp Name</b></td>
                                 <td><b>Reporting Manager</b></td>
                                 <td><b>Delivery Leader</b></td>
                                 <td><b>Delivery Head</b></td>
@@ -210,7 +210,7 @@ if ($result = mysqli_query($link, $sql)) {
             echo "<tr>";
        echo "<td>";
             // echo '<a href="read.php?EMPLOYEE_ID='. $row['EMPLOYEE_ID'] .'" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-            echo '<a href="updatedt.php?id=' . $row['Employee_Id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-comment"></span></a>';
+            echo '<a href="update.php?id=' . $row['olt_Id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-comment"></span></a>';
             // echo '<a href="delete.php?EMPLOYEE_ID='. $row['EMPLOYEE_ID'] .'" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
             echo "</td>";
 echo"<td>".$row['olt_Id']."</td>";
@@ -222,7 +222,7 @@ echo"<td>".$row['New_Department']."</td>";
 echo"<td>".$row['Role']."</td>";
 echo"<td>".$row['Employee_Id']."</td>";
 echo"<td>".$row['Type_of_Hire']."</td>";
-echo"<td>".$row['Title']."</td>";
+// echo"<td>".$row['Title']."</td>";
 echo"<td>".$row['Employee_Name']."</td>";
 echo"<td>".$row['Contact_No']."</td>";
 echo"<td>".$row['Email_ID']."</td>";
@@ -270,7 +270,7 @@ echo"<td>".$row['Old_CTC_']."</td>";
 echo"<td>".$row['Total_A']."</td>";
 echo"<td>".$row['Total_B']."</td>";
 echo"<td>".$row['ctc']."</td>";
-echo"<td>".$row['Adjusted_ctc']."</td>";
+echo"<td>".$row['TOTAL']."</td>";
 echo"<td>".$row['ESIC']."</td>";
 echo"<td>".$row['state']."</td>";
 echo"<td>".$row['Mail_Subject__Offer_Letter_Name']."</td>";
